@@ -20,6 +20,6 @@
  *
  */
 
-@import "./Row/index.css";
-@import "./Editable/index.css";
-@import "./Cell/index.css";
+@import './Row/index.css';
+@import './Editable/index.css';
+@import './Cell/index.css';

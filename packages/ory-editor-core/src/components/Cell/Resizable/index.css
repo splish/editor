@@ -56,7 +56,7 @@
 }
 
 .ory-cell-resizable.react-resizable > .react-resizable-handle:after {
-  content: " ";
+  content: ' ';
   background-color: var(--darkWhite);
   /* width: 30px; */
   /* height: 30px; */

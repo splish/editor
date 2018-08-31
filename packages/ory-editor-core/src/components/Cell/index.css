@@ -20,10 +20,10 @@
  *
  */
 
-@import "./Draggable/index.css";
-@import "./Droppable/index.css";
-@import "./Empty/index.css";
-@import "./Resizable/index.css";
+@import './Draggable/index.css';
+@import './Droppable/index.css';
+@import './Empty/index.css';
+@import './Resizable/index.css';
 
 .ory-cell-inline-left {
   float: left;
@@ -52,7 +52,7 @@
 }
 
 .ory-cell-resizing-overlay:after {
-  content: " ";
+  content: ' ';
   z-index: 4;
   position: absolute;
   top: 0;

@@ -25,7 +25,7 @@
 }
 
 .ory-row-is-hovering-this:before {
-  content: " ";
+  content: ' ';
   position: absolute;
   background: black;
   display: block;
@@ -58,4 +58,3 @@
   bottom: 0;
   width: 4px;
 }
-
