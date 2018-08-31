@@ -1,0 +1,10 @@
+{
+  "name": "@splish-me/editor-ui",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "private": true
+}
