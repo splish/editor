@@ -18,38 +18,4 @@
  * @copyright 2018 Splish UG (haftungsbeschränkt)
  * @author Splish UG (haftungsbeschränkt)
  */
-export const source = {
-  beginDrag(props) {
-    // Beginn dragging the cell
-    props.dragCell(props)
-    return {
-      ...props,
-      // we do not want to pass down the react children or we will risk circular dependencies.
-      children: null,
-      node: {
-        ...props.node,
-        rows: props.rawNode().rows
-      }
-    }
-  },
-
-  endDrag({ cancelCellDrag, id }, monitor) {
-    if (monitor.didDrop()) {
-      // If the item drop occurred deeper down the tree, don't do anything
-      return
-    }
-
-    // If drag ended but drop did not occur, cancel dragging
-    cancelCellDrag()
-  },
-
-  canDrag(props) {
-    return !props.resizingCell
-  }
-}
-
-export const collect = (connect, monitor) => ({
-  connectDragSource: connect.dragSource(),
-  isDragging: monitor.isDragging(),
-  connectDragPreview: connect.dragPreview()
-})
+export const resizingCell = ({ resize }) => resize.id

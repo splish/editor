@@ -1,26 +1,23 @@
 /*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *  
- * ORY Editor is distributed in the hope that it will be useful,
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- *  
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @license LGPL-3.0
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
-
-// @flow
 import React, { Component } from 'react'
 import { Resizable as ReactResizeable } from 'react-resizable'
 import { connect } from 'react-redux'
@@ -28,14 +25,12 @@ import classNames from 'classnames'
 import { createStructuredSelector } from 'reselect'
 
 import { resizeMode, editMode } from '../../../actions/display'
+import { resizeStart, resizeStop } from '../../../actions/cell/resize'
 import { computeStepWidth, widthToSize } from './helper.js'
-import type { ComponetizedCell } from '../../../types/editable'
 import { shouldPureComponentUpdate } from '../../../helper/shouldComponentUpdate'
 
-type Props = ComponetizedCell
-
 class Resizable extends Component {
-  constructor(props: Props) {
+  constructor(props) {
     super(props)
 
     const sw = computeStepWidth(props)
@@ -46,17 +41,13 @@ class Resizable extends Component {
     }
   }
 
-  state: Object = {
-    stepWidth: Number,
-    width: Number,
-    steps: Number
-  }
+  state
 
   shouldComponentUpdate = shouldPureComponentUpdate
 
-  props: Props
+  props
 
-  onResize = (event: Event, { size }: Object) => {
+  onResize = (event, { size }) => {
     const newSize = widthToSize(this.state, this.props, size)
     if (!newSize) {
       console.warn('Expected resize event to yield a valid size, but got', {
@@ -75,7 +66,9 @@ class Resizable extends Component {
   render() {
     const {
       node: { bounds, inline },
-      children
+      children,
+      resizeStart,
+      resizeStop
     } = this.props
 
     return (
@@ -83,6 +76,12 @@ class Resizable extends Component {
         className={classNames('ory-cell-inner', 'ory-cell-resizable', {
           [`ory-cell-resizable-inline-${inline || ''}`]: inline
         })}
+        onResizeStart={() => {
+          resizeStart(this.props.id)
+        }}
+        onResizeStop={() => {
+          resizeStop(this.props.id)
+        }}
         onResize={this.onResize}
         minConstraints={inline ? null : [this.state.stepWidth, Infinity]}
         maxConstraints={
@@ -101,7 +100,7 @@ class Resizable extends Component {
 
 const mapStateToProps = createStructuredSelector({})
 
-const mapDispatchToProps = { resizeMode, editMode }
+const mapDispatchToProps = { resizeStart, resizeStop, editMode }
 
 export default connect(
   mapStateToProps,

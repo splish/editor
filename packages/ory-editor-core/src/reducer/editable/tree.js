@@ -23,7 +23,7 @@
 // @flow
 /* eslint-disable no-use-before-define */
 /* eslint no-duplicate-imports: "off" */
-import pathOr from 'ramda/src/pathOr'
+import { pathOr } from 'ramda'
 
 import {
   optimizeCell,

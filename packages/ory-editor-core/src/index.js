@@ -1,27 +1,23 @@
 /*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * ORY Editor is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @license LGPL-3.0
+ * @license LGPL-3.0-or-later
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
-
-// @flow
-/* eslint-disable no-use-before-define, no-underscore-dangle */
 import { v4 } from 'uuid'
 import Editable from './components/Editable'
 import createStore from './store'
@@ -29,13 +25,11 @@ import { actions } from './actions'
 import { selectors } from './selector'
 import PluginService from './service/plugin'
 import pluginDefault from './service/plugin/default'
-import type { Editable as EditableType } from './types/editable'
-import type Store from './types/redux'
-import forEach from 'ramda/src/forEach'
+import { forEach } from 'ramda'
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
 import { DragDropContext as dragDropContext } from 'react-dnd'
 
-let instance: Editor
+let instance
 
 const initialState = () => ({
   editables: {
@@ -45,12 +39,12 @@ const initialState = () => ({
   }
 })
 
-const nativeTypes = (editor: Editor) =>
+const nativeTypes = editor =>
   editor.plugins.hasNativePlugin()
     ? [NativeTypes.URL, NativeTypes.FILE, NativeTypes.TEXT]
     : []
 
-const update = (editor: Editor) => (editable: EditableType) => {
+const update = editor => editable => {
   const state = editor.plugins.unserialize(editable)
   actions(editor.store.dispatch).editable.update({
     ...state,
@@ -70,12 +64,12 @@ const dndBackend = HTML5Backend
  * Editor is the core interface for dealing with the editor.
  */
 class Editor {
-  store: Store
-  plugins: PluginService
-  middleware: []
+  store
+  plugins
+  middleware
 
-  dragDropContext: any
-  defaultPlugin: any
+  dragDropContext
+  defaultPlugin
 
   constructor({
     plugins,
@@ -83,12 +77,6 @@ class Editor {
     editables = [],
     defaultPlugin = pluginDefault,
     dragDropBackend
-  }: {
-    plugins: { content: [], layout: [], native?: any },
-    middleware: [],
-    editables: EditableType[],
-    defaultPlugin: any,
-    dragDropBackend: any
   } = {}) {
     if (instance) {
       console.warn(
@@ -112,39 +100,39 @@ class Editor {
   }
 
   refreshEditables = () => {
-    forEach((editable: any) => {
+    forEach(editable => {
       console.log(this.plugins.serialize(editable))
       this.trigger.editable.update(this.plugins.serialize(editable))
     }, this.store.getState().editables.present)
   }
 
-  setLayoutPlugins = (plugins: Array<any> = []) => {
+  setLayoutPlugins = (plugins = []) => {
     this.plugins.setLayoutPlugins(plugins)
     this.refreshEditables()
   }
 
-  addLayoutPlugin = (config: any) => {
+  addLayoutPlugin = config => {
     this.plugins.addLayoutPlugin(config)
     this.refreshEditables()
   }
 
-  removeLayoutPlugin = (name: string) => {
+  removeLayoutPlugin = name => {
     this.plugins.removeLayoutPlugin(name)
     this.refreshEditables()
   }
 
-  setContentPlugins = (plugins: Array<any> = []) => {
+  setContentPlugins = (plugins = []) => {
     this.plugins.setContentPlugins(plugins)
     console.log(this.store.getState())
     this.refreshEditables()
   }
 
-  addContentPlugin = (config: any) => {
+  addContentPlugin = config => {
     this.plugins.addContentPlugin(config)
     this.refreshEditables()
   }
 
-  removeContentPlugin = (name: string) => {
+  removeContentPlugin = name => {
     this.plugins.removeContentPlugin(name)
     this.refreshEditables()
   }

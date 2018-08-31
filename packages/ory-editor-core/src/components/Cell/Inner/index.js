@@ -1,27 +1,26 @@
 /*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *  
- * ORY Editor is distributed in the hope that it will be useful,
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- *  
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @license LGPL-3.0
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
-
-// @flow
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
 import { shouldPureComponentUpdate } from '../../../helper/shouldComponentUpdate'
 import Droppable from '../Droppable'
@@ -31,14 +30,15 @@ import Layout from '../Layout'
 import Content from '../Content'
 import Empty from '../Empty'
 
-import type { ComponetizedCell } from '../../../types/editable'
+import { resizingCell } from '../../../selector/resize'
 
 class Inner extends Component {
   shouldComponentUpdate = shouldPureComponentUpdate
-  props: ComponetizedCell
+  props
 
   render() {
     const {
+      resizingCell,
       node: {
         rows = [],
         layout: {
@@ -97,4 +97,8 @@ class Inner extends Component {
   }
 }
 
-export default Inner
+const mapStateToProps = createStructuredSelector({
+  resizingCell
+})
+
+export default connect(mapStateToProps)(Inner)

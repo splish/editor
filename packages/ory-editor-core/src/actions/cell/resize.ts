@@ -13,23 +13,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @license LGPL-3.0-or-later
- * @copyright 2016-2018 Aeneas Rekkas
- * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
  * @copyright 2018 Splish UG (haftungsbeschränkt)
  * @author Splish UG (haftungsbeschränkt)
  */
-import { combineReducers } from 'redux'
+export const RESIZE_START = 'RESIZE_START'
+export const RESIZE_STOP = 'RESIZE_STOP'
 
-import { display } from './display'
-import { editables } from './editables'
-import { focus } from './focus'
-import { resize } from './resize'
-import { settings } from './settings'
+export const resizeStart = (id: string) => ({
+  type: RESIZE_START,
+  ts: new Date(),
+  id
+})
 
-export default combineReducers({
-  display,
-  editables,
-  focus,
-  resize,
-  settings
+export const resizeStop = (id: string) => ({
+  type: RESIZE_STOP,
+  ts: new Date(),
+  id
 })

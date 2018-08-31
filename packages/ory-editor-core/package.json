@@ -1,7 +1,7 @@
 {
   "name": "@splish-me/ory-editor-core",
   "version": "0.0.0",
-  "license": "LGPL-3.0-only",
+  "license": "LGPL-3.0-or-later",
   "author": "Splish UG (haftungsbeschränkt)",
   "scripts": {},
   "dependencies": {},

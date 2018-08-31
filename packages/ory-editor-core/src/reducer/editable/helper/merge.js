@@ -1,52 +1,63 @@
 /*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * ORY Editor is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @license LGPL-3.0
+ * @license LGPL-3.0-or-later
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
-
-// @flow
-import flatten from 'ramda/src/flatten'
-import head from 'ramda/src/head'
-import path from 'ramda/src/path'
-import pathOr from 'ramda/src/pathOr'
-import map from 'ramda/src/map'
-import reduce from 'ramda/src/reduce'
-import tail from 'ramda/src/tail'
-import takeWhile from 'ramda/src/takeWhile'
+import { flatten } from 'ramda'
+import { head } from 'ramda'
+import { path } from 'ramda'
+import { pathOr } from 'ramda'
+import { map } from 'ramda'
+import { reduce } from 'ramda'
+import { tail } from 'ramda'
+import { takeWhile } from 'ramda'
 
 import { SET_DISPLAY_MODE } from '../../../actions/display'
-import type { Row } from '../../../types/editable'
 
-const notSharp = (c: string) => c !== '#'
+const notSharp = c => c !== '#'
 
-export const mergeRows = (state: Row[]) => {
+const takeWhileNotSharp = id => {
+  const ids = takeWhile(notSharp, id)
+
+  if (typeof ids === 'string') {
+    return ids
+  }
+
+  return ids.join('')
+}
+
+export const mergeRows = state => {
   if (state.length < 2) {
     return state
   }
 
   const [newCellsAcc, lastRow] = reduce(
-    ([rowsAcc, rowA]: [Row[], Row], rowB: Row) => {
+    ([rowsAcc, rowA], rowB) => {
       const numberOfCells = path(['cells', 'length'])
+
+      const ids = takeWhile(notSharp, rowA.id)
 
       if (numberOfCells(rowA) !== 1 || numberOfCells(rowB) !== 1) {
         return [
-          [...rowsAcc, { ...rowA, id: takeWhile(notSharp, rowA.id).join('') }],
+          [
+            ...rowsAcc,
+            { ...rowA, id: typeof ids === 'string' ? ids : ids.join('') }
+          ],
           rowB
         ]
       }
@@ -67,21 +78,18 @@ export const mergeRows = (state: Row[]) => {
         pluginVersion(cellA) !== pluginVersion(cellB) ||
         !pluginMerge(cellA)
       ) {
-        return [
-          [...rowsAcc, { ...rowA, id: takeWhile(notSharp, rowA.id).join('') }],
-          rowB
-        ]
+        return [[...rowsAcc, { ...rowA, id: takeWhileNotSharp(rowA.id) }], rowB]
       }
 
       return [
         rowsAcc,
         {
           ...rowA,
-          id: takeWhile(notSharp, rowA.id).join(''),
+          id: takeWhileNotSharp(rowA.id),
           cells: [
             {
               ...cellA,
-              id: takeWhile(notSharp, cellA.id).join(''),
+              id: takeWhileNotSharp(cellA.id),
               content: {
                 ...cellA.content,
                 state: pluginMerge(cellA)([
@@ -101,9 +109,9 @@ export const mergeRows = (state: Row[]) => {
   return [...newCellsAcc, lastRow]
 }
 
-export const splitRows = (state: Row[]) =>
+export const splitRows = state =>
   flatten(
-    map((row: Row) => {
+    map(row => {
       if (!row.cells) {
         return [row]
       }
@@ -119,7 +127,7 @@ export const splitRows = (state: Row[]) =>
         return [row]
       }
 
-      return split(state).map((state: Object, i: number) => ({
+      return split(state).map((state, i) => ({
         ...row,
         id: `${row.id}#${i}`,
         cells: [
@@ -136,7 +144,7 @@ export const splitRows = (state: Row[]) =>
     }, state)
   )
 
-export const mergeDecorator = (action: Object) => (state: Row[]) => {
+export const mergeDecorator = action => state => {
   if (action.type !== SET_DISPLAY_MODE) {
     return state
   }

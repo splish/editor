@@ -1,26 +1,23 @@
 /*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *  
- * ORY Editor is distributed in the hope that it will be useful,
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- *  
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @license LGPL-3.0
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
-
-// @flow
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
@@ -40,13 +37,7 @@ import {
 import { resizeCell, focusCell, blurAllCells } from '../../actions/cell'
 import Resizable from './Resizable'
 
-import type { ComponetizedCell } from '../../types/editable'
-
-const gridClass = ({
-  node: { size },
-  isPreviewMode,
-  isEditMode
-}: ComponetizedCell): string => {
+const gridClass = ({ node: { size }, isPreviewMode, isEditMode }) => {
   if (isPreviewMode || isEditMode) {
     return `ory-cell-${isPreviewMode || isEditMode ? 'sm' : 'xs'}-${size ||
       12} ory-cell-xs-12`
@@ -55,15 +46,12 @@ const gridClass = ({
   return `ory-cell-xs-${size || 12}`
 }
 
-const stopClick = (isEditMode: boolean) => (e: Event) =>
-  isEditMode ? e.stopPropagation() : null
-
-type Props = ComponetizedCell
+const stopClick = isEditMode => e => (isEditMode ? e.stopPropagation() : null)
 
 class Cell extends Component {
   shouldComponentUpdate = shouldPureComponentUpdate
 
-  props: Props
+  props
 
   render() {
     const {
@@ -89,7 +77,7 @@ class Cell extends Component {
         })}
         onClick={stopClick(isEditMode)}
       >
-        {resizable && isResizeMode ? (
+        {resizable && isLayoutMode ? (
           <Resizable
             {...this.props}
             id={id}
@@ -119,10 +107,10 @@ const mapStateToProps = createStructuredSelector({
   isLayoutMode,
   config: editableConfig,
   node: purifiedNode,
-  rawNode: (state: any, props: any) => () => node(state, props)
+  rawNode: (state, props) => () => node(state, props)
 })
 
-const mapDispatchToProps = (dispatch: Function, { id }: { id: string }) =>
+const mapDispatchToProps = (dispatch, { id }) =>
   bindActionCreators(
     {
       resizeCell: resizeCell(id),

@@ -1,31 +1,27 @@
 /*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *  
- * ORY Editor is distributed in the hope that it will be useful,
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- *  
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @license LGPL-3.0
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
-
-// @flow
-/* eslint-disable no-empty-function */
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import pathOr from 'ramda/src/pathOr'
+import { pathOr } from 'ramda'
 import Mousetrap from 'mousetrap'
 
 import { undo, redo } from '../../actions/undo'
@@ -39,38 +35,17 @@ import {
   searchNodeEverywhere
 } from '../../selector/editable'
 
-import type { Editable, ComponetizedCell } from '../../types/editable'
-
-type Props = {
-  children: any,
-  id: string,
-  undo(id: string): void,
-  redo(id: string): void,
-  removeCell(id: string): void,
-  focus: string,
-  focusCell(id: string): void,
-  blurAllCells(): void,
-  updateCellContent(): any,
-  updateCellLayout(): any,
-  isEditMode: boolean,
-  node(cell: string, editable: string): Object,
-  editable: Editable,
-  searchNodeEverywhere(
-    id: string
-  ): { editable: Editable, node: ComponetizedCell }
-}
-
-const hotKeyHandler = (n: Object, key: string) =>
+const hotKeyHandler = (n, key) =>
   pathOr(
     pathOr(() => Promise.resolve(), ['content', 'plugin', key], n),
     ['layout', 'plugin', key],
     n
   )
 
-const nextLeaf = (order: Array<any> = [], current: string) => {
+const nextLeaf = (order = [], current) => {
   let last
 
-  return order.find((c: { id: string, isLeaf: boolean }) => {
+  return order.find(c => {
     if (last === current) {
       return c.isLeaf
     }
@@ -79,10 +54,9 @@ const nextLeaf = (order: Array<any> = [], current: string) => {
   })
 }
 
-const previousLeaf = (order: Array<any>, current: string) =>
-  nextLeaf([...order].reverse(), current)
+const previousLeaf = (order, current) => nextLeaf([...order].reverse(), current)
 
-const falser = (err: Error) => {
+const falser = err => {
   if (err) {
     console.log(err)
   }
@@ -113,7 +87,7 @@ class Decorator extends Component {
     }
   }
 
-  props: Props
+  props
 
   handlers = {
     undo: () => {
@@ -126,7 +100,7 @@ class Decorator extends Component {
     },
 
     // remove cells
-    remove: (e: Event) => {
+    remove: e => {
       const { focus, removeCell, isEditMode } = this.props
       if (!isEditMode) {
         return
@@ -139,7 +113,7 @@ class Decorator extends Component {
     },
 
     // focus next cell
-    focusNext: (e: Event) => {
+    focusNext: e => {
       const { focus, focusCell, blurAllCells, isEditMode } = this.props
       if (!isEditMode) {
         return
@@ -158,7 +132,7 @@ class Decorator extends Component {
     },
 
     // focus previous cell
-    focusPrev: (e: Event) => {
+    focusPrev: e => {
       const { focus, focusCell, blurAllCells, isEditMode } = this.props
       if (!isEditMode) {
         return
@@ -186,12 +160,9 @@ class Decorator extends Component {
 const mapStateToProps = createStructuredSelector({
   isEditMode,
   focus,
-  node: (state: any) => (id: string, editable: string) =>
-    node(state, { id, editable }),
-  searchNodeEverywhere: (state: any) => (id: string) =>
-    searchNodeEverywhere(state, id),
-  editable: (state: any, props: any) => (id?: string) =>
-    editable(state, id ? { id } : props),
+  node: state => (id, editable) => node(state, { id, editable }),
+  searchNodeEverywhere: state => id => searchNodeEverywhere(state, id),
+  editable: (state, props) => id => editable(state, id ? { id } : props),
   editables
 })
 
@@ -199,7 +170,7 @@ const mapDispatchToProps = {
   undo,
   redo,
   removeCell,
-  focusCell: (id: string) => focusCell(id)(),
+  focusCell: id => focusCell(id)(),
   blurAllCells
 }
 

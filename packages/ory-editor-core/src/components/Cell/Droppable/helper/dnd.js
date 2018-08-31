@@ -1,28 +1,25 @@
 /*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- *  
- * ORY Editor is distributed in the hope that it will be useful,
+ *
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
- *  
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
  *
- * @license LGPL-3.0
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
-
-// @flow
 import throttle from 'lodash.throttle'
-import pathOr from 'ramda/src/pathOr'
+import { pathOr } from 'ramda'
 import {
   computeAndDispatchHover,
   computeAndDispatchInsert
@@ -33,13 +30,10 @@ import {
   isNativeHTMLElementDrag,
   createNativeCellReplacement
 } from '../../../../helper/nativeDragHelpers'
-import type { DropTargetMonitor, DropTargetConnector } from 'dnd-core'
 
-import type { ComponetizedCell } from '../../../../types/editable'
+let last = { hover: '', drag: '' }
 
-let last: { hover: string, drag: string } = { hover: '', drag: '' }
-
-const clear = (hover: ComponetizedCell, drag: string) => {
+const clear = (hover, drag) => {
   if (hover.id === last.hover && drag === last.drag) {
     return
   }
@@ -49,12 +43,8 @@ const clear = (hover: ComponetizedCell, drag: string) => {
 
 export const target = {
   hover: throttle(
-    (
-      hover: ComponetizedCell,
-      monitor: DropTargetMonitor,
-      component: Object
-    ) => {
-      let drag: ComponetizedCell = monitor.getItem()
+    (hover, monitor, component) => {
+      let drag = monitor.getItem()
       if (!drag) {
         // item undefined, happens when throttle triggers after drop
         return
@@ -99,16 +89,13 @@ export const target = {
     { leading: false }
   ),
 
-  canDrop: (
-    { id, ancestors }: ComponetizedCell,
-    monitor: DropTargetMonitor
-  ) => {
+  canDrop: ({ id, ancestors }, monitor) => {
     const item = monitor.getItem()
     return item.id !== id && ancestors.indexOf(item.id) === -1
   },
 
-  drop(hover: ComponetizedCell, monitor: DropTargetMonitor, component: Object) {
-    let drag: ComponetizedCell = monitor.getItem()
+  drop(hover, monitor, component) {
+    let drag = monitor.getItem()
 
     if (isNativeHTMLElementDrag(monitor)) {
       const { plugins } = component.props.config
@@ -144,10 +131,7 @@ export const target = {
   }
 }
 
-export const connect = (
-  connect: DropTargetConnector,
-  monitor: DropTargetMonitor
-) => ({
+export const connect = (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   isOverCurrent: monitor.isOver({ shallow: true })
