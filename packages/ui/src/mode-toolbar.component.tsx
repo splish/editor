@@ -1,12 +1,12 @@
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { EditorConsumer } from '@splish-me/editor-core/src/contexts'
 import {
   faPen,
   faArrowsAlt,
   faPlus,
   faExpandArrowsAlt,
   faLaptop
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { EditorConsumer } from '@splish-me/editor-core/src/contexts'
 import { css, injectGlobal } from 'emotion'
 import * as R from 'ramda'
 import * as React from 'react'
