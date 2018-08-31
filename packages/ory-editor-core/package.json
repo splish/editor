@@ -1,0 +1,10 @@
+{
+  "name": "@splish-me/ory-editor-core",
+  "version": "0.0.0",
+  "license": "LGPL-3.0-only",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "private": true
+}
