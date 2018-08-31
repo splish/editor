@@ -1,0 +1,12 @@
+{
+  "name": "@splish-me/editor-demo",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "scripts": {
+    "start": "start-storybook -p 9001 -c .storybook"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "private": true
+}
