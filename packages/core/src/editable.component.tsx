@@ -4,6 +4,7 @@
 import Inner from '@splish-me/ory-editor-core/src/components/Editable/Inner'
 import { selectors } from '@splish-me/ory-editor-core/src/selector'
 import { createEmptyState, Editor } from '@splish-me/ory-editor-core/src'
+import * as R from 'ramda'
 import * as React from 'react'
 import * as uuid from 'uuid'
 
@@ -63,11 +64,33 @@ export class RawEditable extends React.Component<RawEditableProps> {
     const state = editable(id.id)
 
     if (!state) {
-      editor.trigger.editable.add({
-        ...initialState,
+      this.props.editor.trigger.editable.add({
+        ...this.parseEditable(initialState),
         id: id.id
       })
     }
+  }
+
+  private parseEditable(editable) {
+    const rootEditable = editable
+
+    const hydrateSubeditables = (value: any): any => {
+      if (value instanceof Object) {
+        return R.map((v: any) => {
+          if (v && v.type && v.type === '@splish-me/editor-core/editable') {
+            this.props.editor.trigger.editable.add(hydrateSubeditables(v.state))
+
+            return createEditableIdentifier(v.state.id)
+          }
+
+          return hydrateSubeditables(v)
+        }, value)
+      }
+
+      return value
+    }
+
+    return hydrateSubeditables(rootEditable)
   }
 
   public componentWillUnmount() {

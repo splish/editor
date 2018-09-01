@@ -78,7 +78,10 @@ export class Editor extends React.Component<EditorProps> {
       if (value instanceof Object) {
         return R.map((v: any) => {
           if (v && v.type && v.type === editableSymbol) {
-            return this.serializeState(v)
+            return {
+              type: '@splish-me/editor-core/editable',
+              state: this.serializeState(v)
+            }
           }
 
           return hydrateSubeditables(v)

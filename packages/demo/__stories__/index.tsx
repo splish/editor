@@ -13,6 +13,15 @@ storiesOf('Demo', module)
       plugins={[mockContentPlugin, mockWrapperPlugin]}
     />
   ))
+  .add('Editable (preloaded state)', () => (
+    <EditableStory
+      initialState={JSON.parse(
+        '{"id":"41ed8918-0a33-496f-b281-0cef7c0b13f3","cells":[{"id":"4f93f426-403e-4df4-baaf-7b324ce4d6a2","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-wrapper","version":"0.0.0"},"state":{"state1":{"type":"@splish-me/editor-core/editable","state":{"id":"42a8937c-90be-4993-a214-7c0185d47bc0","cells":[{"id":"e6c80279-6a1f-442a-a721-1e7a40b839a0","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/mock-wrapper","version":"0.0.0"},"state":{"state1":{"type":"@splish-me/editor-core/editable","state":{"id":"fa137ea1-04be-40e7-ab26-b1e63cdc0cb8","cells":[{"id":"347b677e-e4c7-4b4e-9b33-27ba952f88fc","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":"foooooooo"}}}]}},"state2":{"type":"@splish-me/editor-core/editable","state":{"id":"8e6b442a-aae7-4682-ba4c-13635d477bf7","cells":[{"id":"4ca68ff8-1847-40e5-b2af-ee61f5db9ee9","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":"foooooooo2"}}}]}}}}},{"id":"3c44d1d3-9228-4cd5-a653-3f482a7b2dd1","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":"foooooooo4"}}}]}},"state2":{"type":"@splish-me/editor-core/editable","state":{"id":"e0ed545c-b220-45ef-9e5c-b1f2dab894d2","cells":[{"id":"78cbe982-3685-4d78-a8ee-f2ef4ca24744","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":"fooooooo3"}}}]}}}}}]}'
+      )}
+      defaultPlugin={mockWrapperPlugin}
+      plugins={[mockContentPlugin, mockWrapperPlugin]}
+    />
+  ))
   .add('Renderer', () => (
     <HtmlRenderer
       plugins={[mockContentPlugin, mockWrapperPlugin]}
