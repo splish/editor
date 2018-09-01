@@ -9,11 +9,19 @@ import { Sidebar } from '@splish-me/editor-ui/src/sidebar.component'
 
 class SidebarStory extends React.Component {
   public state = { active: false }
+  private mounted = false
 
   public componentDidMount() {
+    this.mounted = true
     setInterval(() => {
-      this.setState({ active: !this.state.active })
+      if (this.mounted) {
+        this.setState({ active: !this.state.active })
+      }
     }, 1000)
+  }
+
+  public componentWillUnmount() {
+    this.mounted = false
   }
 
   public render() {
