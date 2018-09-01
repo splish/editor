@@ -36,7 +36,18 @@ export interface EditableProps {
 }
 
 export class Editable extends React.Component<EditableProps> {
+  state = { error: null }
+
   public render() {
+    if (this.state.error) {
+      return (
+        <React.Fragment>
+          <p>Something wen't wrong. Ask a Serlo developer to help you ;)</p>
+          <button onClick={() => this.setState({ error: null })}>Retry</button>
+        </React.Fragment>
+      )
+    }
+
     return (
       <EditableConsumer>
         {Inner => {
@@ -44,6 +55,11 @@ export class Editable extends React.Component<EditableProps> {
         }}
       </EditableConsumer>
     )
+  }
+
+  componentDidCatch(error: Error, info) {
+    console.log('catched error', error, info)
+    this.setState({ error })
   }
 }
 
