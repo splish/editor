@@ -75,7 +75,9 @@ export class EditableStory extends React.Component<EditableProps> {
                       onClick={() => {
                         console.log(
                           'state',
-                          JSON.stringify(serializeState(rootId))
+                          JSON.stringify({
+                            state: JSON.stringify(serializeState(rootId))
+                          })
                         )
                       }}
                     >
