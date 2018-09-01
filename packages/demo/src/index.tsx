@@ -6,6 +6,7 @@ import { Sidebar } from '@splish-me/editor-ui/src/sidebar.component'
 import * as React from 'react'
 import { Trash } from 'ory-editor-ui'
 
+import { Editable } from '@splish-me/editor-core/src/editable.component'
 import SidebarTextfield from '@splish-me/editor-ui/src/sidebar-elements/textfield'
 import SidebarCheckbox from '@splish-me/editor-ui/src/sidebar-elements/checkbox'
 import SidebarTextarea from '@splish-me/editor-ui/src/sidebar-elements/textarea'
@@ -16,22 +17,18 @@ import { Searchbar } from '@splish-me/editor-ui/src/searchbar/searchbar'
 import SidebarText from '@splish-me/editor-ui/src/sidebar-elements/sidebartext'
 
 // FIXME:
-// TODO: remove ramda
 import 'ory-editor-core/lib/index.css'
 import 'ory-editor-ui/lib/index.css'
 import {
   EditorConsumer,
   EditorHelpersConsumer
 } from '@splish-me/editor-core/src/contexts'
-import { Editable } from '.@splish-me/editor-core/src/editable.component'
 import { PluginSidebar } from '@splish-me/editor-ui/src/plugin-sidebar.component'
 import { injectGlobal } from 'emotion'
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  `
-
-require('react-tap-event-plugin')()
+`
 
 export interface EditableProps {
   initialState?: any

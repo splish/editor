@@ -20,6 +20,11 @@ export class Sidebar extends React.Component<SidebarProps, SidebarState> {
     this.setGlobalStyle()
   }
 
+  public componentWillUnmount() {
+    const html = document.getElementsByTagName('html')[0]
+    html.style.paddingLeft = null
+  }
+
   public componentDidUpdate(prevProps: SidebarProps) {
     if (
       this.props.active !== prevProps.active ||

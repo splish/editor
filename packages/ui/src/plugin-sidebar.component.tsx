@@ -55,7 +55,7 @@ const mapStateToProps = (state: any) => {
   const node = searchNodeEverywhere(state, id)
 
   return {
-    cell: R.prop('node', node)
+    cell: node ? R.prop('node', node) : undefined
   }
 }
 

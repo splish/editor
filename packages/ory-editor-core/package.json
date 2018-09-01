@@ -4,7 +4,11 @@
   "license": "LGPL-3.0-or-later",
   "author": "Splish UG (haftungsbeschränkt)",
   "scripts": {},
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "ory-editor-core": "^0.4.2"
+  },
+  "devDependencies": {
+    "@babel/preset-flow": "^7.0.0"
+  },
   "private": true
 }
