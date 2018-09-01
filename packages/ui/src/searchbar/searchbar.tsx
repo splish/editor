@@ -98,7 +98,7 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps> {
   render() {
     const { editor, active } = this.props
     const { value, suggestions } = this.state
-    console.log(this.props.focusedCell)
+
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
       placeholder: 'Type a programming language',
@@ -160,7 +160,7 @@ export const Searchbar = connect(
         <EditorConsumer>
           {({ editor }) => {
             const plugins = editor.plugins.plugins.content
-            console.log(plugins)
+
             return <InnerSearchbar {...this.props} editor={editor} />
           }}
         </EditorConsumer>

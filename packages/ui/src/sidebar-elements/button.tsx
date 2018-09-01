@@ -14,7 +14,6 @@ export default class ButtonGroup extends React.Component {
         })}
       >
         {this.props.children}
-        {console.log(this.props.children)}
       </div>
     )
   }
