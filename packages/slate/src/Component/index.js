@@ -108,7 +108,6 @@ class Slate extends Component {
       ToolbarButtons,
       focus
     } = this.props
-    const isOpened = editorState.selection.isExpanded && editorState.isFocused
 
     return (
       <div>
@@ -123,9 +122,8 @@ class Slate extends Component {
           onPaste={this.onPaste}
           placeholder={placeholder}
         />
-        {readOnly
-          ? null
-          : renderIntoSidebar(
+        {focused
+          ? renderIntoSidebar(
               <React.Fragment>
                 <ButtonGroup>
                   {plugins[2].createButton(H1, 'H1')({
@@ -170,7 +168,8 @@ class Slate extends Component {
                   focus={focus}
                 />
               </React.Fragment>
-            )}
+            )
+          : null}
       </div>
     )
   }

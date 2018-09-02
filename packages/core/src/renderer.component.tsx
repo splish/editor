@@ -56,7 +56,11 @@ export const createRenderer = ({
           )
         })
       } else if (rows.length > 0) {
-        throw new Error('This should not happen', this.props)
+        return rows.map(row => {
+          return row.cells.map((cell: any) => <Cell key={cell.id} {...cell} />)
+        })
+        // console.log(this.props)
+        // throw new Error('This should not happen')
         // return renderCell({
         //   cell: this.props,
         //   children: R.map((row: any) => <Row key={row.id} {...row} />, rows)
@@ -96,4 +100,4 @@ export const createRenderer = ({
   }
 }
 
-// TODO: renderEditable instead of <Editable /> so that we can DI another renderEditable for rendering...
+// TODO: renderEditable instead of <Editable /> so that we can DI another renderEditable for rendering

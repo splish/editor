@@ -3,22 +3,25 @@
   "version": "0.0.0",
   "author": "ORY GmbH",
   "license": "GNU Lesser General Public License v3.0",
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "peerDependencies": {
     "@material-ui/core": "^1.5.1",
     "@material-ui/icons": "^2.0.3",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   },
   "dependencies": {
     "deep-rename-keys": "^0.2.1",
-    "immutable": "3.8.2",
+    "immutable": "^3.8.2",
     "katex": "^0.10.0-rc.1",
     "parse5": "^3.0.2",
     "ramda": "^0.24.1",
     "react-portal": "4.1.5",
     "redux-undo": "1.0.0-beta9-7",
     "selection-position": "^1.0.0",
+    "slate": "^0.38.2",
     "slate-edit-blockquote": "^0.6.1",
     "slate-edit-list": "^0.12.0",
     "slate-html-serializer": "0.6.21",

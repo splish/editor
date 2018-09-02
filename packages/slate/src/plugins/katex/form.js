@@ -79,8 +79,6 @@ class Form extends Component {
   }
 
   render() {
-    console.log(this.state)
-
     const { node, isFocused, isSelected } = this.props
     const isActive = isFocused && isSelected
 

@@ -132,7 +132,7 @@ export default class ListsPlugin extends Plugin {
         return {
           object: 'block',
           type: UL,
-          nodes: next(el.childNodes)
+          nodes: next(el.childNodes.filter(node => node.nodeName !== '#text'))
         }
       case 'li':
         return {
@@ -144,7 +144,7 @@ export default class ListsPlugin extends Plugin {
         return {
           object: 'block',
           type: OL,
-          nodes: next(el.childNodes)
+          nodes: next(el.childNodes.filter(node => node.nodeName !== '#text'))
         }
     }
   }

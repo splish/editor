@@ -39,11 +39,7 @@ import v002 from './migrations/v002'
 
 export const createInitialState = hooks.createInitialState
 
-export const html = new Html({
-  rules: [...hooks.defaultPlugins, hooks.lineBreakSerializer],
-  parseHtml: parse5.parseFragment
-})
-
+export const html = hooks.html
 export const defaultPlugins = hooks.defaultPlugins
 
 export default (plugins: Plugin[] = hooks.defaultPlugins) => {
@@ -108,12 +104,21 @@ export default (plugins: Plugin[] = hooks.defaultPlugins) => {
   props.ToolbarButtons = ToolbarButtons
 
   const Slate = (cellProps: Props) => <Component {...cellProps} {...props} />
-  const StaticComponent = ({ state: { editorState } = {} }: Props) => (
-    <div
-      className="ory-plugins-content-slate-container"
-      dangerouslySetInnerHTML={{ __html: html.serialize(editorState) }}
-    />
-  )
+  const StaticComponent = ({
+    state: { editorState, importFromHtml } = {}
+  }: Props) => {
+    return 'Slate'
+    // <div
+    //   className="ory-plugins-content-slate-container"
+    //   dangerouslySetInnerHTML={{ __html: importFromHtml }}
+    // />
+    // return (
+    //   <div
+    //     className="ory-plugins-content-slate-container"
+    //     dangerouslySetInnerHTML={{ __html: html.serialize(editorState) }}
+    //   />
+    // )
+  }
   return {
     Component: Slate,
     StaticComponent,
