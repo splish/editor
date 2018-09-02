@@ -7,6 +7,7 @@ import { mockWrapperPlugin } from '../src/mock-wrapper.plugin'
 import { EditableStory } from '../src'
 import { HtmlRenderer } from '@splish-me/editor-core/src/html-renderer.component'
 import { textPlugin } from '@splish-me/editor-plugin-text/src'
+import createSlatePlugin from '../../slate/src'
 
 storiesOf('Demo', module)
   .add('Editable', () => (
@@ -31,12 +32,12 @@ storiesOf('Demo', module)
     />
   ))
   .add('Text', () => (
+    <EditableStory defaultPlugin={textPlugin} plugins={[textPlugin]} />
+  ))
+  .add('Slate', () => (
     <EditableStory
-      initialState={JSON.parse(
-        '{"id":"dd6598b7-00b4-4485-95d4-88e643b8f611","cells":[{"id":"e29a79d1-3774-4a28-92b8-f9b97ba21bcd","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/text","version":"0.0.0"},"state":{"value":[{"insert":"eqeqweqweqweqwewqe\\n"}]}}}]}'
-      )}
-      defaultPlugin={textPlugin}
-      plugins={[textPlugin]}
+      defaultPlugin={createSlatePlugin()}
+      plugins={[createSlatePlugin()]}
     />
   ))
   .add('Renderer', () => (

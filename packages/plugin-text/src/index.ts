@@ -1,4 +1,5 @@
 import * as Delta from 'quill-delta'
+import { Document, Value } from 'slate'
 
 import { Text } from './text.component'
 
@@ -9,16 +10,36 @@ export const textPlugin = {
   text: 'Text',
   unserialize: state => {
     return {
-      value: new Delta(state.value)
+      value: Value.fromJSON(state.value)
     }
   },
   serialize: state => {
-    console.log('serialize', state)
-    return state
+    return {
+      value: Value.toJSON(state.value)
+    }
   },
   createInitialState: () => {
     return {
-      value: new Delta()
+      value: Value.fromJSON({
+        document: {
+          nodes: [
+            {
+              object: 'block',
+              type: 'paragraph',
+              nodes: [
+                {
+                  object: 'text',
+                  leaves: [
+                    {
+                      text: ''
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      })
     }
   }
 }

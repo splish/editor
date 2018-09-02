@@ -92,56 +92,7 @@ export class EditableStory extends React.Component<EditableProps> {
                 active={currentMode !== 'preview'}
                 hideToggle={currentMode === 'layout'}
               >
-                {currentMode === 'layout' ? (
-                  <AddSidebar />
-                ) : (
-                  <React.Fragment>
-                    <SidebarTextfield
-                      label="tesdsgae dgft:"
-                      placeholder="testtest"
-                      type="text"
-                    />
-                    <SidebarTextfield
-                      label="num:"
-                      placeholder="hint"
-                      type="number"
-                    />
-                    <SidebarText>
-                      Testtext Testtext Testtext TesttextTesttext Testtext
-                      Testtext Testtext Testtext Testtext Testtext Testtext
-                    </SidebarText>
-                    <SidebarCheckbox
-                      value={this.state.checkboxvalue}
-                      label="check"
-                      onChange={event => {
-                        this.setState({
-                          checkboxvalue: event.target.checked
-                        })
-                      }}
-                    />
-                    <ButtonGroup>
-                      <Button
-                        active
-                        onClick={event => {
-                          alert('Funktioniert')
-                        }}
-                      >
-                        a
-                      </Button>
-                      <Button> b</Button>
-                      <Button> c </Button>
-                    </ButtonGroup>
-                    <SidebarDropDown
-                      label="dropdown"
-                      options={['a', 'b', 'c', 'd']}
-                    />
-                    <SidebarTextarea
-                      label="labeltest"
-                      placeholder="Area for long texts"
-                    />
-                    <PluginSidebar />
-                  </React.Fragment>
-                )}
+                {currentMode === 'layout' ? <AddSidebar /> : <PluginSidebar />}
               </Sidebar>
             </React.Fragment>
           )}

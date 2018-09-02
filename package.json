@@ -7,7 +7,9 @@
     "format": "prettier --write \"{packages/*/{src/**/*,*},*}.{js,jsx,ts,tsx,css,scss,json,md,markdown}\"",
     "start": "lerna run --parallel --scope @splish-me/editor-demo start"
   },
-  "dependencies": {},
+  "dependencies": {
+    "material-ui": "0.19.4"
+  },
   "devDependencies": {
     "lerna": "^3.2.1",
     "prettier": "^1.14.2"
