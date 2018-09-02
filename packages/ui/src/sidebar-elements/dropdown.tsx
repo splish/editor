@@ -7,11 +7,12 @@ export interface DropDownProps {
   options?: any
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void
   label?: string
+  value: string
 }
 
 export default class SidebarDropDown extends React.Component<DropDownProps> {
   render() {
-    const { options, onChange, label, ...props } = this.props
+    const { options, onChange, label, value, ...props } = this.props
     return (
       <label
         className={css({
@@ -42,6 +43,7 @@ export default class SidebarDropDown extends React.Component<DropDownProps> {
               border: '2px solid #469BFF'
             }
           })}
+          value={value}
           onChange={onChange}
           {...props}
         >
