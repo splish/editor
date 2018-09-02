@@ -101,7 +101,6 @@ class Editor {
 
   refreshEditables = () => {
     forEach(editable => {
-      console.log(this.plugins.serialize(editable))
       this.trigger.editable.update(this.plugins.serialize(editable))
     }, this.store.getState().editables.present)
   }
@@ -123,7 +122,6 @@ class Editor {
 
   setContentPlugins = (plugins = []) => {
     this.plugins.setContentPlugins(plugins)
-    console.log(this.store.getState())
     this.refreshEditables()
   }
 

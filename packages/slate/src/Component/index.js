@@ -27,7 +27,6 @@ import React, { Component } from 'react'
 import { Portal } from 'react-portal'
 import position from 'selection-position'
 import { Editor } from 'slate-react'
-import { BottomToolbar, ThemeProvider } from 'ory-editor-ui'
 import { placeholder } from '../const'
 
 import { html as serializer } from '../hooks.js'

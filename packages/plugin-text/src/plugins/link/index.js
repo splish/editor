@@ -34,7 +34,6 @@ import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
 import { Data } from 'slate'
 import type { Props } from '../props'
-import ThemeProvider from 'ory-editor-ui/lib/ThemeProvider'
 
 export const A = 'LINK/LINK'
 
@@ -176,47 +175,45 @@ class LinkButton extends Component {
       (inline: any) => inline.type === A
     )
     return (
-      <ThemeProvider>
+      <span>
+        <ToolbarButton
+          onClick={this.onClick}
+          isActive={hasLinks}
+          icon={<LinkIcon />}
+        />
         <span>
-          <ToolbarButton
-            onClick={this.onClick}
-            isActive={hasLinks}
-            icon={<LinkIcon />}
-          />
-          <span>
-            <Dialog
-              className="ory-prevent-blur"
-              title="Create a link"
-              // modal={false}
-              open={this.state.open}
-              actions={[actions]}
-            >
-              <DialogTitle id="confirmation-dialog-title">
-                Create a link
-              </DialogTitle>
-              <DialogContent>
-                {this.state.wasExpanded ? null : (
-                  <div>
-                    <TextField
-                      placeholder="Link title"
-                      onChange={this.onTitleChange}
-                      value={this.state.title}
-                    />
-                  </div>
-                )}
-                <div ref={this.onRef}>
+          <Dialog
+            className="ory-prevent-blur"
+            title="Create a link"
+            // modal={false}
+            open={this.state.open}
+            actions={[actions]}
+          >
+            <DialogTitle id="confirmation-dialog-title">
+              Create a link
+            </DialogTitle>
+            <DialogContent>
+              {this.state.wasExpanded ? null : (
+                <div>
                   <TextField
-                    placeholder="http://example.com/my/link.html"
-                    onChange={this.onHrefChange}
-                    value={this.state.href}
+                    placeholder="Link title"
+                    onChange={this.onTitleChange}
+                    value={this.state.title}
                   />
                 </div>
-              </DialogContent>
-              <DialogActions>{actions}</DialogActions>
-            </Dialog>
-          </span>
+              )}
+              <div ref={this.onRef}>
+                <TextField
+                  placeholder="http://example.com/my/link.html"
+                  onChange={this.onHrefChange}
+                  value={this.state.href}
+                />
+              </div>
+            </DialogContent>
+            <DialogActions>{actions}</DialogActions>
+          </Dialog>
         </span>
-      </ThemeProvider>
+      </span>
     )
   }
 }

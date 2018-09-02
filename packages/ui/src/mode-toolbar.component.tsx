@@ -66,7 +66,7 @@ class RawModeToolbar extends React.Component {
           return (
             <div
               className={css({
-                position: 'absolute',
+                position: 'fixed',
                 right: 0,
                 bottom: 0,
                 display: 'flex',

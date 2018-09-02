@@ -12,6 +12,7 @@ export interface RendererProps {
 
 export const createRenderer = ({
   renderContainer = R.prop('children'),
+  renderRow = R.prop('children'),
   renderCell = R.prop('children')
 }: {
   renderContainer: (
@@ -56,15 +57,17 @@ export const createRenderer = ({
           )
         })
       } else if (rows.length > 0) {
-        return rows.map(row => {
-          return row.cells.map((cell: any) => <Cell key={cell.id} {...cell} />)
+        return renderCell({
+          cell: this.props,
+          children: rows.map(row => {
+            return renderRow({
+              row,
+              children: row.cells.map((cell: any) => (
+                <Cell key={cell.id} {...cell} />
+              ))
+            })
+          })
         })
-        // console.log(this.props)
-        // throw new Error('This should not happen')
-        // return renderCell({
-        //   cell: this.props,
-        //   children: R.map((row: any) => <Row key={row.id} {...row} />, rows)
-        // })
       }
 
       return null

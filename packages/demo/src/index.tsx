@@ -4,7 +4,6 @@ import { ModeToolbar } from '@splish-me/editor-ui/src/mode-toolbar.component'
 import { AddSidebar } from '@splish-me/editor-ui/src/add-sidebar.component'
 import { Sidebar } from '@splish-me/editor-ui/src/sidebar.component'
 import * as React from 'react'
-import { Trash } from 'ory-editor-ui'
 
 import { Editable } from '@splish-me/editor-core/src/editable.component'
 import SidebarTextfield from '@splish-me/editor-ui/src/sidebar-elements/textfield'
@@ -18,7 +17,6 @@ import SidebarText from '@splish-me/editor-ui/src/sidebar-elements/sidebartext'
 
 // FIXME:
 import 'ory-editor-core/lib/index.css'
-import 'ory-editor-ui/lib/index.css'
 import {
   EditorConsumer,
   EditorHelpersConsumer
@@ -86,7 +84,6 @@ export class EditableStory extends React.Component<EditableProps> {
                   </React.Fragment>
                 )}
               </EditorHelpersConsumer>
-              <Trash editor={editor} />
               <ModeToolbar />
               <Sidebar
                 active={currentMode !== 'preview'}

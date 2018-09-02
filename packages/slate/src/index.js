@@ -36,6 +36,16 @@ import Plugin from './plugins/Plugin'
 import * as hooks from './hooks'
 import parse5 from 'parse5'
 import v002 from './migrations/v002'
+import { Renderer } from './slate-react-serializer'
+import { EM, STRONG, U } from './plugins/emphasize'
+import { P } from './plugins/paragraph'
+import { UL, OL, LI } from './plugins/lists'
+import { H1, H2, H3, H4, H5, H6 } from './plugins/headings'
+import { BLOCKQUOTE } from './plugins/blockquote'
+import { A } from './plugins/link'
+import { KATEX_BLOCK, KATEX_INLINE } from './plugins/katex'
+import { CODE } from './plugins/code'
+import MathComponent from './plugins/katex/math-component'
 
 export const createInitialState = hooks.createInitialState
 
@@ -107,7 +117,87 @@ export default (plugins: Plugin[] = hooks.defaultPlugins) => {
   const StaticComponent = ({
     state: { editorState, importFromHtml } = {}
   }: Props) => {
-    return 'Slate'
+    return (
+      <Renderer
+        value={editorState}
+        rules={[
+          (node, props) => {
+            switch (node.object) {
+              case 'mark': {
+                switch (node.type) {
+                  case EM:
+                    return <em {...props} />
+                  case STRONG:
+                    return <strong {...props} />
+                  case U:
+                    return <u {...props} />
+                  case CODE:
+                    return <code {...props} />
+                }
+              }
+              case 'block': {
+                const { data } = node
+                const textAlign = data.get('align')
+
+                const p = {
+                  ...props,
+                  style: textAlign ? { textAlign } : undefined
+                }
+
+                switch (node.type) {
+                  case P:
+                  // FIXME: why does this even exist
+                  case 'paragraph':
+                    return <p {...p} />
+                  case UL:
+                    return <ul {...p} />
+                  case OL:
+                    return <ol {...p} />
+                  case LI:
+                    return <li {...p} />
+                  case H1:
+                    return <h1 {...p} />
+                  case H2:
+                    return <h2 {...p} />
+                  case H3:
+                    return <h3 {...p} />
+                  case H4:
+                    return <h4 {...p} />
+                  case H5:
+                    return <h5 {...p} />
+                  case H6:
+                    return <h6 {...p} />
+                  case BLOCKQUOTE:
+                    return <blockquote {...p} />
+                  case CODE:
+                    return <pre {...p} />
+                }
+              }
+              case 'inline': {
+                const { data } = node
+
+                switch (node.type) {
+                  case A:
+                    return <a href={data.get('href')} {...props} />
+                  case KATEX_BLOCK:
+                    return (
+                      <MathComponent formula={data.get('formula')} {...props} />
+                    )
+                  case KATEX_INLINE:
+                    return (
+                      <MathComponent
+                        inline
+                        formula={data.get('formula')}
+                        {...props}
+                      />
+                    )
+                }
+              }
+            }
+          }
+        ]}
+      />
+    )
     // <div
     //   className="ory-plugins-content-slate-container"
     //   dangerouslySetInnerHTML={{ __html: importFromHtml }}
