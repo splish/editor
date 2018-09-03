@@ -1,5 +1,5 @@
-import { editable } from '@splish-me/ory-editor-core/src/reducer/editable'
-import PluginService from '@splish-me/ory-editor-core/src/service/plugin'
+// @ts-ignore
+import { editableReducer, PluginService } from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
 
@@ -79,10 +79,10 @@ export const createRenderer = ({
       const { state, plugins } = this.props
 
       const service = new PluginService({ content: plugins })
-      const props = editable(service.unserialize(state), {
+      const props = editableReducer(service.unserialize(state), {
         type: 'renderer/noop'
       })
-      const cells = R.propOr([], 'cells', props)
+      const cells: unknown[] = R.propOr([], 'cells', props)
 
       return (
         <EditableProvider
@@ -102,5 +102,3 @@ export const createRenderer = ({
     }
   }
 }
-
-// TODO: renderEditable instead of <Editable /> so that we can DI another renderEditable for rendering

@@ -6,7 +6,6 @@ import { mockContentPlugin } from '../src/mock-content.plugin'
 import { mockWrapperPlugin } from '../src/mock-wrapper.plugin'
 import { EditableStory } from '../src'
 import { HtmlRenderer } from '@splish-me/editor-core/src/html-renderer.component'
-import { textPlugin } from '@splish-me/editor-plugin-text/src'
 import createSlatePlugin from '../../slate/src'
 
 storiesOf('Demo', module)
