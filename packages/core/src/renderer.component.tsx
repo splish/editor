@@ -87,7 +87,7 @@ export const createRenderer = ({
       return (
         <EditableProvider
           value={({ id }) => {
-            return <Renderer state={id} plugins={this.props.plugins} />
+            return <Renderer state={id.state} plugins={this.props.plugins} />
           }}
         >
           {renderContainer({
