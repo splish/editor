@@ -27,5 +27,6 @@
     "slate-html-serializer": "0.6.21",
     "slate-plain-serializer": "^0.5.30",
     "slate-react": "^0.15.4"
-  }
+  },
+  "private": true
 }

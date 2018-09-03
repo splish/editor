@@ -12,6 +12,5 @@
     "react-autosuggest": "^9.4.0",
     "react-emotion": "^9.2.8"
   },
-  "devDependencies": {},
   "private": true
 }
