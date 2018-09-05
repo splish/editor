@@ -8148,7 +8148,7 @@ react-redux@^5.0.4:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
-react-resizable@^1.7.0, react-resizable@^1.7.3:
+react-resizable@^1.7.0, react-resizable@^1.7.3, react-resizable@^1.7.5:
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/react-resizable/-/react-resizable-1.7.5.tgz#83eb75bb3684da6989bbbf4f826e1470f0af902e"
   dependencies:

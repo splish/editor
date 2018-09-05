@@ -1,5 +1,5 @@
 {
-  "name": "@splish-me/editor-plugin-divider",
+  "name": "@splish-me/editor-plugin-spacer",
   "version": "0.0.0",
   "license": "LGPL-3.0-or-later",
   "author": "Splish UG (haftungsbeschränkt)",
@@ -11,7 +11,9 @@
     "ci": "npm-run-all ci:*",
     "ci:types": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react-resizable": "^1.7.5"
+  },
   "peerDependencies": {
     "@splish-me/editor-ui": "^0.0.0",
     "emotion": "^9.0.0",
