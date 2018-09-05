@@ -3,16 +3,14 @@
   "version": "0.0.1",
   "license": "LGPL-3.0-or-later",
   "author": "Splish UG (haftungsbeschränkt)",
-  "main": "./dist/index.js",
-  "files": [
-    "./dist"
-  ],
+  "main": "./lib/index.js",
   "scripts": {
     "build": "npm-run-all build:*",
-    "build:javascript": "babel ./src --source-maps --out-dir ./dist --extensions .ts,.tsx,.js",
+    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
     "build:types": "tsc --emitDeclarationOnly",
     "ci": "npm-run-all ci:*",
-    "ci:types": "tsc --noEmit"
+    "ci:types": "tsc --noEmit",
+    "prepublish": "yarn build"
   },
   "dependencies": {
     "classnames": "^2.2.5",
