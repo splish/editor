@@ -1,5 +1,5 @@
+import { renderIntoSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
 import * as React from 'react'
-import { renderIntoSidebar } from '@splish-me/editor-ui/src/plugin-sidebar.component'
 
 export class MockBrokenContent extends React.Component {
   public render() {

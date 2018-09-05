@@ -21,7 +21,7 @@
  */
 
 /* eslint-disable no-alert, prefer-reflect, no-underscore-dangle */
-import { renderIntoSidebar } from '@splish-me/editor-ui/src/plugin-sidebar.component'
+import { renderIntoSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
 import { createMuiTheme } from '@material-ui/core/styles'
 import React, { Component } from 'react'
 import { Portal } from 'react-portal'
@@ -31,7 +31,7 @@ import { placeholder } from '../const'
 
 import { html as serializer } from '../hooks.js'
 import { H1, H2, H3, H4, H5, H6 } from '../plugins/headings'
-import ButtonGroup from '@splish-me/editor-ui/src/sidebar-elements/button'
+import ButtonGroup from '@splish-me/editor-ui/lib/sidebar-elements/button'
 
 const onBlur = (_event, _data, state) => state
 

@@ -3,14 +3,28 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "author": "Splish UG (haftungsbeschränkt)",
-  "scripts": {},
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "ci": "npm-run-all ci:*",
+    "ci:types": "tsc --noEmit"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "^0.1.2",
+    "@splish-me/editor-core": "^0.0.1",
     "emotion": "^9.2.8",
     "react-autosuggest": "^9.4.0",
     "react-emotion": "^9.2.8"
   },
-  "private": true
+  "peerDependencies": {
+    "@splish-me/editor-core": "^0.0.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

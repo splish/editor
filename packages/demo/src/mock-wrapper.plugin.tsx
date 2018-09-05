@@ -2,7 +2,7 @@ import {
   Editable,
   EditableIdentifier,
   createEditableIdentifier
-} from '@splish-me/editor-core/src/editable.component'
+} from '@splish-me/editor-core/lib/editable.component'
 import * as React from 'react'
 
 import { mockContentPlugin } from './mock-content.plugin'

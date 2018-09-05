@@ -1,3 +1,4 @@
+import { HtmlRenderer } from '@splish-me/editor-core/lib/html-renderer.component'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 
@@ -5,7 +6,6 @@ import { mockBrokenContentPlugin } from '../src/mock-broken-content.plugin'
 import { mockContentPlugin } from '../src/mock-content.plugin'
 import { mockWrapperPlugin } from '../src/mock-wrapper.plugin'
 import { EditableStory } from '../src'
-import { HtmlRenderer } from '@splish-me/editor-core/src/html-renderer.component'
 import createSlatePlugin from '../../slate/src'
 
 storiesOf('Demo', module)

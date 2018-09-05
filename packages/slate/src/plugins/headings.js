@@ -31,7 +31,7 @@ import H6Icon from '@material-ui/icons/Looks6'
 // import { Data } from 'slate'
 import { makeTagNode, ToolbarButton } from '../helpers'
 import Plugin from './Plugin'
-import { Button } from '@splish-me/editor-ui/src/sidebar-elements/button'
+import { Button } from '@splish-me/editor-ui/lib/sidebar-elements/button'
 
 export const H1 = 'HEADINGS/HEADING-ONE'
 export const H2 = 'HEADINGS/HEADING-TWO'

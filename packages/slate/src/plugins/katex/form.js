@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import debounce from 'lodash.debounce'
 import * as Portal from 'react-portal'
-import { renderIntoSidebar } from '@splish-me/editor-ui/src/plugin-sidebar.component'
-import Textarea from '@splish-me/editor-ui/src/sidebar-elements/textarea'
-import Checkbox from '@splish-me/editor-ui/src/sidebar-elements/checkbox'
+import { renderIntoSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
+import Textarea from '@splish-me/editor-ui/lib/sidebar-elements/textarea'
+import Checkbox from '@splish-me/editor-ui/lib/sidebar-elements/checkbox'
 
 class Form extends Component {
   textarea = React.createRef()

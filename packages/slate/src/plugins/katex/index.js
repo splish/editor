@@ -2,7 +2,7 @@
 import React from 'react'
 import { ToolbarButton } from 'ory-editor-plugins-slate/lib/helpers'
 import Plugin from 'ory-editor-plugins-slate/lib/plugins/Plugin'
-import { Button } from '@splish-me/editor-ui/src/sidebar-elements/button'
+import { Button } from '@splish-me/editor-ui/lib/sidebar-elements/button'
 
 import Katex from './katex'
 
