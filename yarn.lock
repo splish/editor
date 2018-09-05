@@ -702,6 +702,12 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
+"@babel/runtime@7.0.0-beta.56":
+  version "7.0.0-beta.56"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.56.tgz#cda612dffd5b1719a7b8e91e3040bd6ae64de8b0"
+  dependencies:
+    regenerator-runtime "^0.12.0"
+
 "@babel/runtime@7.0.0-rc.1":
   version "7.0.0-rc.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-rc.1.tgz#42f36fc5817911c89ea75da2b874054922967616"
@@ -1328,6 +1334,38 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@material-ui/core@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-1.5.1.tgz#cb00cb934447ae688e08129f1dab55f54d29d87a"
+  dependencies:
+    "@babel/runtime" "7.0.0-rc.1"
+    "@types/jss" "^9.5.3"
+    "@types/react-transition-group" "^2.0.8"
+    brcast "^3.0.1"
+    classnames "^2.2.5"
+    csstype "^2.5.2"
+    debounce "^1.1.0"
+    deepmerge "^2.0.1"
+    dom-helpers "^3.2.1"
+    hoist-non-react-statics "^2.5.0"
+    is-plain-object "^2.0.4"
+    jss "^9.3.3"
+    jss-camel-case "^6.0.0"
+    jss-default-unit "^8.0.2"
+    jss-global "^3.0.0"
+    jss-nested "^6.0.1"
+    jss-props-sort "^6.0.0"
+    jss-vendor-prefixer "^7.0.0"
+    keycode "^2.1.9"
+    normalize-scroll-left "^0.1.2"
+    popper.js "^1.14.1"
+    prop-types "^15.6.0"
+    react-event-listener "^0.6.2"
+    react-jss "^8.1.0"
+    react-transition-group "^2.2.1"
+    recompose "^0.28.0"
+    warning "^4.0.1"
+
 "@material-ui/core@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.0.1.tgz#e8476394a42d89ae404355ddbc093db4d044b225"
@@ -1359,6 +1397,13 @@
     react-transition-group "^2.2.1"
     recompose "^0.29.0"
     warning "^4.0.1"
+
+"@material-ui/icons@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-2.0.3.tgz#d3da9d6e31b1adfbc48efe33c7cb75b32b784096"
+  dependencies:
+    "@babel/runtime" "7.0.0-rc.1"
+    recompose "^0.28.0"
 
 "@material-ui/icons@^3.0.1":
   version "3.0.1"
@@ -8324,6 +8369,17 @@ recompose@^0.26.0:
     change-emitter "^0.1.2"
     fbjs "^0.8.1"
     hoist-non-react-statics "^2.3.1"
+    symbol-observable "^1.0.4"
+
+recompose@^0.28.0:
+  version "0.28.2"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.28.2.tgz#19e679227bdf979e0d31b73ffe7ae38c9194f4a7"
+  dependencies:
+    "@babel/runtime" "7.0.0-beta.56"
+    change-emitter "^0.1.2"
+    fbjs "^0.8.1"
+    hoist-non-react-statics "^2.3.1"
+    react-lifecycles-compat "^3.0.2"
     symbol-observable "^1.0.4"
 
 recompose@^0.29.0:

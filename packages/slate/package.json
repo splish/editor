@@ -1,18 +1,19 @@
 {
   "name": "@splish-me/editor-plugin-slate",
   "version": "0.0.0",
-  "author": "ORY GmbH",
-  "license": "GNU Lesser General Public License v3.0",
+  "license": "LGPL-3.0-or-later",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "jest"
-  },
-  "peerDependencies": {
-    "@material-ui/core": "^1.5.1",
-    "@material-ui/icons": "^2.0.3",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "build": "npm-run-all build:*",
+    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "ci": "npm-run-all ci:*",
+    "ci:types": "tsc --noEmit"
   },
   "dependencies": {
+    "@material-ui/core": "^1.5.1",
+    "@material-ui/icons": "^2.0.3",
     "deep-rename-keys": "^0.2.1",
     "immutable": "^3.8.2",
     "katex": "^0.10.0-rc.1",
@@ -28,5 +29,12 @@
     "slate-plain-serializer": "^0.5.30",
     "slate-react": "^0.15.4"
   },
-  "private": true
+  "peerDependencies": {
+    "@splish-me/editor-ui": "^0.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
