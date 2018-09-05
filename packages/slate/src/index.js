@@ -211,7 +211,7 @@ export default (plugins: Plugin[] = hooks.defaultPlugins) => {
     Component: Slate,
     StaticComponent,
 
-    name: 'ory/editor/core/content/slate',
+    name: '@splish-me/slate',
     version: '0.0.2',
     IconComponent: <Subject />,
     text: 'Text',
