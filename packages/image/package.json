@@ -1,0 +1,28 @@
+{
+  "name": "@splish-me/editor-plugin-image",
+  "version": "0.0.0",
+  "license": "LGPL-3.0-or-later",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "ci": "npm-run-all ci:*",
+    "ci:types": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.0.0",
+    "@fortawesome/free-solid-svg-icons": "^5.0.0",
+    "@fortawesome/react-fontawesome": "^0.1.0",
+    "@splish-me/editor-ui": "^0.0.0",
+    "emotion": "^9.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-emotion": "^9.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
