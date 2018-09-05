@@ -3,13 +3,10 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "author": "Splish UG (haftungsbeschränkt)",
-  "main": "./dist/index.js",
-  "files": [
-    "./dist"
-  ],
+  "main": "./lib/index.js",
   "scripts": {
     "build": "npm-run-all build:*",
-    "build:javascript": "babel ./src --source-maps --out-dir ./dist --extensions .ts,.tsx,.js",
+    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
     "build:types": "tsc --emitDeclarationOnly",
     "ci": "npm-run-all ci:*",
     "ci:types": "tsc --noEmit"
@@ -26,7 +23,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
     "@splish-me/editor-babel-preset": "^0.0.0",
-    "@splish-me/ory-editor-core": "^0.0.1",
+    "@splish-me/ory-editor-core": "^0.0.3",
     "@types/lodash": "^4.14.116",
     "@types/ramda": "^0.25.37",
     "@types/react": "^16.4.13",
