@@ -21,7 +21,6 @@ export default class ButtonGroup extends React.Component {
 
 export interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
-  value?: boolean
   active?: boolean
   disabled?: boolean
 }

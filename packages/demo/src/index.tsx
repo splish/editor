@@ -1,29 +1,20 @@
-import { Editor } from '@splish-me/editor-core/src/editor.component'
-import { createEditableIdentifier } from '@splish-me/editor-core/src/editable.component'
+import { Editor } from '@splish-me/editor-core/lib/editor.component'
+import { createEditableIdentifier } from '@splish-me/editor-core/lib/editable.component'
 import { ModeToolbar } from '@splish-me/editor-ui/src/mode-toolbar.component'
-import { AddSidebar } from '@splish-me/editor-ui/src/add-sidebar.component'
-import { Sidebar } from '@splish-me/editor-ui/src/sidebar.component'
+import { AddSidebar } from '@splish-me/editor-ui/lib/add-sidebar.component'
+import { Sidebar } from '@splish-me/editor-ui/lib/sidebar.component'
 import * as React from 'react'
-import { Trash } from 'ory-editor-ui'
 
-import { Editable } from '@splish-me/editor-core/src/editable.component'
-import SidebarTextfield from '@splish-me/editor-ui/src/sidebar-elements/textfield'
-import SidebarCheckbox from '@splish-me/editor-ui/src/sidebar-elements/checkbox'
-import SidebarTextarea from '@splish-me/editor-ui/src/sidebar-elements/textarea'
-import ButtonGroup from '@splish-me/editor-ui/src/sidebar-elements/button'
-import { Button } from '@splish-me/editor-ui/src/sidebar-elements/button'
-import SidebarDropDown from '@splish-me/editor-ui/src/sidebar-elements/dropdown'
-import { Searchbar } from '@splish-me/editor-ui/src/searchbar/searchbar'
-import SidebarText from '@splish-me/editor-ui/src/sidebar-elements/sidebartext'
+import { Editable } from '@splish-me/editor-core/lib/editable.component'
+import { Searchbar } from '@splish-me/editor-ui/lib/searchbar/searchbar'
 
 // FIXME:
 import 'ory-editor-core/lib/index.css'
-import 'ory-editor-ui/lib/index.css'
 import {
   EditorConsumer,
   EditorHelpersConsumer
-} from '@splish-me/editor-core/src/contexts'
-import { PluginSidebar } from '@splish-me/editor-ui/src/plugin-sidebar.component'
+} from '@splish-me/editor-core/lib/contexts'
+import { PluginSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
 import { injectGlobal } from 'emotion'
 
 injectGlobal`
@@ -86,62 +77,12 @@ export class EditableStory extends React.Component<EditableProps> {
                   </React.Fragment>
                 )}
               </EditorHelpersConsumer>
-              <Trash editor={editor} />
               <ModeToolbar />
               <Sidebar
                 active={currentMode !== 'preview'}
                 hideToggle={currentMode === 'layout'}
               >
-                {currentMode === 'layout' ? (
-                  <AddSidebar />
-                ) : (
-                  <React.Fragment>
-                    <SidebarTextfield
-                      label="tesdsgae dgft:"
-                      placeholder="testtest"
-                      type="text"
-                    />
-                    <SidebarTextfield
-                      label="num:"
-                      placeholder="hint"
-                      type="number"
-                    />
-                    <SidebarText>
-                      Testtext Testtext Testtext TesttextTesttext Testtext
-                      Testtext Testtext Testtext Testtext Testtext Testtext
-                    </SidebarText>
-                    <SidebarCheckbox
-                      value={this.state.checkboxvalue}
-                      label="check"
-                      onChange={event => {
-                        this.setState({
-                          checkboxvalue: event.target.checked
-                        })
-                      }}
-                    />
-                    <ButtonGroup>
-                      <Button
-                        active
-                        onClick={event => {
-                          alert('Funktioniert')
-                        }}
-                      >
-                        a
-                      </Button>
-                      <Button> b</Button>
-                      <Button> c </Button>
-                    </ButtonGroup>
-                    <SidebarDropDown
-                      label="dropdown"
-                      options={['a', 'b', 'c', 'd']}
-                    />
-                    <SidebarTextarea
-                      label="labeltest"
-                      placeholder="Area for long texts"
-                    />
-                    <PluginSidebar />
-                  </React.Fragment>
-                )}
+                {currentMode === 'layout' ? <AddSidebar /> : <PluginSidebar />}
               </Sidebar>
             </React.Fragment>
           )}

@@ -18,4 +18,6 @@
  * @copyright 2018 Splish UG (haftungsbeschränkt)
  * @author Splish UG (haftungsbeschränkt)
  */
-export const resizingCell = ({ resize }) => resize.id
+import { ResizeState } from '../reducer/resize'
+
+export const resizingCell = ({ resize }: { resize: ResizeState }) => resize.id

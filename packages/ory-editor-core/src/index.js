@@ -19,12 +19,16 @@
  * @author Splish UG (haftungsbeschränkt)
  */
 import { v4 } from 'uuid'
+import createDragDropContext from './components/DragDropContext'
+import Inner from './components/Editable/Inner'
 import Editable from './components/Editable'
 import createStore from './store'
 import { actions } from './actions'
+import { editable as editableReducer } from './reducer/editable'
 import { selectors } from './selector'
 import PluginService from './service/plugin'
 import pluginDefault from './service/plugin/default'
+
 import { forEach } from 'ramda'
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
 import { DragDropContext as dragDropContext } from 'react-dnd'
@@ -101,7 +105,6 @@ class Editor {
 
   refreshEditables = () => {
     forEach(editable => {
-      console.log(this.plugins.serialize(editable))
       this.trigger.editable.update(this.plugins.serialize(editable))
     }, this.store.getState().editables.present)
   }
@@ -123,7 +126,6 @@ class Editor {
 
   setContentPlugins = (plugins = []) => {
     this.plugins.setContentPlugins(plugins)
-    console.log(this.store.getState())
     this.refreshEditables()
   }
 
@@ -141,7 +143,15 @@ class Editor {
   query = {}
 }
 
-export { PluginService, Editable, Editor }
+export {
+  PluginService,
+  Editable,
+  Editor,
+  selectors,
+  createDragDropContext,
+  Inner,
+  editableReducer
+}
 
 export const createEmptyState = () => ({ id: v4(), cells: [] })
 

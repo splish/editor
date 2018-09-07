@@ -1,5 +1,5 @@
-import { editable } from '@splish-me/ory-editor-core/src/reducer/editable'
-import PluginService from '@splish-me/ory-editor-core/src/service/plugin'
+// @ts-ignore
+import { editableReducer, PluginService } from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
 
@@ -12,6 +12,7 @@ export interface RendererProps {
 
 export const createRenderer = ({
   renderContainer = R.prop('children'),
+  renderRow = R.prop('children'),
   renderCell = R.prop('children')
 }: {
   renderContainer: (
@@ -56,11 +57,17 @@ export const createRenderer = ({
           )
         })
       } else if (rows.length > 0) {
-        throw new Error('This should not happen', this.props)
-        // return renderCell({
-        //   cell: this.props,
-        //   children: R.map((row: any) => <Row key={row.id} {...row} />, rows)
-        // })
+        return renderCell({
+          cell: this.props,
+          children: rows.map(row => {
+            return renderRow({
+              row,
+              children: row.cells.map((cell: any) => (
+                <Cell key={cell.id} {...cell} />
+              ))
+            })
+          })
+        })
       }
 
       return null
@@ -72,15 +79,15 @@ export const createRenderer = ({
       const { state, plugins } = this.props
 
       const service = new PluginService({ content: plugins })
-      const props = editable(service.unserialize(state), {
+      const props = editableReducer(service.unserialize(state), {
         type: 'renderer/noop'
       })
-      const cells = R.propOr([], 'cells', props)
+      const cells: unknown[] = R.propOr([], 'cells', props)
 
       return (
         <EditableProvider
           value={({ id }) => {
-            return <Renderer state={id} plugins={this.props.plugins} />
+            return <Renderer state={id.state} plugins={this.props.plugins} />
           }}
         >
           {renderContainer({
@@ -95,5 +102,3 @@ export const createRenderer = ({
     }
   }
 }
-
-// TODO: renderEditable instead of <Editable /> so that we can DI another renderEditable for rendering...

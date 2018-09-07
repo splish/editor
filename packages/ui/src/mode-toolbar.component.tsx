@@ -6,7 +6,7 @@ import {
   faLaptop
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { EditorConsumer } from '@splish-me/editor-core/src/contexts'
+import { EditorConsumer } from '@splish-me/editor-core/lib/contexts'
 import { css, injectGlobal } from 'emotion'
 import * as R from 'ramda'
 import * as React from 'react'
@@ -66,7 +66,7 @@ class RawModeToolbar extends React.Component {
           return (
             <div
               className={css({
-                position: 'absolute',
+                position: 'fixed',
                 right: 0,
                 bottom: 0,
                 display: 'flex',

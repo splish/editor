@@ -1,9 +1,13 @@
 /**
  * Nestable editable
  */
-import Inner from '@splish-me/ory-editor-core/src/components/Editable/Inner'
-import { selectors } from '@splish-me/ory-editor-core/src/selector'
-import { createEmptyState, Editor } from '@splish-me/ory-editor-core/src'
+import {
+  createEmptyState,
+  Editor,
+  selectors,
+  Inner
+  // @ts-ignore
+} from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
 import * as uuid from 'uuid'
@@ -57,7 +61,7 @@ export class Editable extends React.Component<EditableProps> {
     )
   }
 
-  componentDidCatch(error: Error, info) {
+  componentDidCatch(error: Error, info: unknown) {
     console.log('catched error', error, info)
     this.setState({ error })
   }
@@ -87,7 +91,7 @@ export class RawEditable extends React.Component<RawEditableProps> {
     }
   }
 
-  private parseEditable(editable) {
+  private parseEditable(editable: unknown) {
     const rootEditable = editable
 
     const hydrateSubeditables = (value: any): any => {

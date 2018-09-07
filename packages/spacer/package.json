@@ -1,0 +1,33 @@
+{
+  "name": "@splish-me/editor-plugin-spacer",
+  "version": "0.0.2",
+  "license": "LGPL-3.0-or-later",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "main": "./lib/index.js",
+  "files": [
+    "./lib",
+    "./src",
+    "babel.config.js",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "ci": "npm-run-all ci:*",
+    "ci:types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react-resizable": "^1.7.5"
+  },
+  "peerDependencies": {
+    "@splish-me/editor-ui": "^0.0.0",
+    "emotion": "^9.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-emotion": "^9.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

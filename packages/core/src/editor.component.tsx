@@ -1,9 +1,13 @@
-import { Editor as E } from '@splish-me/ory-editor-core/src'
-import { selectors } from '@splish-me/ory-editor-core/src/selector'
-import createDragDropContext from '@splish-me/ory-editor-core/src/components/DragDropContext'
+import {
+  createDragDropContext,
+  Editor as E,
+  selectors
+  // @ts-ignore
+} from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
 import { Provider } from 'react-redux'
+import { Store, Action, Dispatch } from 'redux'
 import * as _ from 'lodash'
 
 import {
@@ -19,18 +23,22 @@ import {
 } from './editable.component'
 
 export interface EditorProps {
-  defaultPlugin?: any
-  plugins?: any[]
-  mode?: any
+  defaultPlugin?: unknown
+  plugins?: unknown[]
+  mode?: unknown
 }
 
-export class Editor extends React.Component<EditorProps> {
+interface EditorState {
+  mode: unknown
+}
+
+export class Editor extends React.Component<EditorProps, EditorState> {
   static defaultProps = {
     mode: 'edit'
   }
 
-  private undoStack = []
-  private redoStack = []
+  private undoStack: unknown[] = []
+  private redoStack: unknown[] = []
   private editor: E
   private DragDropContext: React.ComponentType
   private persistState = _.throttle(state => {
@@ -51,7 +59,7 @@ export class Editor extends React.Component<EditorProps> {
 
     R.forEach(editable => {
       this.editor.trigger.editable.update(editable)
-    }, newState || [])
+    }, (newState as unknown[]) || [])
   }
 
   private redo = () => {
@@ -65,7 +73,7 @@ export class Editor extends React.Component<EditorProps> {
 
     R.forEach(editable => {
       this.editor.trigger.editable.update(editable)
-    }, newState || [])
+    }, (newState as unknown[]) || [])
   }
 
   public serializeState = ({ id }: EditableIdentifier): any => {
@@ -109,10 +117,10 @@ export class Editor extends React.Component<EditorProps> {
       },
       editables: [],
       middleware: [
-        store => {
+        (store: Store<unknown>) => {
           const { editables } = selectors(store)
 
-          return next => action => {
+          return (next: Dispatch<unknown>) => (action: Action) => {
             // FIXME:
             const ignoredActions = [
               'UPDATE_EDITABLE',

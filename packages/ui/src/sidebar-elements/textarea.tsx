@@ -11,7 +11,7 @@ export default class SidebarTextarea extends React.Component<
   SidebarTextareaProps
 > {
   public render() {
-    const { value, label, placeholder, ...props } = this.props
+    const { value, label, innerRef, placeholder, ...props } = this.props
     return (
       <label
         className={css({
@@ -40,6 +40,7 @@ export default class SidebarTextarea extends React.Component<
               border: '2px solid #469BFF'
             }
           })}
+          ref={innerRef}
           {...props}
         />
       </label>
