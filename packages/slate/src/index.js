@@ -24,16 +24,12 @@
 /* eslint prefer-reflect: ["off"] */
 import Subject from '@material-ui/icons/Subject'
 import { pathOr } from 'ramda'
-import Html from 'slate-html-serializer'
 import React from 'react'
 import { ActionTypes } from 'redux-undo'
 import Component from './Component'
-import type { Props } from './Component'
 import Plugin from './plugins/Plugin'
 // import KatexPlugin from './plugins/katex'
 import * as hooks from './hooks'
-import parse5 from 'parse5'
-import v002 from './migrations/v002'
 import { Renderer } from './slate-react-serializer'
 import { EM, STRONG, U } from './plugins/emphasize'
 import { P } from './plugins/paragraph'
@@ -44,6 +40,7 @@ import { A } from './plugins/link'
 import { KATEX_BLOCK, KATEX_INLINE } from './plugins/katex'
 import { CODE } from './plugins/code'
 import MathComponent from './plugins/katex/math-component'
+import { name, version } from '../package.json'
 
 export const createInitialState = hooks.createInitialState
 
@@ -211,8 +208,8 @@ export default (plugins: Plugin[] = hooks.defaultPlugins) => {
     Component: Slate,
     StaticComponent,
 
-    name: '@splish-me/slate',
-    version: '0.0.2',
+    name: name.replace('editor-plugin-', ''),
+    version,
     IconComponent: <Subject />,
     text: 'Text',
     description: 'An advanced rich text area.',
@@ -269,12 +266,10 @@ export default (plugins: Plugin[] = hooks.defaultPlugins) => {
 
     createInitialState: hooks.createInitialState,
     serialize: hooks.serialize,
-    unserialize: hooks.unserialize,
+    unserialize: hooks.unserialize
 
     // TODO this is disabled because of #207
     // merge = hooks.merge
     // split = hooks.split
-
-    migrations: [v002]
   }
 }

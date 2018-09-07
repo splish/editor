@@ -19,8 +19,11 @@
  * @author Splish UG (haftungsbeschränkt)
  */
 import * as React from 'react'
-import Component from './Component'
 import Panorama from '@material-ui/icons/Panorama'
+
+import Component from './Component'
+
+const { name, version } = require('../package.json')
 
 export interface ImagePluginSettings {
   imageUpload: Promise<unknown>
@@ -29,8 +32,8 @@ export interface ImagePluginSettings {
 const imagePlugin = (settings?: ImagePluginSettings) => {
   return {
     Component: (props: Object) => <Component {...props} {...settings} />,
-    name: 'ory/editor/core/content/image',
-    version: '0.0.1',
+    name: name.replace('editor-plugin-', ''),
+    version,
     IconComponent: <Panorama />,
     text: 'Image',
     isInlineable: true,

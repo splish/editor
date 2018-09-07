@@ -1,27 +1,20 @@
-import { Editor } from '@splish-me/editor-core/src/editor.component'
-import { createEditableIdentifier } from '@splish-me/editor-core/src/editable.component'
+import { Editor } from '@splish-me/editor-core/lib/editor.component'
+import { createEditableIdentifier } from '@splish-me/editor-core/lib/editable.component'
 import { ModeToolbar } from '@splish-me/editor-ui/src/mode-toolbar.component'
-import { AddSidebar } from '@splish-me/editor-ui/src/add-sidebar.component'
-import { Sidebar } from '@splish-me/editor-ui/src/sidebar.component'
+import { AddSidebar } from '@splish-me/editor-ui/lib/add-sidebar.component'
+import { Sidebar } from '@splish-me/editor-ui/lib/sidebar.component'
 import * as React from 'react'
 
-import { Editable } from '@splish-me/editor-core/src/editable.component'
-import SidebarTextfield from '@splish-me/editor-ui/src/sidebar-elements/textfield'
-import SidebarCheckbox from '@splish-me/editor-ui/src/sidebar-elements/checkbox'
-import SidebarTextarea from '@splish-me/editor-ui/src/sidebar-elements/textarea'
-import ButtonGroup from '@splish-me/editor-ui/src/sidebar-elements/button'
-import { Button } from '@splish-me/editor-ui/src/sidebar-elements/button'
-import SidebarDropDown from '@splish-me/editor-ui/src/sidebar-elements/dropdown'
-import { Searchbar } from '@splish-me/editor-ui/src/searchbar/searchbar'
-import SidebarText from '@splish-me/editor-ui/src/sidebar-elements/sidebartext'
+import { Editable } from '@splish-me/editor-core/lib/editable.component'
+import { Searchbar } from '@splish-me/editor-ui/lib/searchbar/searchbar'
 
 // FIXME:
 import 'ory-editor-core/lib/index.css'
 import {
   EditorConsumer,
   EditorHelpersConsumer
-} from '@splish-me/editor-core/src/contexts'
-import { PluginSidebar } from '@splish-me/editor-ui/src/plugin-sidebar.component'
+} from '@splish-me/editor-core/lib/contexts'
+import { PluginSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
 import { injectGlobal } from 'emotion'
 
 injectGlobal`

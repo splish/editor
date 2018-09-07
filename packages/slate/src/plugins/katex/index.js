@@ -20,14 +20,13 @@
  */
 /* eslint-disable no-alert, prefer-reflect */
 import React from 'react'
-import { ToolbarButton } from 'ory-editor-plugins-slate/lib/helpers'
-import Plugin from 'ory-editor-plugins-slate/lib/plugins/Plugin'
+import Plugin from '../Plugin'
 import { Button } from '@splish-me/editor-ui/lib/sidebar-elements/button'
 
 import Katex from './katex'
 
 // import './index.css'
-import 'katex/dist/katex.min.css'
+// import 'katex/dist/katex.min.css'
 export const KATEX_BLOCK = 'KATEX/BLOCK'
 export const KATEX_INLINE = 'KATEX/INLINE'
 
@@ -118,10 +117,9 @@ export default class KatexPlugin extends Plugin {
     }
     switch (object.type) {
       case KATEX_BLOCK:
+        return <katexblock>{children}</katexblock>
       case KATEX_INLINE:
-        return <p>Formula</p>
-      // return <katexblock>{children}</katexblock>
-      // return <katexinline>{children}</katexinline>
+        return <katexinline>{children}</katexinline>
     }
   }
 }

@@ -23,11 +23,10 @@
 /* eslint-disable prefer-reflect, default-case, react/display-name */
 import React from 'react'
 import CodeIcon from '@material-ui/icons/Code'
-import { Data } from 'slate'
+import { Data } from '../../slate.es'
 import { makeTagMark, ToolbarButton } from '../../helpers'
 import Plugin from '../Plugin'
 import Code from './node'
-import type { Props } from '../props'
 
 export const CODE = 'CODE/CODE'
 

@@ -17,7 +17,7 @@
  * @author Splish UG (haftungsbeschränkt)
  */
 // @ts-ignore
-import { Change } from 'slate'
+import { Change } from './slate.es'
 // @ts-ignore
 import { Editor } from 'slate-react'
 

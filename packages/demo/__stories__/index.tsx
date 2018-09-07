@@ -1,4 +1,5 @@
-import { HtmlRenderer } from '@splish-me/editor-core/lib/html-renderer.component'
+import { HtmlRenderer } from '@splish-me/editor-core/src/html-renderer.component'
+import createSlate from '@splish-me/editor-plugin-slate/src'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 
@@ -30,27 +31,12 @@ storiesOf('Demo', module)
       plugins={[mockBrokenContentPlugin]}
     />
   ))
-  .add('Text', () => (
-    <EditableStory defaultPlugin={textPlugin} plugins={[textPlugin]} />
-  ))
   .add('Slate', () => (
     <EditableStory
       defaultPlugin={createSlatePlugin()}
       plugins={[createSlatePlugin()]}
     />
   ))
-  .add('Renderer (2)', () => {
-    const initialState = JSON.parse(
-      '{"id":"12669454-7dc2-4e35-a8f5-bc384709c995","cells":[{"id":"df8115df-e422-4826-b441-0446b21e75fb","inline":null,"size":12,"rows":[{"id":"c74110ff-8949-4ee1-b39d-ee55e18183dc","cells":[{"id":"c825999c-4734-4228-8482-5883625c2944","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-wrapper","version":"0.0.0"},"state":{"state1":{"type":"@splish-me/editor-core/editable","state":{"id":"7daf0511-ab01-49ae-83e6-c7b9fe8648ff","cells":[{"id":"588b7f5b-c191-46f5-85c9-ca40170835ca","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}},"state2":{"type":"@splish-me/editor-core/editable","state":{"id":"ad635172-ce35-4ede-b6d9-7f96ac69adfa","cells":[{"id":"0bb61571-8368-4f32-b43e-f7db20d0e5d4","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}}}}}]},{"id":"4074e942-4830-446a-9958-59b3a415d391","cells":[{"id":"f8174f1a-6556-4900-aed1-337f785e38e1","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-wrapper","version":"0.0.0"},"state":{"state1":{"type":"@splish-me/editor-core/editable","state":{"id":"b442bb6c-910a-400d-b19a-6e5295e3f5ed","cells":[{"id":"ef60f83d-9426-4498-bdd8-9b3281f4e6a6","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}},"state2":{"type":"@splish-me/editor-core/editable","state":{"id":"72cf8a10-9e61-42a7-9f4f-96aef3694fbd","cells":[{"id":"1ab29b66-442d-4482-a3ba-04ddd25ef8f1","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}}}}}]},{"id":"820d308e-dd70-437c-89b3-17088d7de9e9","cells":[{"id":"38ff1214-6504-40a0-9ab6-5616c05b05b7","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/mock-wrapper","version":"0.0.0"},"state":{"state1":{"type":"@splish-me/editor-core/editable","state":{"id":"71df84a3-5e2d-44bd-93d9-4dc41a22ec7b","cells":[{"id":"b58c08fe-484f-40a3-abbf-46ffddf4df43","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}},"state2":{"type":"@splish-me/editor-core/editable","state":{"id":"8d5fe377-864a-41d0-b234-4e72d900f911","cells":[{"id":"580aae15-a819-433d-bf87-0fb574ae855d","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}}}}},{"id":"0c94f4d3-50bb-4758-908d-60ab25655777","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/mock-wrapper","version":"0.0.0"},"state":{"state1":{"type":"@splish-me/editor-core/editable","state":{"id":"1785f596-9d9a-42ac-914a-85cc8bf4c4d0","cells":[{"id":"7b8f106b-0e5c-4800-a295-3803a694e25d","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}},"state2":{"type":"@splish-me/editor-core/editable","state":{"id":"5dfbb467-4b48-41af-a902-385bc405733a","cells":[{"id":"fdf02382-bb8c-4755-8a1b-6036238d52d7","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/mock-content","version":"0.0.0"},"state":{"value":""}}}]}}}}}]}]}]}'
-    )
-
-    return (
-      <HtmlRenderer
-        plugins={[mockContentPlugin, mockWrapperPlugin]}
-        state={initialState}
-      />
-    )
-  })
   .add('Renderer', () => (
     <HtmlRenderer
       plugins={[mockContentPlugin, mockWrapperPlugin]}

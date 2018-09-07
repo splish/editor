@@ -20,13 +20,6 @@
  */
 /* eslint-disable prefer-reflect, default-case, react/display-name */
 import React from 'react'
-import H1Icon from '@material-ui/icons/LooksOne'
-import H2Icon from '@material-ui/icons/LooksTwo'
-import H3Icon from '@material-ui/icons/Looks3'
-import H4Icon from '@material-ui/icons/Looks4'
-import H5Icon from '@material-ui/icons/Looks5'
-import H6Icon from '@material-ui/icons/Looks6'
-// import { Data } from 'slate'
 import { makeTagNode, ToolbarButton } from '../helpers'
 import Plugin from './Plugin'
 import { Button } from '@splish-me/editor-ui/lib/sidebar-elements/button'

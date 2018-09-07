@@ -19,7 +19,7 @@
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
  *
  */
-import { Value } from 'slate'
+import { Value } from './slate.es'
 import { html } from './hooks'
 import Plain from 'slate-plain-serializer'
 

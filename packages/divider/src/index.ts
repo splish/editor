@@ -20,6 +20,8 @@
  */
 import styled from 'react-emotion'
 
+const { name, version } = require('../package.json')
+
 const Divider = styled('hr')({
   backgroundColor: '#eeeeee',
   width: '100%',
@@ -29,8 +31,8 @@ const Divider = styled('hr')({
 
 export default {
   Component: Divider,
-  name: '@splish-me/divider',
-  version: '0.0.1',
+  name: name.replace('editor-plugin-', ''),
+  version,
   text: 'Divider',
   description: 'A horizontal divider.'
 }

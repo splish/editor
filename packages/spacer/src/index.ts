@@ -20,10 +20,12 @@
  */
 import { Spacer } from './spacer.component'
 
+const { name, version } = require('../package.json')
+
 export default {
   Component: Spacer,
-  name: '@splish-me/spacer',
-  version: '0.0.1',
+  name: name.replace('editor-plugin-', ''),
+  version,
   text: 'Spacer',
   description: 'Resizeable, empty space.',
 

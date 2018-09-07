@@ -41,8 +41,8 @@ import parse5 from 'parse5'
 import KatexPlugin from './plugins/katex'
 
 // FIXME #126
-import { Document, Value } from 'slate'
-import Html from 'slate-html-serializer'
+import { Document, Value } from './slate.es'
+import Html from './slate-html-serializer.es'
 import Plain from 'slate-plain-serializer'
 
 const DEFAULT_NODE = P
@@ -130,7 +130,14 @@ export const unserialize = ({
   if (serialized) {
     return { editorState: Value.fromJSON(serialized, options) }
   } else if (importFromHtml) {
-    return { editorState: html.deserialize(importFromHtml, options) }
+    try {
+      const editorState = html.deserialize(importFromHtml, options)
+
+      return { editorState }
+    } catch (e) {
+      console.log('Failed on', importFromHtml, e)
+      return { editorState: null }
+    }
   } else if (editorState) {
     return { editorState }
   }

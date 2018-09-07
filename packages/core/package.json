@@ -4,6 +4,12 @@
   "license": "UNLICENSED",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
+  "files": [
+    "./lib",
+    "./src",
+    "babel.config.js",
+    "tsconfig.json"
+  ],
   "scripts": {
     "build": "npm-run-all build:*",
     "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
