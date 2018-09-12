@@ -11,6 +11,15 @@ export interface SidebarTextfieldProps {
 export default class SidebarTextfield extends React.Component<
   SidebarTextfieldProps
 > {
+  private input = React.createRef<HTMLInputElement>()
+
+  public focus() {
+    const input = this.input.current
+    if (input) {
+      input.focus()
+    }
+  }
+
   public render() {
     const { value, onChange, label, placeholder, type, ...props } = this.props
     return (
@@ -26,6 +35,7 @@ export default class SidebarTextfield extends React.Component<
       >
         <span className={css({ width: '40%' })}>{label}</span>
         <input
+          ref={this.input}
           type={type}
           onChange={onChange}
           value={value}

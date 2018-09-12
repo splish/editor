@@ -1,7 +1,7 @@
 {
   "name": "@splish-me/editor-plugin-slate",
-  "version": "0.0.5",
-  "license": "LGPL-3.0-or-later",
+  "version": "0.0.6",
+  "license": "UNLICENSED",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
   "files": [
@@ -28,12 +28,19 @@
     "react-portal": "4.1.5",
     "redux-undo": "1.0.0-beta9-7",
     "selection-position": "^1.0.0",
-    "slate": "^0.38.2",
+    "slate": "^0.40.2",
     "slate-edit-blockquote": "^0.6.1",
-    "slate-edit-list": "^0.12.0",
+    "slate-edit-list": "^0.12.1",
     "slate-html-serializer": "^0.7.2",
-    "slate-plain-serializer": "^0.5.30",
-    "slate-react": "^0.15.4"
+    "slate-plain-serializer": "^0.6.2",
+    "slate-react": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.116",
+    "@types/parse5": "^5.0.0",
+    "@types/slate": "^0.40.0",
+    "@types/slate-html-serializer": "^0.6.2",
+    "@types/slate-react": "^0.18.0"
   },
   "peerDependencies": {
     "@splish-me/editor-ui": "^0.0.0",

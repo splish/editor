@@ -1,13 +1,58 @@
 import { HtmlRenderer } from '@splish-me/editor-core/src/html-renderer.component'
-import createSlate from '@splish-me/editor-plugin-slate/src'
+import { createSlatePlugin } from '@splish-me/editor-plugin-slate/src'
+import { defaultPlugins } from '@splish-me/editor-plugin-slate/src/default-plugins'
+import { defaultNode } from '@splish-me/editor-plugin-slate/src/default-node'
+import { createSlateRenderPlugin } from '@splish-me/editor-plugin-slate/src/index.render'
+import { createUiPlugin } from '@splish-me/editor-plugin-slate/src/plugins/ui'
+import {
+  createKatexPlugin,
+  isKatex,
+  insertKatex
+} from '@splish-me/editor-plugin-slate/src/plugins/katex'
+import { setParagraph } from '@splish-me/editor-plugin-slate/src/plugins/paragraph'
+import ButtonGroup, {
+  Button
+} from '@splish-me/editor-ui/src/sidebar-elements/button'
 import { storiesOf } from '@storybook/react'
+import * as R from 'ramda'
 import * as React from 'react'
 
 import { mockBrokenContentPlugin } from '../src/mock-broken-content.plugin'
 import { mockContentPlugin } from '../src/mock-content.plugin'
 import { mockWrapperPlugin } from '../src/mock-wrapper.plugin'
 import { EditableStory } from '../src'
-import createSlatePlugin from '../../slate/src'
+import {
+  HeadingLevel,
+  createIsHeading,
+  createSetHeading
+} from '@splish-me/editor-plugin-slate/src/plugins/headings'
+import { RenderAttributes } from 'slate-react'
+import { Change, Value } from 'slate'
+import {
+  isStrong,
+  toggleStrong,
+  isEmphasized,
+  toggleEmphasize,
+  isUnderlined,
+  toggleUnderline
+} from '@splish-me/editor-plugin-slate/src/plugins/rich-text'
+import {
+  isLink,
+  unwrapLink,
+  wrapLink
+} from '@splish-me/editor-plugin-slate/src/plugins/link'
+
+import 'katex/dist/katex.css'
+import {
+  isCode,
+  toggleCode
+} from '@splish-me/editor-plugin-slate/src/plugins/code'
+import {
+  isUnorderedList,
+  createToggleUnorderedList,
+  createToggleOrderedList,
+  isOrderedList
+} from '@splish-me/editor-plugin-slate/src/plugins/lists'
 
 storiesOf('Demo', module)
   .add('Editable', () => (
@@ -31,12 +76,148 @@ storiesOf('Demo', module)
       plugins={[mockBrokenContentPlugin]}
     />
   ))
-  .add('Slate', () => (
-    <EditableStory
-      defaultPlugin={createSlatePlugin()}
-      plugins={[createSlatePlugin()]}
-    />
-  ))
+  .add('Slate', () => {
+    const state = JSON.parse(
+      '{"id":"1e6f63c0-9a5c-4ca8-afb4-461308a6b755","cells":[{"id":"ee2b8230-07b9-43d1-9f45-ef604e3e6fdc","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.5"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/h1","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Title","marks":[]}]}]},{"object":"block","type":"@splish-me/ul","data":{},"nodes":[{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"A list","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"is nice","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"with some ","marks":[]},{"object":"leaf","text":"formatting ","marks":[{"object":"mark","type":"@splish-me/strong","data":{}}]},{"object":"leaf","text":"and ","marks":[]},{"object":"leaf","text":"underlining","marks":[{"object":"mark","type":"@splish-me/u","data":{}}]},{"object":"leaf","text":" and ","marks":[]},{"object":"leaf","text":"code","marks":[{"object":"mark","type":"@splish-me/code","data":{}}]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Also some inline ","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"\\\\sum x_i = 5","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"or block ","marks":[]}]},{"object":"inline","type":"@splish-me/a","data":{"href":"google.de"},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"formula","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":":","marks":[]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"qw3eqweew","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]}}}}}]}'
+    )
+
+    class Component extends React.Component<RenderAttributes> {
+      public render() {
+        // FIXME: move to parent
+        const onChange = this.props.onChange as (change: Change) => void
+        const value = this.props.value as Value
+
+        const applyChange = (f: (change: Change) => Change): void => {
+          const change = value.change()
+          onChange(f(change))
+        }
+
+        return (
+          <React.Fragment>
+            <ButtonGroup>
+              <Button
+                active={isStrong(value.change())}
+                onClick={() => {
+                  applyChange(toggleStrong)
+                }}
+              >
+                B
+              </Button>
+              <Button
+                active={isEmphasized(value.change())}
+                onClick={() => {
+                  applyChange(toggleEmphasize)
+                }}
+              >
+                I
+              </Button>
+              <Button
+                active={isUnderlined(value.change())}
+                onClick={() => {
+                  applyChange(toggleUnderline)
+                }}
+              >
+                U
+              </Button>
+              <Button
+                active={isCode(value.change())}
+                onClick={() => {
+                  applyChange(toggleCode)
+                }}
+              >
+                Code
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              {R.times(index => {
+                const level = (index + 1) as HeadingLevel
+                const active = createIsHeading(level)(value.change())
+
+                return (
+                  <Button
+                    key={index}
+                    active={active}
+                    onClick={() => {
+                      applyChange(
+                        active ? setParagraph : createSetHeading(level)
+                      )
+                    }}
+                  >
+                    H{level}
+                  </Button>
+                )
+              }, 6)}
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button
+                active={isLink(value.change())}
+                onClick={() => {
+                  const active = isLink(value.change())
+
+                  applyChange(active ? unwrapLink : wrapLink())
+                }}
+              >
+                Link
+              </Button>
+              <Button
+                active={isKatex(value.change())}
+                onClick={() => {
+                  const active = isKatex(value.change())
+
+                  if (!active) {
+                    applyChange(insertKatex)
+                  }
+                }}
+              >
+                Katex
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button
+                active={isUnorderedList(value.change())}
+                onClick={() => {
+                  applyChange(createToggleUnorderedList(defaultNode))
+                }}
+              >
+                ul
+              </Button>
+              <Button
+                active={isOrderedList(value.change())}
+                onClick={() => {
+                  applyChange(createToggleOrderedList(defaultNode))
+                }}
+              >
+                ol
+              </Button>
+            </ButtonGroup>
+          </React.Fragment>
+        )
+      }
+    }
+
+    const plugins = [
+      ...defaultPlugins,
+      createKatexPlugin(),
+      createUiPlugin({
+        defaultNode,
+        Component
+      })
+    ]
+
+    const slatePlugin = createSlatePlugin({ defaultNode, plugins })
+    const slateRenderPlugin = createSlateRenderPlugin({ plugins })
+
+    return (
+      <React.Fragment>
+        <EditableStory
+          initialState={state}
+          defaultPlugin={slatePlugin}
+          plugins={[slatePlugin]}
+        />
+        <HtmlRenderer state={state} plugins={[slateRenderPlugin]} />
+      </React.Fragment>
+    )
+  })
   .add('Renderer', () => (
     <HtmlRenderer
       plugins={[mockContentPlugin, mockWrapperPlugin]}

@@ -24,6 +24,10 @@ export default class SidebarCheckbox extends React.Component<CheckboxProps> {
       >
         {label}
         <div
+          onClick={() => {
+            // FIXME: this should be simpler ;)
+            onChange({ target: { checked: !value } })
+          }}
           className={css({
             cursor: 'pointer',
             border: '2px solid #CCCCCC',
@@ -59,16 +63,6 @@ export default class SidebarCheckbox extends React.Component<CheckboxProps> {
             })}
           />
         </div>
-
-        <input
-          type="checkbox"
-          checked={value}
-          onChange={onChange}
-          className={css({
-            visibility: 'hidden'
-          })}
-          {...props}
-        />
       </label>
     )
   }

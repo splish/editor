@@ -20,15 +20,13 @@ import * as R from 'ramda'
 import * as React from 'react'
 
 import * as S from './slate-plugin.interface'
+import { Rule } from 'slate-html-serializer'
+import { SlatePluginSerializedState } from '.'
+import { NodeJSON, LeafJSON } from 'slate'
 
 export interface RendererProps {
-  value: {
-    document: {
-      object: 'document'
-      nodes: S.SlateNode[]
-    }
-  }
-  rules: Array<S.SlateRendererRule>
+  value: SlatePluginSerializedState['editorState']
+  rules: Array<Rule['serialize']>
 }
 
 const mapIndexed = R.addIndex<any, React.ReactNode>(R.map)
@@ -36,40 +34,63 @@ const mapIndexed = R.addIndex<any, React.ReactNode>(R.map)
 export class Renderer extends React.Component<RendererProps> {
   public render() {
     const { value } = this.props
+
+    if (!value) {
+      return null
+    }
+
     const { document } = value
 
-    const elements = R.filter(
-      Boolean,
-      mapIndexed(this.serializeNode, document.nodes)
-    )
+    if (!document) {
+      return null
+    }
+
+    const elements = (document.nodes || [])
+      .map(this.serializeNode)
+      .filter(Boolean)
 
     return elements
   }
 
-  private serializeNode = (node: S.SlateNode, key: number): React.ReactNode => {
+  private serializeNode = (node: NodeJSON, key: number): React.ReactNode => {
     if (node.object === 'text') {
       return mapIndexed(this.serializeLeaf, node.leaves)
     }
 
-    const children = mapIndexed(this.serializeNode, node.nodes)
+    const children = (node.nodes || []).map(this.serializeNode)
 
     for (const rule of this.props.rules) {
-      const ret = rule(node, { key: key.toString(), children })
+      if (!rule) {
+        continue
+      }
+
+      // @ts-ignore FIXME: serialize should expect children to be usual React Children i.e. array and stuff
+      const ret = rule(node, children)
       if (ret === null) return
       if (ret) return ret
     }
 
+    // @ts-ignore
     throw new Error(`No serializer defined for node of type "${node.type}".`)
   }
 
-  private serializeLeaf = (leaf: S.SlateLeaf, key: number): React.ReactNode => {
+  private serializeLeaf = (leaf: LeafJSON, key: number): React.ReactNode => {
+    if (!leaf.text) {
+      return null
+    }
+
     const string: S.SlateString = { object: 'string', text: leaf.text }
     const text = this.serializeString(string)
 
     return R.reduce(
       (children, mark) => {
         for (const rule of this.props.rules) {
-          const ret = rule(mark, { key: key.toString(), children })
+          if (!rule) {
+            continue
+          }
+
+          // @ts-ignore FIXME: serialize should expect children to be usual React Children i.e. array and stuff
+          const ret = rule(mark, children)
           if (ret === null) return
           if (ret) return ret
         }
@@ -79,13 +100,17 @@ export class Renderer extends React.Component<RendererProps> {
         )
       },
       text,
-      leaf.marks
+      leaf.marks || []
     )
   }
 
   private serializeString = (string: S.SlateString): React.ReactNode => {
     for (const rule of this.props.rules) {
-      const ret = rule(string, { children: string.text })
+      if (!rule) {
+        continue
+      }
+
+      const ret = rule(string, string.text)
       if (ret) return ret
     }
 
