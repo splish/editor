@@ -57,9 +57,35 @@ export const createSlatePlugin = (options: SlatePluginOptions) => {
     }
   }
 
+  const lineBreakSerializer = {
+    // @ts-ignore
+    deserialize(el) {
+      if (el.tagName.toLowerCase() === 'br') {
+        return { object: 'text', text: '\n' }
+      }
+
+      if (el.nodeName === '#text') {
+        if (el.value && el.value.match(/<!--.*?-->/)) return
+        if (el.value === '\n') return
+
+        return {
+          object: 'text',
+          leaves: [
+            {
+              object: 'leaf',
+              text: el.value
+            }
+          ]
+        }
+      }
+
+      return undefined
+    }
+  }
+
   // @ts-ignore
   const html = new Html({
-    rules: options.plugins,
+    rules: [lineBreakSerializer, ...options.plugins],
     parseHtml: parseFragment
   })
 

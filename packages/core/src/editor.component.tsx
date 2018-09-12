@@ -8,7 +8,8 @@ import * as R from 'ramda'
 import * as React from 'react'
 import { Provider } from 'react-redux'
 import { Store, Action, Dispatch } from 'redux'
-import * as _ from 'lodash'
+
+const throttle = require('lodash/throttle')
 
 import {
   EditorProvider,
@@ -41,7 +42,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
   private redoStack: unknown[] = []
   private editor: E
   private DragDropContext: React.ComponentType
-  private persistState = _.throttle(state => {
+  private persistState = throttle((state: unknown[]) => {
     if (state.length > 0) {
       this.undoStack.push(state)
       this.redoStack = []

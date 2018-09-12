@@ -158,12 +158,15 @@ export const createLinkPlugin = ({
   return {
     deserialize(el, next) {
       if (el.tagName.toLowerCase() === 'a') {
+        // @ts-ignore
+        const attr = el.attrs.find(({ name }) => name === 'href')
+
         return {
           object: 'inline',
           type: linkNode,
           nodes: next(el.childNodes),
           data: Data.create({
-            href: el.getAttribute('href') || ''
+            href: attr ? attr.value : ''
           })
         }
       }

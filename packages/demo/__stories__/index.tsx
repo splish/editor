@@ -77,9 +77,43 @@ storiesOf('Demo', module)
     />
   ))
   .add('Slate', () => {
-    const state = JSON.parse(
-      '{"id":"1e6f63c0-9a5c-4ca8-afb4-461308a6b755","cells":[{"id":"ee2b8230-07b9-43d1-9f45-ef604e3e6fdc","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.5"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/h1","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Title","marks":[]}]}]},{"object":"block","type":"@splish-me/ul","data":{},"nodes":[{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"A list","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"is nice","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"with some ","marks":[]},{"object":"leaf","text":"formatting ","marks":[{"object":"mark","type":"@splish-me/strong","data":{}}]},{"object":"leaf","text":"and ","marks":[]},{"object":"leaf","text":"underlining","marks":[{"object":"mark","type":"@splish-me/u","data":{}}]},{"object":"leaf","text":" and ","marks":[]},{"object":"leaf","text":"code","marks":[{"object":"mark","type":"@splish-me/code","data":{}}]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Also some inline ","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"\\\\sum x_i = 5","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"or block ","marks":[]}]},{"object":"inline","type":"@splish-me/a","data":{"href":"google.de"},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"formula","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":":","marks":[]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"qw3eqweew","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]}}}}}]}'
-    )
+    // const state = JSON.parse(
+    //   '{"id":"1e6f63c0-9a5c-4ca8-afb4-461308a6b755","cells":[{"id":"ee2b8230-07b9-43d1-9f45-ef604e3e6fdc","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.5"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/h1","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Title","marks":[]}]}]},{"object":"block","type":"@splish-me/ul","data":{},"nodes":[{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"A list","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"is nice","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"with some ","marks":[]},{"object":"leaf","text":"formatting ","marks":[{"object":"mark","type":"@splish-me/strong","data":{}}]},{"object":"leaf","text":"and ","marks":[]},{"object":"leaf","text":"underlining","marks":[{"object":"mark","type":"@splish-me/u","data":{}}]},{"object":"leaf","text":" and ","marks":[]},{"object":"leaf","text":"code","marks":[{"object":"mark","type":"@splish-me/code","data":{}}]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Also some inline ","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"\\\\sum x_i = 5","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"or block ","marks":[]}]},{"object":"inline","type":"@splish-me/a","data":{"href":"google.de"},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"formula","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":":","marks":[]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"qw3eqweew","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]}}}}}]}'
+    // )
+    const state = {
+      id: 'foo',
+      cells: [
+        {
+          id: 'bar',
+          rows: [
+            {
+              cells: [
+                {
+                  size: 12,
+                  rows: [
+                    {
+                      cells: [
+                        {
+                          content: {
+                            plugin: {
+                              name: '@splish-me/slate'
+                            },
+                            state: {
+                              importFromHtml:
+                                '<p>Aufgrund der <a href="/1925">Kongruenzsätze</a> reicht es für die eindeutige Konstruktion eines Dreiecks aus, wenn man nur <strong>3 Eigenschaften</strong> (also <em>Längen der Seite</em> oder <em>Größe der Winkel</em>) des Dreiecks kennt.</p>\n<p>Ein Dreieck ist eindeutig konstruierbar, wenn man</p>\n<ul>\n<li><p>die Längen aller 3 Seiten (SSS-Satz) oder</p></li>\n<li><p>die Länge zweier Seiten und die Größe des von Ihnen eingeschlossenen Winkels (SWS-Satz) oder</p></li>\n<li><p>die Länge einer Seite und die Größe der anliegenden Winkel (WSW-Satz) oder</p></li>\n<li><p>die Längen zweier Seiten und die Größe des der längeren der beiden Seiten gegenüberliegenden Winkels (SsW-Satz)</p></li>\n</ul>\n<p>kennt.</p>'
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
 
     class Component extends React.Component<RenderAttributes> {
       public render() {

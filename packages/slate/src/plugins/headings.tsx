@@ -64,7 +64,7 @@ export const createHeadingsPlugin = ({
 }: HeadingsPluginOptions = {}): SlatePlugin => {
   return {
     deserialize(el, next) {
-      const match = el.tagName.toLowerCase().match(/h[1-6]/)
+      const match = el.tagName.toLowerCase().match(/h([1-6])/)
 
       if (match) {
         const level = parseInt(match[1], 10) as HeadingLevel
@@ -83,7 +83,7 @@ export const createHeadingsPlugin = ({
       const block = obj as Block
 
       if (block.object === 'block') {
-        const match = block.type.match(/@splish-me\/h(1|2|3|4|5|6)/)
+        const match = block.type.match(/@splish-me\/h([1-6])/)
 
         if (match) {
           const level = parseInt(match[1], 10) as HeadingLevel
@@ -103,7 +103,7 @@ export const createHeadingsPlugin = ({
       const block = props.node as Block
 
       if (block.object === 'block') {
-        const match = block.type.match(/@splish-me\/h(1|2|3|4|5|6)/)
+        const match = block.type.match(/@splish-me\/h([1-6])/)
 
         if (match) {
           const level = parseInt(match[1], 10) as HeadingLevel

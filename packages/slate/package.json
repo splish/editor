@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-plugin-slate",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "license": "UNLICENSED",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",

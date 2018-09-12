@@ -158,13 +158,13 @@ export const createListsPlugin = ({
           return {
             object: 'block',
             type: unorderedListNode,
-            nodes: next(el.childNodes)
+            nodes: next(el.childNodes.filter(node => node.nodeName !== '#text'))
           }
         case 'ol':
           return {
             object: 'block',
             type: orderedListNode,
-            nodes: next(el.childNodes)
+            nodes: next(el.childNodes.filter(node => node.nodeName !== '#text'))
           }
         case 'li':
           return {
