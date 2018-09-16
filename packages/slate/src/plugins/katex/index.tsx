@@ -65,9 +65,8 @@ class DefaultEditorComponent extends React.Component<
 
     setTimeout(() => {
       const input = this.input.current
-      console.log(input)
+
       if (input) {
-        console.log('focusing')
         input.focus()
       }
     })
@@ -83,7 +82,6 @@ class DefaultEditorComponent extends React.Component<
     const formula = data.get('formula')
     const inline = data.get('inline')
 
-    console.log('rendering')
     return (
       <span {...attributes}>
         <Math formula={formula} inline={inline} />
@@ -106,7 +104,6 @@ class DefaultEditorComponent extends React.Component<
                   value={inline}
                   label="Inline"
                   onChange={e => {
-                    console.log('onChange', e)
                     const { editor } = this.props
                     const node = this.props.node as Block | Inline
                     const inline = e.target.checked
@@ -197,7 +194,7 @@ export const createKatexPlugin = ({
       switch (el.tagName.toLowerCase()) {
         case 'katexblock':
           return {
-            kind: 'block',
+            object: 'block',
             type: katexBlockNode,
             data: {
               formula: el.childNodes[0].value,
@@ -206,7 +203,7 @@ export const createKatexPlugin = ({
           }
         case 'katexinline':
           return {
-            kind: 'inline',
+            object: 'inline',
             type: katexInlineNode,
             data: {
               formula: el.childNodes[0].value,

@@ -5,6 +5,7 @@ import { Plugin } from 'slate-react'
 
 import { createSlateEditor } from './slate-editor.component'
 import { slatePlugin } from './plugin'
+import { defaultNode } from './default-node'
 
 export interface SerializeMarkProps {
   mark: MarkJSON
@@ -86,11 +87,13 @@ export const createSlatePlugin = (options: SlatePluginOptions) => {
   // @ts-ignore
   const html = new Html({
     rules: [lineBreakSerializer, ...options.plugins],
+    defaultBlock: defaultNode,
     parseHtml: parseFragment
   })
 
   return {
     ...slatePlugin,
+    text: 'Text',
     Component: createSlateEditor(options),
 
     handleBlur: (props: {
@@ -99,12 +102,11 @@ export const createSlatePlugin = (options: SlatePluginOptions) => {
     }) => {
       const { editorState } = props.state
 
-      if (editorState.selection.isFocused) {
-        return
-      }
-
       props.onChange({
-        editorState: editorState.change().blur().value
+        editorState: editorState
+          .change()
+          .deselect()
+          .blur().value
       })
     },
 

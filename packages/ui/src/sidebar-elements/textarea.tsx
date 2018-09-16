@@ -14,17 +14,17 @@ export default class SidebarTextarea extends React.Component<
 
   public focus() {
     const textarea = this.textarea.current
-    console.log('focusing', textarea)
+
     if (textarea) {
-      const value = textarea.value
-      textarea.value = ''
-      textarea.value = value
-      textarea.focus()
+      setTimeout(() => {
+        textarea.blur()
+        textarea.focus()
+      })
     }
   }
 
   public render() {
-    const { value, label, placeholder, onChange, ...props } = this.props
+    const { value, label, placeholder, onChange } = this.props
     return (
       <label
         className={css({
@@ -41,20 +41,19 @@ export default class SidebarTextarea extends React.Component<
           value={value}
           placeholder={placeholder}
           onChange={onChange}
-          // className={css({
-          //   backgroundColor: '#EEEEEE',
-          //   border: 'none',
-          //   marginTop: '5px',
-          //   borderRadius: '5px',
-          //   color: '#333333',
-          //   resize: 'none',
-          //   outline: 'none',
-          //   minHeight: '100px',
-          //   WebkitUserSelect: 'auto',
-          //   '&:focus': {
-          //     border: '2px solid #469BFF'
-          //   }
-          // })}
+          className={css({
+            backgroundColor: '#EEEEEE',
+            border: 'none',
+            marginTop: '5px',
+            borderRadius: '5px',
+            color: '#333333',
+            resize: 'none',
+            outline: 'none',
+            minHeight: '100px',
+            '&:focus': {
+              border: '2px solid #469BFF'
+            }
+          })}
           ref={this.textarea}
         />
       </label>
