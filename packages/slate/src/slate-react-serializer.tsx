@@ -20,13 +20,12 @@ import * as R from 'ramda'
 import * as React from 'react'
 
 import * as S from './slate-plugin.interface'
-import { Rule } from 'slate-html-serializer'
-import { SlatePluginSerializedState } from '.'
+import { SlatePluginSerializedState, SlatePlugin } from '.'
 import { NodeJSON, LeafJSON } from 'slate'
 
 export interface RendererProps {
   value: SlatePluginSerializedState['editorState']
-  rules: Array<Rule['serialize']>
+  rules: Array<SlatePlugin['serialize']>
 }
 
 const mapIndexed = R.addIndex<any, React.ReactNode>(R.map)
@@ -65,7 +64,7 @@ export class Renderer extends React.Component<RendererProps> {
       }
 
       // @ts-ignore FIXME: serialize should expect children to be usual React Children i.e. array and stuff
-      const ret = rule(node, children)
+      const ret = rule(node, children, key)
       if (ret === null) return
       if (ret) return ret
     }
@@ -80,7 +79,7 @@ export class Renderer extends React.Component<RendererProps> {
     }
 
     const string: S.SlateString = { object: 'string', text: leaf.text }
-    const text = this.serializeString(string)
+    const text = this.serializeString(string, key)
 
     return R.reduce(
       (children, mark) => {
@@ -90,7 +89,7 @@ export class Renderer extends React.Component<RendererProps> {
           }
 
           // @ts-ignore FIXME: serialize should expect children to be usual React Children i.e. array and stuff
-          const ret = rule(mark, children)
+          const ret = rule(mark, children, key)
           if (ret === null) return
           if (ret) return ret
         }
@@ -104,13 +103,16 @@ export class Renderer extends React.Component<RendererProps> {
     )
   }
 
-  private serializeString = (string: S.SlateString): React.ReactNode => {
+  private serializeString = (
+    string: S.SlateString,
+    key: number
+  ): React.ReactNode => {
     for (const rule of this.props.rules) {
       if (!rule) {
         continue
       }
 
-      const ret = rule(string, string.text)
+      const ret = rule(string, string.text, key)
       if (ret) return ret
     }
 

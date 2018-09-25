@@ -65,11 +65,15 @@ export const createCodePlugin = ({
       }
     },
 
-    serialize(obj, children) {
+    serialize(obj, children, key) {
       const mark = obj as Mark
 
       if (mark.object === 'mark' && mark.type === codeMark) {
-        return <RenderComponent mark={mark}>{children}</RenderComponent>
+        return (
+          <RenderComponent key={key} mark={mark}>
+            {children}
+          </RenderComponent>
+        )
       }
 
       return undefined

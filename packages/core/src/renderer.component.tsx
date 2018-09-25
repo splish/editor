@@ -11,17 +11,19 @@ export interface RendererProps {
 }
 
 export const createRenderer = ({
-  renderContainer = R.prop('children'),
-  renderRow = R.prop('children'),
-  renderCell = R.prop('children')
+  renderContainer,
+  renderRow,
+  renderCell
 }: {
   renderContainer: (
     args: { cells: any; children: React.ReactNode }
-  ) => React.ReactNode
-  renderRow: (args: { row: any; children: React.ReactNode }) => React.ReactNode
+  ) => React.ReactElement<any>
+  renderRow: (
+    args: { row: any; children: React.ReactNode }
+  ) => React.ReactElement<any>
   renderCell: (
     args: { cell: any; children: React.ReactNode }
-  ) => React.ReactNode
+  ) => React.ReactElement<any>
 }): React.ComponentType<RendererProps> => {
   interface CellProps {
     rows: any[]
@@ -60,12 +62,15 @@ export const createRenderer = ({
         return renderCell({
           cell: this.props,
           children: rows.map(row => {
-            return renderRow({
-              row,
-              children: row.cells.map((cell: any) => (
-                <Cell key={cell.id} {...cell} />
-              ))
-            })
+            return React.cloneElement(
+              renderRow({
+                row,
+                children: row.cells.map((cell: any) => (
+                  <Cell key={cell.id} {...cell} />
+                ))
+              }),
+              { key: row.id }
+            )
           })
         })
       }

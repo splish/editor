@@ -79,7 +79,7 @@ export const createHeadingsPlugin = ({
       return undefined
     },
 
-    serialize(obj, children) {
+    serialize(obj, children, key) {
       const block = obj as Block
 
       if (block.object === 'block') {
@@ -89,7 +89,7 @@ export const createHeadingsPlugin = ({
           const level = parseInt(match[1], 10) as HeadingLevel
 
           return (
-            <RenderComponent level={level} node={obj}>
+            <RenderComponent key={key} level={level} node={obj}>
               {children}
             </RenderComponent>
           )

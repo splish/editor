@@ -48,11 +48,15 @@ export const createParagraphPlugin = ({
       return undefined
     },
 
-    serialize(obj, children) {
+    serialize(obj, children, key) {
       const block = obj as Block
 
       if (block.object === 'block' && block.type === paragraphNode) {
-        return <RenderComponent node={obj}>{children}</RenderComponent>
+        return (
+          <RenderComponent key={key} node={obj}>
+            {children}
+          </RenderComponent>
+        )
       }
 
       return undefined

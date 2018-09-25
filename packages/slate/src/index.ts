@@ -21,7 +21,10 @@ export interface SlatePluginOptions {
   placeholder?: React.ReactNode
 }
 
-export type SlatePlugin = Plugin & Rule
+export type SlatePlugin = Plugin & {
+  deserialize?: Rule['deserialize']
+  serialize?: (obj: any, children: string, key: number) => React.ReactNode
+}
 
 export interface SlatePluginState {
   editorState: Value

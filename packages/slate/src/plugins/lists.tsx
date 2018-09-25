@@ -177,7 +177,7 @@ export const createListsPlugin = ({
       }
     },
 
-    serialize(obj, children) {
+    serialize(obj, children, key) {
       const node = obj as Block
 
       if (
@@ -188,7 +188,11 @@ export const createListsPlugin = ({
           listItemNode
         ])
       ) {
-        return <RenderComponent node={node}>{children}</RenderComponent>
+        return (
+          <RenderComponent key={key} node={node}>
+            {children}
+          </RenderComponent>
+        )
       }
 
       return undefined

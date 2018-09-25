@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-plugin-slate",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "UNLICENSED",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
@@ -11,6 +11,7 @@
     "tsconfig.json"
   ],
   "scripts": {
+    "prebuild": "rimraf lib",
     "build": "npm-run-all build:*",
     "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
     "build:types": "tsc --emitDeclarationOnly",
@@ -40,7 +41,8 @@
     "@types/parse5": "^5.0.0",
     "@types/slate": "^0.40.0",
     "@types/slate-html-serializer": "^0.6.2",
-    "@types/slate-react": "^0.18.0"
+    "@types/slate-react": "^0.18.0",
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "@splish-me/editor-ui": "^0.0.0",

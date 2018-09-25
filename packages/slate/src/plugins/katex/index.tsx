@@ -215,7 +215,7 @@ export const createKatexPlugin = ({
       }
     },
 
-    serialize(obj, children) {
+    serialize(obj, children, key) {
       const block = obj as Block
       const inline = obj as Inline
 
@@ -223,7 +223,11 @@ export const createKatexPlugin = ({
         (block.object === 'block' && block.type === katexBlockNode) ||
         (inline.object === 'inline' && inline.type === katexInlineNode)
       ) {
-        return <RenderComponent node={obj}>{children}</RenderComponent>
+        return (
+          <RenderComponent key={key} node={obj}>
+            {children}
+          </RenderComponent>
+        )
       }
 
       return undefined

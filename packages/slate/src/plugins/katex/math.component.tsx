@@ -64,7 +64,12 @@ const createMathComponent = (Component, { displayMode }) => {
 }
 
 const IBlockMath = ({ html }: { html: string }) => {
-  return <div dangerouslySetInnerHTML={{ __html: html }} />
+  return (
+    <span
+      style={{ display: 'block' }}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  )
 }
 
 const BlockMath = createMathComponent(IBlockMath, { displayMode: true })
@@ -100,11 +105,11 @@ const handleError = (formula, error, inline, oldErrorPosition) => {
         oldErrorPosition={error.position}
       />
       <span style={errorStyle}>{afterError}</span>
-      <div style={errorStyle}>
+      <span style={{ ...errorStyle, display: 'block' }}>
         <b>
           {error.name}: {error.message}
         </b>
-      </div>
+      </span>
     </span>
   )
 }

@@ -174,11 +174,15 @@ export const createLinkPlugin = ({
       return undefined
     },
 
-    serialize(obj, children) {
+    serialize(obj, children, key) {
       const block = obj as Inline
 
       if (block.object === 'inline' && block.type === linkNode) {
-        return <RenderComponent node={obj}>{children}</RenderComponent>
+        return (
+          <RenderComponent key={key} node={obj}>
+            {children}
+          </RenderComponent>
+        )
       }
 
       return undefined

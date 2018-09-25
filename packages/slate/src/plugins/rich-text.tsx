@@ -110,14 +110,18 @@ export const createRichTextPlugin = ({
       }
     },
 
-    serialize(obj, children) {
+    serialize(obj, children, key) {
       const mark = obj as Mark
 
       if (
         mark.object === 'mark' &&
         R.contains(mark.type, [strongMark, emphasizeMark, underlineMark])
       ) {
-        return <RenderComponent mark={mark}>{children}</RenderComponent>
+        return (
+          <RenderComponent key={key} mark={mark}>
+            {children}
+          </RenderComponent>
+        )
       }
 
       return undefined
