@@ -1,14 +1,14 @@
+import { faInfinity } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Editable,
   EditableIdentifier,
   createEditableIdentifier
-} from '@splish-me/editor-core/lib/editable.component'
+} from '@splish-me/editor-core/editable.component'
+import { renderIntoSidebar } from '@splish-me/editor-ui/plugin-sidebar.component'
 import * as React from 'react'
 
 import { mockContentPlugin } from './mock-content.plugin'
-import { faInfinity } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { renderIntoSidebar } from '@splish-me/editor-ui/src/plugin-sidebar.component'
 
 interface MockWrapperProps {
   state: {

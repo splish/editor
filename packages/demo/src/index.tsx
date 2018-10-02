@@ -1,19 +1,19 @@
-import { Editor } from '@splish-me/editor-core/lib/editor.component'
-import { createEditableIdentifier } from '@splish-me/editor-core/lib/editable.component'
-import { ModeToolbar } from '@splish-me/editor-ui/lib/mode-toolbar.component'
-import { AddSidebar } from '@splish-me/editor-ui/lib/add-sidebar.component'
-import { Sidebar } from '@splish-me/editor-ui/lib/sidebar.component'
+import { Editor } from '@splish-me/editor-core/editor.component'
+import { createEditableIdentifier } from '@splish-me/editor-core/editable.component'
+import { ModeToolbar } from '@splish-me/editor-ui/mode-toolbar.component'
+import { AddSidebar } from '@splish-me/editor-ui/add-sidebar.component'
+import { Sidebar } from '@splish-me/editor-ui/sidebar.component'
 import * as React from 'react'
 
-import { Editable } from '@splish-me/editor-core/lib/editable.component'
+import { Editable } from '@splish-me/editor-core/editable.component'
 
 // FIXME:
 import 'ory-editor-core/lib/index.css'
 import {
   EditorConsumer,
   EditorHelpersConsumer
-} from '@splish-me/editor-core/lib/contexts'
-import { PluginSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
+} from '@splish-me/editor-core/contexts'
+import { PluginSidebar } from '@splish-me/editor-ui/plugin-sidebar.component'
 import { injectGlobal, css } from 'emotion'
 
 injectGlobal`

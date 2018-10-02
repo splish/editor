@@ -11,13 +11,17 @@
     "tsconfig.json"
   ],
   "scripts": {
+    "prebuild": "rimraf lib",
     "build": "npm-run-all build:*",
-    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
+    "build:javascript": "NODE_ENV=production babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
     "build:types": "tsc --emitDeclarationOnly",
     "ci": "npm-run-all ci:*",
     "ci:types": "tsc --noEmit"
   },
   "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^2.6.2"
+  },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.0.0",

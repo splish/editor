@@ -21,10 +21,10 @@
 import * as React from 'react'
 import Display from '../Display'
 
-import { renderIntoSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
-import Textfield from '@splish-me/editor-ui/lib/sidebar-elements/textfield'
-import Textarea from '@splish-me/editor-ui/lib/sidebar-elements/textarea'
-import Checkbox from '@splish-me/editor-ui/lib/sidebar-elements/checkbox'
+import { renderIntoSidebar } from '@splish-me/editor-ui/plugin-sidebar.component'
+import Textfield from '@splish-me/editor-ui/sidebar-elements/textfield'
+import Textarea from '@splish-me/editor-ui/sidebar-elements/textarea'
+import Checkbox from '@splish-me/editor-ui/sidebar-elements/checkbox'
 
 const handleChange = (onChange: Function) => (e: Event) => {
   const target = e.target

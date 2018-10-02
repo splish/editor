@@ -6,6 +6,7 @@ import {
 } from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
+import { DragDropContext } from 'react-beautiful-dnd'
 import { Provider } from 'react-redux'
 import { Store, Action, Dispatch } from 'redux'
 
@@ -162,25 +163,27 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     return (
       <Provider store={this.editor.store}>
         <this.DragDropContext>
-          <EditorProvider
-            value={{
-              editor: this.editor,
-              changeMode: this.changeMode,
-              currentMode: this.state.mode
-            }}
-          >
-            <EditorHelpersProvider
+          <DragDropContext>
+            <EditorProvider
               value={{
-                undo: this.undo,
-                redo: this.redo,
-                serializeState: this.serializeState
+                editor: this.editor,
+                changeMode: this.changeMode,
+                currentMode: this.state.mode
               }}
             >
-              <EditableProvider value={this.Editable}>
-                {this.props.children}
-              </EditableProvider>
-            </EditorHelpersProvider>
-          </EditorProvider>
+              <EditorHelpersProvider
+                value={{
+                  undo: this.undo,
+                  redo: this.redo,
+                  serializeState: this.serializeState
+                }}
+              >
+                <EditableProvider value={this.Editable}>
+                  {this.props.children}
+                </EditableProvider>
+              </EditorHelpersProvider>
+            </EditorProvider>
+          </DragDropContext>
         </this.DragDropContext>
       </Provider>
     )

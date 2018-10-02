@@ -1,4 +1,4 @@
-import { HtmlRenderer } from '@splish-me/editor-core/src/html-renderer.component'
+import { HtmlRenderer } from '@splish-me/editor-core/html-renderer.component'
 import { createSlatePlugin } from '@splish-me/editor-plugin-slate/src'
 import { defaultPlugins } from '@splish-me/editor-plugin-slate/src/default-plugins'
 import { defaultNode } from '@splish-me/editor-plugin-slate/src/default-node'
@@ -12,7 +12,7 @@ import {
 import { setParagraph } from '@splish-me/editor-plugin-slate/src/plugins/paragraph'
 import ButtonGroup, {
   Button
-} from '@splish-me/editor-ui/src/sidebar-elements/button'
+} from '@splish-me/editor-ui/sidebar-elements/button'
 import { storiesOf } from '@storybook/react'
 import * as R from 'ramda'
 import * as React from 'react'
@@ -77,44 +77,9 @@ storiesOf('Demo', module)
     />
   ))
   .add('Slate', () => {
-    // const state = JSON.parse(
-    //   '{"id":"1e6f63c0-9a5c-4ca8-afb4-461308a6b755","cells":[{"id":"ee2b8230-07b9-43d1-9f45-ef604e3e6fdc","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.5"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/h1","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Title","marks":[]}]}]},{"object":"block","type":"@splish-me/ul","data":{},"nodes":[{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"A list","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"is nice","marks":[]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"with some ","marks":[]},{"object":"leaf","text":"formatting ","marks":[{"object":"mark","type":"@splish-me/strong","data":{}}]},{"object":"leaf","text":"and ","marks":[]},{"object":"leaf","text":"underlining","marks":[{"object":"mark","type":"@splish-me/u","data":{}}]},{"object":"leaf","text":" and ","marks":[]},{"object":"leaf","text":"code","marks":[{"object":"mark","type":"@splish-me/code","data":{}}]}]}]},{"object":"block","type":"@splish-me/li","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Also some inline ","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"\\\\sum x_i = 5","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"or block ","marks":[]}]},{"object":"inline","type":"@splish-me/a","data":{"href":"google.de"},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"formula","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":":","marks":[]}]}]},{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]},{"object":"inline","type":"@splish-me/katex-inline","data":{"formula":"qw3eqweew","inline":true},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]},{"object":"text","leaves":[{"object":"leaf","text":"","marks":[]}]}]}]}}}}}]}'
-    // )
-    const state = {
-      id: 'foo',
-      cells: [
-        {
-          id: 'bar',
-          rows: [
-            {
-              cells: [
-                {
-                  size: 12,
-                  rows: [
-                    {
-                      cells: [
-                        {
-                          content: {
-                            plugin: {
-                              name: '@splish-me/slate'
-                            },
-                            state: {
-                              importFromHtml:
-                                '<p>Aufgrund der <a href="/1925">Kongruenzsätze</a> reicht es für die eindeutige Konstruktion eines Dreiecks aus, wenn man nur <strong>3 Eigenschaften</strong> (also <em>Längen der Seite</em> oder <em>Größe der Winkel</em>) des Dreiecks kennt.</p>\n<p>Ein Dreieck ist eindeutig konstruierbar, wenn man</p>\n<ul>\n<li><p>die Längen aller 3 Seiten (SSS-Satz) oder</p></li>\n<li><p>die Länge zweier Seiten und die Größe des von Ihnen eingeschlossenen Winkels (SWS-Satz) oder</p></li>\n<li><p>die Länge einer Seite und die Größe der anliegenden Winkel (WSW-Satz) oder</p></li>\n<li><p>die Längen zweier Seiten und die Größe des der längeren der beiden Seiten gegenüberliegenden Winkels (SsW-Satz)</p></li>\n</ul>\n<p>kennt.</p>'
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-
+    const state = JSON.parse(
+      '{"id":"51d2c74a-419e-447b-9210-248838ef7db8","cells":[{"id":"5bcc85bc-77fa-4c1c-98e3-f920699e6d14","inline":null,"size":12,"rows":[{"id":"4fda5f46-6770-4000-979f-f0406c19d56b","cells":[{"id":"383c8974-8806-478c-8700-e25e4d011612","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}}]},{"id":"89e156a7-7b20-4a9f-89e8-21da01c0e92a","cells":[{"id":"b10a76ba-d50f-462b-9333-f427cf7c241b","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}},{"id":"92fa829c-02e1-49e7-a595-ae1b36fb3cf5","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}}]},{"id":"3dd3e07b-d60b-4943-aa2c-92b2ef1c5392","cells":[{"id":"d097e7f0-7cd1-447d-a70e-936f5731f203","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}}]},{"id":"0db7b180-cb6e-4946-9d21-6b1c1bf111a4","cells":[{"id":"9df37ed5-f505-43f5-9ad6-cd24e6c3b25d","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Col1","marks":[]}]}]}]}}}}},{"id":"191f8481-5cb2-4459-ae83-9ba2c816ad06","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Col2","marks":[]}]}]}]}}}}}]}]}]}'
+    )
     class Component extends React.Component<RenderAttributes> {
       public render() {
         // FIXME: move to parent
@@ -244,6 +209,7 @@ storiesOf('Demo', module)
     return (
       <React.Fragment>
         <EditableStory
+          mode="layout"
           initialState={state}
           defaultPlugin={slatePlugin}
           plugins={[slatePlugin]}
@@ -266,38 +232,44 @@ storiesOf('Demo', module)
               plugin: { name: '@splish-me/mock-wrapper', version: '0.0.0' },
               state: {
                 state1: {
-                  id: '6d4b9324-5988-47d6-b3ac-931075a916dd',
-                  cells: [
-                    {
-                      id: '16fd5d95-9157-42f2-8c15-ce60ba3d099c',
-                      inline: null,
-                      size: 12,
-                      content: {
-                        plugin: {
-                          name: '@splish-me/mock-content',
-                          version: '0.0.0'
-                        },
-                        state: { value: '' }
+                  type: '@splish-me/editor-core/editable',
+                  state: {
+                    id: '6d4b9324-5988-47d6-b3ac-931075a916dd',
+                    cells: [
+                      {
+                        id: '16fd5d95-9157-42f2-8c15-ce60ba3d099c',
+                        inline: null,
+                        size: 12,
+                        content: {
+                          plugin: {
+                            name: '@splish-me/mock-content',
+                            version: '0.0.0'
+                          },
+                          state: { value: '' }
+                        }
                       }
-                    }
-                  ]
+                    ]
+                  }
                 },
                 state2: {
-                  id: 'a15053b0-0384-412d-857a-f082cbf359d3',
-                  cells: [
-                    {
-                      id: '7ed98861-0b85-4cb3-b389-1b3e508ddbf9',
-                      inline: null,
-                      size: 12,
-                      content: {
-                        plugin: {
-                          name: '@splish-me/mock-content',
-                          version: '0.0.0'
-                        },
-                        state: { value: '' }
+                  type: '@splish-me/editor-core/editable',
+                  state: {
+                    id: 'a15053b0-0384-412d-857a-f082cbf359d3',
+                    cells: [
+                      {
+                        id: '7ed98861-0b85-4cb3-b389-1b3e508ddbf9',
+                        inline: null,
+                        size: 12,
+                        content: {
+                          plugin: {
+                            name: '@splish-me/mock-content',
+                            version: '0.0.0'
+                          },
+                          state: { value: '' }
+                        }
                       }
-                    }
-                  ]
+                    ]
+                  }
                 }
               }
             }
@@ -310,38 +282,44 @@ storiesOf('Demo', module)
               plugin: { name: '@splish-me/mock-wrapper', version: '0.0.0' },
               state: {
                 state1: {
-                  id: '5c746d92-5b60-4692-a389-02887dc143bd',
-                  cells: [
-                    {
-                      id: '91e53d09-d230-4e90-beae-6b9c948e248f',
-                      inline: null,
-                      size: 12,
-                      content: {
-                        plugin: {
-                          name: '@splish-me/mock-content',
-                          version: '0.0.0'
-                        },
-                        state: { value: '' }
+                  type: '@splish-me/editor-core/editable',
+                  state: {
+                    id: '5c746d92-5b60-4692-a389-02887dc143bd',
+                    cells: [
+                      {
+                        id: '91e53d09-d230-4e90-beae-6b9c948e248f',
+                        inline: null,
+                        size: 12,
+                        content: {
+                          plugin: {
+                            name: '@splish-me/mock-content',
+                            version: '0.0.0'
+                          },
+                          state: { value: '' }
+                        }
                       }
-                    }
-                  ]
+                    ]
+                  }
                 },
                 state2: {
-                  id: 'af16b23a-585b-4321-9c54-119aeb56894b',
-                  cells: [
-                    {
-                      id: '56ccd64b-7616-4f3f-baff-a58d85f2fe48',
-                      inline: null,
-                      size: 12,
-                      content: {
-                        plugin: {
-                          name: '@splish-me/mock-content',
-                          version: '0.0.0'
-                        },
-                        state: { value: '' }
+                  type: '@splish-me/editor-core/editable',
+                  state: {
+                    id: 'af16b23a-585b-4321-9c54-119aeb56894b',
+                    cells: [
+                      {
+                        id: '56ccd64b-7616-4f3f-baff-a58d85f2fe48',
+                        inline: null,
+                        size: 12,
+                        content: {
+                          plugin: {
+                            name: '@splish-me/mock-content',
+                            version: '0.0.0'
+                          },
+                          state: { value: '' }
+                        }
                       }
-                    }
-                  ]
+                    ]
+                  }
                 }
               }
             }

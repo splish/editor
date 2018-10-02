@@ -11,8 +11,9 @@
     "tsconfig.json"
   ],
   "scripts": {
+    "prebuild": "rimraf lib",
     "build": "npm-run-all build:*",
-    "build:javascript": "babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
+    "build:javascript": "NODE_ENV=production babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
     "build:types": "tsc --emitDeclarationOnly",
     "ci": "npm-run-all ci:*",
     "ci:types": "tsc --noEmit"
@@ -24,6 +25,9 @@
     "emotion": "^9.2.8",
     "react-autosuggest": "^9.4.0",
     "react-emotion": "^9.2.8"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.2"
   },
   "peerDependencies": {
     "@splish-me/editor-core": "^0.0.1",

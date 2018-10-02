@@ -1,4 +1,4 @@
-import { EditorConsumer } from '@splish-me/editor-core/lib/contexts'
+import { EditorConsumer } from '@splish-me/editor-core/contexts'
 import { css } from 'emotion'
 import * as R from 'ramda'
 import * as React from 'react'

@@ -1,4 +1,4 @@
-import { Sidebar } from '@splish-me/editor-ui/lib/sidebar.component'
+import { Sidebar } from '@splish-me/editor-ui/sidebar.component'
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 
