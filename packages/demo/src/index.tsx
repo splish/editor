@@ -3,6 +3,7 @@ import { createEditableIdentifier } from '@splish-me/editor-core/editable.compon
 import { ModeToolbar } from '@splish-me/editor-ui/mode-toolbar.component'
 import { AddSidebar } from '@splish-me/editor-ui/add-sidebar.component'
 import { Sidebar } from '@splish-me/editor-ui/sidebar.component'
+import { Searchbar } from '@splish-me/editor-ui/searchbar/searchbar'
 import * as React from 'react'
 
 import { Editable } from '@splish-me/editor-core/editable.component'
@@ -53,8 +54,13 @@ export class EditableStory extends React.Component<EditableProps> {
         <Editor {...editorProps}>
           <Editable initialState={initialState} id={rootId} />
           <EditorConsumer>
-            {({ currentMode }) => (
+            {({ editor, currentMode }) => (
               <React.Fragment>
+                <Searchbar
+                  active
+                  suggestions={['insert right of']}
+                  editor={editor}
+                />
                 {currentMode === 'preview' ? null : (
                   <EditorHelpersConsumer>
                     {({ undo, redo, serializeState }) => (

@@ -1,137 +1,18 @@
-import { EditorConsumer } from '@splish-me/editor-core/contexts'
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { InnerSearchbar } from '@splish-me/editor-ui/searchbar/inner-searchbar'
 import { insertCellRightOf } from '@splish-me/ory-editor-core/actions/cell/insert'
 import { searchNodeEverywhere } from '@splish-me/ory-editor-core/selector/editable'
 import { focus } from '@splish-me/ory-editor-core/selector/focus'
-import { css, cx } from 'emotion'
-import * as React from 'react'
-import * as R from 'ramda'
-import Autosuggest from 'react-autosuggest'
-import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import * as R from 'ramda'
 
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-const getSuggestionValue = suggestion => suggestion.name
-
-// Use your imagination to render suggestions.
-const renderSuggestion = suggestion => <div>{suggestion.name}</div>
-
-interface InnerSearchbarProps {
+interface SearchbarProps {
   editor: any
-  focusedCell: any
-  insertCellRightOf: () => void
   active: boolean
-}
-class InnerSearchbar extends React.Component<InnerSearchbarProps> {
-  constructor(p) {
-    super(p)
-
-    // Autosuggest is a controlled component.
-    // This means that you need to provide an input value
-    // and an onChange handler that updates this value (see below).
-    // Suggestions also need to be provided to the Autosuggest,
-    // and they are initially empty because the Autosuggest is closed.
-    this.state = {
-      value: '',
-
-      suggestions: this.getSuggestions('')
-    }
-  }
-
-  onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    })
-  }
-
-  // Autosuggest will call this function every time you need to update suggestions.
-  // You already implemented this logic above, so just use it.
-  onSuggestionsFetchRequested = ({ value }) => {
-    this.setState({
-      suggestions: this.getSuggestions(value)
-    })
-  }
-
-  // Autosuggest will call this function every time you need to clear suggestions.
-  onSuggestionsClearRequested = () => {
-    this.setState({
-      suggestions: this.getSuggestions('')
-    })
-  }
-
-  generateSuggestions = (): Array<{ name: string; createNode: () => any }> => {
-    const plugins = this.props.editor.plugins.plugins.content.filter(
-      plugin => plugin.name !== 'ory/editor/core/default'
-    )
-
-    const newSuggestions = R.map(plugin => {
-      return {
-        name: plugin.text,
-        createNode() {
-          return {
-            content: {
-              plugin,
-              state: plugin.createInitialState()
-            }
-          }
-        }
-      }
-    }, plugins)
-    return newSuggestions
-  }
-  getSuggestions = value => {
-    const inputValue = value.trim().toLowerCase()
-    const inputLength = inputValue.length
-    return this.generateSuggestions().filter(item => {
-      return item.name.toLowerCase().slice(0, inputLength) === inputValue
-    })
-  }
-
-  onSuggestionSelected = (event, { suggestion }) => {
-    this.props.insertCellRightOf(
-      suggestion.createNode(),
-      this.props.focusedCell
-    )
-  }
-
-  render() {
-    const { editor, active } = this.props
-    const { value, suggestions } = this.state
-
-    // Autosuggest will pass through all these props to the input.
-    const inputProps = {
-      placeholder: 'Type a programming language',
-      value: value,
-      onChange: this.onChange
-    }
-    if (!active) return null
-    // Finally, render it!
-    return (
-      <div
-        className={cx(
-          css({
-            marginLeft: '30%',
-            zIndex: 1000,
-            position: 'absolute',
-            backgroundColor: '#333333'
-          }),
-          'ory-prevent-blur'
-        )}
-      >
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          onSuggestionSelected={this.onSuggestionSelected}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-          alwaysRenderSuggestions
-        />
-      </div>
-    )
-  }
+  suggestions: string[]
+  focusedCell: any
+  insertCellRightOf: any
 }
 const mapStateToProps = (state: any) => {
   const id = focus(state)
@@ -150,21 +31,124 @@ const mapDispatchToProps = dispatch =>
     dispatch
   )
 
+const getPluginSuggestionValue = suggestion => suggestion.name
+const renderPluginSuggestion = suggestion => <div>{suggestion.name}</div>
+const renderStringSuggestion = suggestion => <div>{suggestion}</div>
 export const Searchbar = connect(
   mapStateToProps,
   mapDispatchToProps
 )(
-  class Searchbar extends React.Component {
+  class Searchbar extends React.Component<SearchbarProps> {
+    state = { secondStep: false, placeholder: 'searchbar', value: '' }
     render() {
-      return (
-        <EditorConsumer>
-          {({ editor }) => {
-            const plugins = editor.plugins.plugins.content
-
-            return <InnerSearchbar {...this.props} editor={editor} />
-          }}
-        </EditorConsumer>
+      return this.state.secondStep ? (
+        <InnerSearchbar
+          suggestions={this.getPluginSuggestions('')}
+          onSuggestionsFetchRequested={this.onPluginSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onPluginSuggestionsClearRequested}
+          onSuggestionSelected={this.onPluginSuggestionSelected}
+          getSuggestionValue={getPluginSuggestionValue}
+          renderSuggestion={renderPluginSuggestion}
+          value={this.state.value}
+          onChange={this.onChange}
+          active
+        >
+          {console.log('second step')}
+        </InnerSearchbar>
+      ) : (
+        <InnerSearchbar
+          suggestions={this.getStringSuggestions('')}
+          onSuggestionsFetchRequested={this.onStringSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onStringSuggestionsClearRequested}
+          onSuggestionSelected={this.onStringSuggestionSelected}
+          getSuggestionValue={suggestion => suggestion}
+          renderSuggestion={renderStringSuggestion}
+          value={this.state.value}
+          onChange={this.onChange}
+          active
+        >
+          {console.log('first step')}
+        </InnerSearchbar>
       )
+    }
+    getPluginSuggestions = (value: string) => {
+      const inputValue = value.trim().toLowerCase()
+      const inputLength = inputValue.length
+      return this.generatePluginSuggestions().filter(item => {
+        return item.name.toLowerCase().slice(0, inputLength) === inputValue
+      })
+    }
+    generatePluginSuggestions = (): Array<{
+      name: string
+      createNode: () => any
+    }> => {
+      const plugins = this.props.editor.plugins.plugins.content.filter(
+        plugin => plugin.name !== 'ory/editor/core/default'
+      )
+
+      const newSuggestions = R.map(plugin => {
+        return {
+          name: plugin.text,
+          createNode() {
+            return {
+              content: {
+                plugin,
+                state: plugin.createInitialState()
+              }
+            }
+          }
+        }
+      }, plugins)
+      return newSuggestions
+    }
+    getStringSuggestions = (value: string) => {
+      const inputValue = value.trim().toLowerCase()
+      const inputLength = inputValue.length
+      return this.props.suggestions.filter((item: string) => {
+        return item.toLowerCase().slice(0, inputLength) === inputValue
+      })
+    }
+    onStringSuggestionsFetchRequested = ({ value }) => {
+      this.setState({
+        suggestions: this.getStringSuggestions(value)
+      })
+    }
+    onPluginSuggestionsFetchRequested = ({ value }) => {
+      this.setState({
+        suggestions: this.getPluginSuggestions(value)
+      })
+    }
+    onStringSuggestionsClearRequested = () => {
+      this.setState({
+        suggestions: this.getStringSuggestions('')
+      })
+    }
+    onPluginSuggestionsClearRequested = () => {
+      this.setState({
+        suggestions: this.getPluginSuggestions('')
+      })
+    }
+    onStringSuggestionSelected = (event, { suggestion }) => {
+      this.setState({
+        secondStep: true,
+        value: ''
+      })
+    }
+    onPluginSuggestionSelected = (event, { suggestion }) => {
+      console.log(this.props.focusedCell)
+      this.props.insertCellRightOf(
+        suggestion.createNode(),
+        this.props.focusedCell
+      )
+      this.setState({
+        secondStep: false,
+        value: ''
+      })
+    }
+    onChange = (_event, { newValue }) => {
+      this.setState({
+        value: newValue
+      })
     }
   }
 )
