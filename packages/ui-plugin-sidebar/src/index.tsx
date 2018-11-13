@@ -2,7 +2,6 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { actions, selectors } from '@splish-me/ory-editor-core'
 import * as React from 'react'
-import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
 import { Action, Dispatch } from 'redux'
 
