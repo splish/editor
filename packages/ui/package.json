@@ -24,7 +24,8 @@
     "@fortawesome/react-fontawesome": "^0.1.2",
     "emotion": "^9.2.8",
     "react-autosuggest": "^9.4.0",
-    "react-emotion": "^9.2.8"
+    "react-emotion": "^9.2.8",
+    "react-select": "^2.1.1"
   },
   "devDependencies": {
     "rimraf": "^2.6.2"
