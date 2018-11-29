@@ -4,27 +4,27 @@ import { Button } from '@splish-me/editor-ui/sidebar-elements/button'
 import SidebarDropDown from '@splish-me/editor-ui/sidebar-elements/dropdown'
 
 export class MockContent extends React.Component {
-  state = { value: null }
+  state = { value: 'h1' }
   public render() {
     return (
       <React.Fragment>
         {this.props.focused
           ? renderIntoSidebar(
               <React.Fragment>
-                <Button>h1</Button>
                 <SidebarDropDown
-                  label="placeholder"
-                  value={this.state.value}
+                  value={this.props.state.value}
                   options={[
-                    { value: 'chocolate', label: 'Chocolate' },
-                    { value: 'strawberry', label: 'Strawberry' },
-                    { value: 'vanilla', label: 'Vanilla' }
+                    { value: 'h1', label: 'H1' },
+                    { value: 'h2', label: 'H2' },
+                    { value: 'bold', label: 'Bold' }
                   ]}
                   onChange={selectedValue => {
-                    this.setState({ selectedValue })
+                    this.props.onChange({ value: selectedValue })
                     console.log('selectedState:', selectedValue)
                   }}
                 />
+                <Button>h1</Button>
+
                 <Button active>h1</Button>
               </React.Fragment>
             )
