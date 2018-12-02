@@ -16,7 +16,6 @@ export interface SerializeNodeProps {
 }
 
 export interface SlatePluginOptions {
-  defaultNode: string
   plugins: Array<Plugin & Rule>
   placeholder?: React.ReactNode
 }
@@ -43,7 +42,7 @@ export const createSlatePlugin = (options: SlatePluginOptions) => {
           nodes: [
             {
               object: 'block',
-              type: options.defaultNode,
+              type: defaultNode,
               nodes: [
                 {
                   object: 'text',

@@ -49,8 +49,8 @@ import {
 } from '@splish-me/editor-plugin-slate/src/plugins/code'
 import {
   isUnorderedList,
-  createToggleUnorderedList,
-  createToggleOrderedList,
+  toggleUnorderedList,
+  toggleOrderedList,
   isOrderedList
 } from '@splish-me/editor-plugin-slate/src/plugins/lists'
 
@@ -175,7 +175,7 @@ storiesOf('Demo', module)
               <Button
                 active={isUnorderedList(value.change())}
                 onClick={() => {
-                  applyChange(createToggleUnorderedList(defaultNode))
+                  applyChange(toggleUnorderedList)
                 }}
               >
                 ul
@@ -183,7 +183,7 @@ storiesOf('Demo', module)
               <Button
                 active={isOrderedList(value.change())}
                 onClick={() => {
-                  applyChange(createToggleOrderedList(defaultNode))
+                  applyChange(toggleOrderedList)
                 }}
               >
                 ol
@@ -203,7 +203,7 @@ storiesOf('Demo', module)
       })
     ]
 
-    const slatePlugin = createSlatePlugin({ defaultNode, plugins })
+    const slatePlugin = createSlatePlugin({ plugins })
     const slateRenderPlugin = createSlateRenderPlugin({ plugins })
 
     return (

@@ -1,14 +1,21 @@
 import * as R from 'ramda'
 import * as React from 'react'
-import { Change, Block, Node, Value, BlockJSON } from 'slate'
+import { Change, Block, BlockJSON } from 'slate'
 import { RenderNodeProps } from 'slate-react'
+import createListPlugin from 'front-slate-edit-list'
 
 import { SlatePlugin, SerializeNodeProps } from '../..'
-import { List } from 'immutable'
+import { defaultNode } from '../default-node'
 
 export const unorderedListNode = '@splish-me/ul'
 export const orderedListNode = '@splish-me/ol'
 export const listItemNode = '@splish-me/li'
+
+const plugin = createListPlugin({
+  types: [orderedListNode, unorderedListNode],
+  typeItem: listItemNode,
+  typeDefault: defaultNode
+})
 
 export interface ListsPluginOptions {
   EditorComponent?: React.ComponentType<RenderNodeProps>
@@ -16,100 +23,30 @@ export interface ListsPluginOptions {
 }
 
 export const isUnorderedList = (change: Change) => {
-  const isList = change.value.blocks.some(
-    block => (block ? block.type === listItemNode : false)
-  )
-  const isActive = change.value.blocks.some(
-    block =>
-      block
-        ? !!change.value.document.getClosest(
-            block.key,
-            // @ts-ignore
-            parent => parent.type === unorderedListNode
-          )
-        : false
-  )
-
-  return isList && isActive
+  return plugin.utils.isSelectionInList(change.value, unorderedListNode)
 }
 
 export const isOrderedList = (change: Change) => {
-  const isList = change.value.blocks.some(
-    block => (block ? block.type === listItemNode : false)
-  )
-  const isActive = change.value.blocks.some(
-    block =>
-      block
-        ? !!change.value.document.getClosest(
-            block.key,
-            // @ts-ignore
-            parent => parent.type === orderedListNode
-          )
-        : false
-  )
-
-  return isList && isActive
+  return plugin.utils.isSelectionInList(change.value, orderedListNode)
 }
 
-export const createToggleUnorderedList = (defaultNode: string) => (
-  change: Change
-) => {
-  const isList = change.value.blocks.some(
-    block => (block ? block.type === listItemNode : false)
-  )
-  const isActive = change.value.blocks.some(
-    block =>
-      block
-        ? !!change.value.document.getClosest(
-            block.key,
-            parent => (parent as Block).type === unorderedListNode
-          )
-        : false
-  )
+const createToggleList = (type: unorderedListNode | orderedListNode) => (change: Change) => {
+  const isSomeList = plugin.utils.isSelectionInList(change.value)
+  const isThatList = plugin.utils.isSelectionInList(change.value, type)
 
-  if (isList && isActive) {
-    change
-      .setBlocks(defaultNode)
-      .unwrapBlock(unorderedListNode)
-      .unwrapBlock(orderedListNode)
-  } else if (isList) {
-    change.unwrapBlock(orderedListNode).wrapBlock(unorderedListNode)
-  } else {
-    change.setBlocks(listItemNode).wrapBlock(unorderedListNode)
+  if (isSomeList) {
+    change.call(plugin.changes.unwrapList)
+  }
+
+  if (!isThatList) {
+    change.call((change) => plugin.changes.wrapInList(change, type))
   }
 
   return change
 }
 
-export const createToggleOrderedList = (defaultNode: string) => (
-  change: Change
-) => {
-  const isList = change.value.blocks.some(
-    block => (block ? block.type === listItemNode : false)
-  )
-  const isActive = change.value.blocks.some(
-    block =>
-      block
-        ? !!change.value.document.getClosest(
-            block.key,
-            parent => (parent as Block).type === orderedListNode
-          )
-        : false
-  )
-
-  if (isList && isActive) {
-    change
-      .setBlocks(defaultNode)
-      .unwrapBlock(unorderedListNode)
-      .unwrapBlock(orderedListNode)
-  } else if (isList) {
-    change.unwrapBlock(unorderedListNode).wrapBlock(orderedListNode)
-  } else {
-    change.setBlocks(listItemNode).wrapBlock(orderedListNode)
-  }
-
-  return change
-}
+export const toggleUnorderedList = createToggleList(unorderedListNode)
+export const toggleOrderedList = createToggleList(orderedListNode)
 
 class DefaultEditorComponent extends React.Component<RenderNodeProps> {
   public render() {
@@ -152,6 +89,7 @@ export const createListsPlugin = ({
   RenderComponent = DefaultRendererComponent
 }: ListsPluginOptions = {}): SlatePlugin => {
   return {
+    ...plugin,
     deserialize(el, next) {
       switch (el.tagName.toLowerCase()) {
         case 'ul':
