@@ -34,7 +34,7 @@
     "slate-edit-list": "^0.12.1",
     "slate-html-serializer": "^0.7.2",
     "slate-plain-serializer": "^0.6.2",
-    "slate-react": "^0.18.5"
+    "slate-react": "^0.17.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.116",
