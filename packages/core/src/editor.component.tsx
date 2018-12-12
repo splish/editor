@@ -2,8 +2,7 @@ import {
   createDragDropContext,
   Editor as E,
   selectors
-  // @ts-ignore
-} from '@splish-me/ory-editor-core'
+} from '@splish-me/ory-editor-core/index'
 import * as R from 'ramda'
 import * as React from 'react'
 import { Provider } from 'react-redux'

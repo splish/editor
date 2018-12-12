@@ -6,7 +6,7 @@ import {
   Editor,
   selectors,
   Inner
-} from '@splish-me/ory-editor-core'
+} from '@splish-me/ory-editor-core/index'
 import * as R from 'ramda'
 import * as React from 'react'
 import * as uuid from 'uuid'

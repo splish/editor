@@ -1,5 +1,8 @@
 // @ts-ignore
-import { editableReducer, PluginService } from '@splish-me/ory-editor-core'
+import {
+  editableReducer,
+  PluginService
+} from '@splish-me/ory-editor-core/index'
 import * as R from 'ramda'
 import * as React from 'react'
 
