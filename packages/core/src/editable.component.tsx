@@ -6,7 +6,6 @@ import {
   Editor,
   selectors,
   Inner
-  // @ts-ignore
 } from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'

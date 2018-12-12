@@ -141,7 +141,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
       ]
     })
 
-    this.editor.trigger.mode[props.mode]()
+    this.editor.trigger.mode[props.mode as string]()
     this.state = { mode: props.mode }
     this.DragDropContext = createDragDropContext(this.editor.dragDropContext)
   }
@@ -150,12 +150,12 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     const { mode } = this.props
 
     if (mode !== prevProps.mode) {
-      this.editor.trigger.mode[mode]()
+      this.editor.trigger.mode[mode as string]()
     }
   }
   public changeMode = (buttonMode: String) => {
     this.setState({ mode: buttonMode })
-    this.editor.trigger.mode[buttonMode]()
+    this.editor.trigger.mode[buttonMode as string]()
   }
 
   public render() {
