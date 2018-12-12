@@ -38,6 +38,7 @@ jspm_packages/
 
 # Compiled code
 lib/
+dist/
 
 # TypeScript v1 declaration files
 typings/
@@ -74,3 +75,6 @@ typings/
 
 # Serverless directories
 .serverless
+
+# Microbundle cache
+.rts2_cache*/

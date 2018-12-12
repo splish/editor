@@ -12,8 +12,8 @@ export interface CodePluginOptions {
 }
 
 export const isCode = (change: Change) => {
-  return change.value.activeMarks.some(
-    mark => (mark ? mark.type === codeMark : false)
+  return change.value.activeMarks.some(mark =>
+    mark ? mark.type === codeMark : false
   )
 }
 

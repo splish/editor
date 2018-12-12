@@ -120,8 +120,8 @@ class DefaultRendererComponent extends React.Component<SerializeNodeProps> {
 }
 
 export const isLink = (change: Change) => {
-  return change.value.inlines.some(
-    inline => (inline ? inline.type === linkNode : false)
+  return change.value.inlines.some(inline =>
+    inline ? inline.type === linkNode : false
   )
 }
 

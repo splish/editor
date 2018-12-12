@@ -1,0 +1,39 @@
+{
+  "name": "@splish-me/editor-document",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "jest"
+  },
+  "dependencies": {
+    "io-ts": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@types/jest": "^23.0.0",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.0.0",
+    "jest": "^23.0.0",
+    "microbundle": "^0.8.0"
+  },
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(tsx?|js)$": "babel-jest"
+    },
+    "testMatch": [
+      "**/__tests__/**/*.+(ts?(x)|js)"
+    ]
+  }
+}

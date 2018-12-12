@@ -216,14 +216,13 @@ export const cells = (state: Cell[] = [], action: Object): Cell[] =>
         case CELL_INSERT_LEFT_OF:
           return state
             .filter((c: Cell) => c.id !== action.item.id)
-            .map(
-              (c: Cell) =>
-                isHoveringThis(c, action)
-                  ? [
-                      { ...action.item, id: action.ids[0], inline: null },
-                      { ...c, id: action.ids[1] }
-                    ]
-                  : [c]
+            .map((c: Cell) =>
+              isHoveringThis(c, action)
+                ? [
+                    { ...action.item, id: action.ids[0], inline: null },
+                    { ...c, id: action.ids[1] }
+                  ]
+                : [c]
             )
             .reduce(flatten, [])
             .map(inner(cell, action))
@@ -231,14 +230,13 @@ export const cells = (state: Cell[] = [], action: Object): Cell[] =>
         case CELL_INSERT_RIGHT_OF:
           return state
             .filter((c: Cell) => c.id !== action.item.id)
-            .map(
-              (c: Cell) =>
-                isHoveringThis(c, action)
-                  ? [
-                      { ...c, id: action.ids[0] },
-                      { ...action.item, id: action.ids[1], inline: null }
-                    ]
-                  : [c]
+            .map((c: Cell) =>
+              isHoveringThis(c, action)
+                ? [
+                    { ...c, id: action.ids[0] },
+                    { ...action.item, id: action.ids[1], inline: null }
+                  ]
+                : [c]
             )
             .reduce(flatten, [])
             .map(inner(cell, action))
@@ -360,45 +358,43 @@ export const rows = (state: Row[] = [], action: Object): Row[] =>
         switch (action.type) {
           case CELL_INSERT_ABOVE:
             return state
-              .map(
-                (r: Row) =>
-                  isHoveringThis(r, action)
-                    ? [
-                        {
-                          ...createRow(),
-                          cells: [
-                            { ...action.item, id: action.ids[1], inline: null }
-                          ],
-                          id: action.ids[0]
-                        },
-                        {
-                          ...r,
-                          id: action.ids[2]
-                        }
-                      ]
-                    : [r]
+              .map((r: Row) =>
+                isHoveringThis(r, action)
+                  ? [
+                      {
+                        ...createRow(),
+                        cells: [
+                          { ...action.item, id: action.ids[1], inline: null }
+                        ],
+                        id: action.ids[0]
+                      },
+                      {
+                        ...r,
+                        id: action.ids[2]
+                      }
+                    ]
+                  : [r]
               )
               .reduce(flatten, [])
               .map(inner(row, action))
           case CELL_INSERT_BELOW:
             return state
-              .map(
-                (r: Row) =>
-                  isHoveringThis(r, action)
-                    ? [
-                        {
-                          ...r,
-                          id: action.ids[0]
-                        },
-                        {
-                          ...createRow(),
-                          cells: [
-                            { ...action.item, id: action.ids[2], inline: null }
-                          ],
-                          id: action.ids[1]
-                        }
-                      ]
-                    : [r]
+              .map((r: Row) =>
+                isHoveringThis(r, action)
+                  ? [
+                      {
+                        ...r,
+                        id: action.ids[0]
+                      },
+                      {
+                        ...createRow(),
+                        cells: [
+                          { ...action.item, id: action.ids[2], inline: null }
+                        ],
+                        id: action.ids[1]
+                      }
+                    ]
+                  : [r]
               )
               .reduce(flatten, [])
               .map(inner(row, action))

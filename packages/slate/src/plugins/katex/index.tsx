@@ -153,11 +153,11 @@ class DefaultRendererComponent extends React.Component<SerializeNodeProps> {
 
 export const isKatex = (change: Change) => {
   return (
-    change.value.blocks.some(
-      block => (block ? block.type === katexBlockNode : false)
+    change.value.blocks.some(block =>
+      block ? block.type === katexBlockNode : false
     ) ||
-    change.value.inlines.some(
-      inline => (inline ? inline.type === katexInlineNode : false)
+    change.value.inlines.some(inline =>
+      inline ? inline.type === katexInlineNode : false
     )
   )
 }

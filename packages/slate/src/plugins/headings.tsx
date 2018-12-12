@@ -45,8 +45,8 @@ export const createIsHeading = (level: HeadingLevel) => {
   return (change: Change) => {
     const type = createHeadingNode(level)
 
-    return change.value.blocks.some(
-      block => (block ? block.type === type : false)
+    return change.value.blocks.some(block =>
+      block ? block.type === type : false
     )
   }
 }

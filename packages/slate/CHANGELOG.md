@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
-- Use [front-slate-edit-list](https://github.com/frontapp/slate-edit-list) 
+- Use [front-slate-edit-list](https://github.com/frontapp/slate-edit-list)
 
 ### Changed
 

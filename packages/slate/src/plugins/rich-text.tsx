@@ -15,20 +15,20 @@ export interface RichTextPluginOptions {
 }
 
 export const isStrong = (change: Change) => {
-  return change.value.activeMarks.some(
-    mark => (mark ? mark.type === strongMark : false)
+  return change.value.activeMarks.some(mark =>
+    mark ? mark.type === strongMark : false
   )
 }
 
 export const isEmphasized = (change: Change) => {
-  return change.value.activeMarks.some(
-    mark => (mark ? mark.type === emphasizeMark : false)
+  return change.value.activeMarks.some(mark =>
+    mark ? mark.type === emphasizeMark : false
   )
 }
 
 export const isUnderlined = (change: Change) => {
-  return change.value.activeMarks.some(
-    mark => (mark ? mark.type === underlineMark : false)
+  return change.value.activeMarks.some(mark =>
+    mark ? mark.type === underlineMark : false
   )
 }
 

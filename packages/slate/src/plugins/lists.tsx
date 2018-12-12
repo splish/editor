@@ -30,7 +30,9 @@ export const isOrderedList = (change: Change) => {
   return plugin.utils.isSelectionInList(change.value, orderedListNode)
 }
 
-const createToggleList = (type: unorderedListNode | orderedListNode) => (change: Change) => {
+const createToggleList = (type: unorderedListNode | orderedListNode) => (
+  change: Change
+) => {
   const isSomeList = plugin.utils.isSelectionInList(change.value)
   const isThatList = plugin.utils.isSelectionInList(change.value, type)
 
@@ -39,7 +41,7 @@ const createToggleList = (type: unorderedListNode | orderedListNode) => (change:
   }
 
   if (!isThatList) {
-    change.call((change) => plugin.changes.wrapInList(change, type))
+    change.call(change => plugin.changes.wrapInList(change, type))
   }
 
   return change

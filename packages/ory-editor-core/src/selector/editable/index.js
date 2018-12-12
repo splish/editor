@@ -65,8 +65,8 @@ export const purifiedEditable = (state: Editables, props: Editable) => {
 
   return {
     ...found,
-    cells: (found.cells || []).map(
-      (c: Cell | string) => (typeof c === 'string' ? c : c.id)
+    cells: (found.cells || []).map((c: Cell | string) =>
+      typeof c === 'string' ? c : c.id
     )
   }
 }
