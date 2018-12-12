@@ -35,5 +35,8 @@
     "testMatch": [
       "**/__tests__/**/*.+(ts?(x)|js)"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
