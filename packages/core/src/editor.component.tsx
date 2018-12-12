@@ -6,7 +6,6 @@ import {
 } from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
-import { DragDropContext } from 'react-beautiful-dnd'
 import { Provider } from 'react-redux'
 import { Store, Action, Dispatch } from 'redux'
 
@@ -163,7 +162,6 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     return (
       <Provider store={this.editor.store}>
         <this.DragDropContext>
-          <DragDropContext>
             <EditorProvider
               value={{
                 editor: this.editor,
@@ -183,7 +181,6 @@ export class Editor extends React.Component<EditorProps, EditorState> {
                 </EditableProvider>
               </EditorHelpersProvider>
             </EditorProvider>
-          </DragDropContext>
         </this.DragDropContext>
       </Provider>
     )

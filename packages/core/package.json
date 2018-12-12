@@ -1,7 +1,7 @@
 {
   "name": "@splish-me/editor-core",
   "version": "0.0.4",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
   "files": [
