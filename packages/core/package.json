@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core",
-  "version": "0.0.4",
+  "version": "0.0.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
@@ -40,7 +40,7 @@
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
-    "@splish-me/ory-editor-core": "^0.0.3",
+    "@splish-me/ory-editor-core": "^0.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
