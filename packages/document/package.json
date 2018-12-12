@@ -3,6 +3,12 @@
   "version": "0.2.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
+  "files": [
+    "dist",
+    "src",
+    "babel.config.js",
+    "tsconfig.json"
+  ],
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",

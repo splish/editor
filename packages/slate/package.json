@@ -1,12 +1,12 @@
 {
   "name": "@splish-me/editor-plugin-slate",
   "version": "0.2.0",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
   "files": [
-    "./lib",
-    "./src",
+    "lib",
+    "src",
     "babel.config.js",
     "tsconfig.json"
   ],
