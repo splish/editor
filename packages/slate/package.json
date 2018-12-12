@@ -24,7 +24,6 @@
     "deep-rename-keys": "^0.2.0",
     "front-slate-edit-list": "0.12.2-1",
     "immutable": "^3.0.0",
-    "katex": "^0.10.0-rc.1",
     "parse5": "^3.0.0",
     "ramda": "^0.24.0",
     "react-portal": "^4.0.0",

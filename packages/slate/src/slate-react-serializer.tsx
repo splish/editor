@@ -20,8 +20,8 @@ import * as R from 'ramda'
 import * as React from 'react'
 
 import * as S from './slate-plugin.interface'
-import { SlatePluginSerializedState, SlatePlugin } from '.'
-import { NodeJSON, LeafJSON } from 'slate'
+import { SlatePlugin, SlatePluginSerializedState } from '.'
+import { LeafJSON, NodeJSON } from 'slate'
 
 export interface RendererProps {
   value: SlatePluginSerializedState['editorState']
@@ -44,11 +44,9 @@ export class Renderer extends React.Component<RendererProps> {
       return null
     }
 
-    const elements = (document.nodes || [])
+    return (document.nodes || [])
       .map(this.serializeNode)
       .filter(Boolean)
-
-    return elements
   }
 
   private serializeNode = (node: NodeJSON, key: number): React.ReactNode => {

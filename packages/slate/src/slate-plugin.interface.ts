@@ -16,10 +16,12 @@
  * @copyright 2018 Splish UG (haftungsbeschränkt)
  * @author Splish UG (haftungsbeschränkt)
  */
-// @ts-ignore
-import { Change } from './slate.es'
+import * as React from 'react'
 // @ts-ignore
 import { Editor } from 'slate-react'
+
+// @ts-ignore
+import { Change } from './slate.es'
 
 type SlateEventHandler = (
   event: Event,

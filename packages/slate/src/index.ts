@@ -1,4 +1,5 @@
 import { parseFragment } from 'parse5'
+import * as React from 'react'
 import { Value, ValueJSON, MarkJSON, NodeJSON } from 'slate'
 import Html, { Rule } from 'slate-html-serializer'
 import { Plugin } from 'slate-react'

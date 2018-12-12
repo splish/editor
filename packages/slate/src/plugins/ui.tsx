@@ -5,7 +5,7 @@ import { RenderAttributes } from 'slate-react'
 import { SlatePlugin } from '..'
 
 export interface UiPluginOptions {
-  // FIXME: type too unstrict
+  // FIXME: type not strict enough
   Component: React.ComponentType<RenderAttributes>
   defaultNode: string
 }
@@ -15,6 +15,7 @@ export const createUiPlugin = (options: UiPluginOptions): SlatePlugin => {
 
   return {
     renderEditor(props) {
+      // @ts-ignore FIXME
       const { focused, children } = props
 
       return (

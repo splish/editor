@@ -2,9 +2,10 @@ import * as R from 'ramda'
 import * as React from 'react'
 import { Change, Block, BlockJSON } from 'slate'
 import { RenderNodeProps } from 'slate-react'
+// @ts-ignore FIXME
 import createListPlugin from 'front-slate-edit-list'
 
-import { SlatePlugin, SerializeNodeProps } from '../..'
+import { SlatePlugin, SerializeNodeProps } from '..'
 import { defaultNode } from '../default-node'
 
 export const unorderedListNode = '@splish-me/ul'
@@ -30,7 +31,7 @@ export const isOrderedList = (change: Change) => {
   return plugin.utils.isSelectionInList(change.value, orderedListNode)
 }
 
-const createToggleList = (type: unorderedListNode | orderedListNode) => (
+const createToggleList = (type: typeof unorderedListNode | typeof orderedListNode) => (
   change: Change
 ) => {
   const isSomeList = plugin.utils.isSelectionInList(change.value)
@@ -53,6 +54,7 @@ export const toggleOrderedList = createToggleList(orderedListNode)
 class DefaultEditorComponent extends React.Component<RenderNodeProps> {
   public render() {
     const { attributes, node, children } = this.props
+    // @ts-ignore FIXME
     const block = node as Block
 
     switch (block.type) {
@@ -98,12 +100,14 @@ export const createListsPlugin = ({
           return {
             object: 'block',
             type: unorderedListNode,
+            // @ts-ignore FIXME
             nodes: next(el.childNodes.filter(node => node.nodeName !== '#text'))
           }
         case 'ol':
           return {
             object: 'block',
             type: orderedListNode,
+            // @ts-ignore FIXME
             nodes: next(el.childNodes.filter(node => node.nodeName !== '#text'))
           }
         case 'li':
@@ -129,6 +133,7 @@ export const createListsPlugin = ({
         ])
       ) {
         return (
+          // @ts-ignore FIXME
           <RenderComponent key={key} node={node}>
             {children}
           </RenderComponent>

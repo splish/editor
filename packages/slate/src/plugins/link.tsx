@@ -24,7 +24,9 @@ class DefaultEditorComponent extends React.Component<
   DefaultEditorComponentState
 > {
   public state: DefaultEditorComponentState = {
+    // @ts-ignore FIXME
     lastValue: (this.props.node as Inline).data.get('href'),
+    // @ts-ignore FIXME
     value: (this.props.node as Inline).data.get('href')
   }
 
@@ -32,6 +34,7 @@ class DefaultEditorComponent extends React.Component<
     props: RenderNodeProps,
     state: DefaultEditorComponentState
   ): DefaultEditorComponentState | null {
+    // @ts-ignore FIXME
     const newValue = (props.node as Inline).data.get('href')
 
     if (newValue === state.lastValue) {
@@ -46,8 +49,10 @@ class DefaultEditorComponent extends React.Component<
 
   private handleChange = debounce((href: string) => {
     const { editor, node } = this.props
+    // @ts-ignore FIXME
     const inline = node as Inline
 
+    // @ts-ignore FIXME
     editor.change(change => {
       change
         .setNodeByKey(inline.key, {
@@ -72,6 +77,7 @@ class DefaultEditorComponent extends React.Component<
 
   public render() {
     const { attributes, children, node, isSelected } = this.props
+    // @ts-ignore FIXME
     const inline = node as Inline
     const { value } = this.state
 
@@ -189,6 +195,7 @@ export const createLinkPlugin = ({
     },
 
     renderNode(props) {
+      // @ts-ignore FIXME
       const block = props.node as Inline
 
       if (block.object === 'inline' && block.type === linkNode) {

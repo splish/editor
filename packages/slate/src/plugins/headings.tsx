@@ -26,6 +26,7 @@ class DefaultEditorComponent extends React.Component<
     const { attributes, children, level } = this.props
     const Heading = `h${level}`
 
+    // @ts-ignore FIXME
     return <Heading {...attributes}>{children}</Heading>
   }
 }
@@ -37,6 +38,7 @@ class DefaultRenderComponent extends React.Component<
     const { children, level } = this.props
     const Heading = `h${level}`
 
+    // @ts-ignore FIXME
     return <Heading>{children}</Heading>
   }
 }
@@ -100,6 +102,7 @@ export const createHeadingsPlugin = ({
     },
 
     renderNode(props) {
+      // @ts-ignore FIXME
       const block = props.node as Block
 
       if (block.object === 'block') {

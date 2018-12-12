@@ -63,6 +63,7 @@ export const createParagraphPlugin = ({
     },
 
     renderNode(props) {
+      // @ts-ignore FIXME
       const block = props.node as Block
 
       if (block.object === 'block' && block.type === paragraphNode) {

@@ -27,9 +27,11 @@ export const createSlateEditor = (
             // If we can't find the node (e.g. because we clicked in the sidebar), ignore core plugins to avoid throwing erros
             if (!node) {
               e.preventDefault()
+              // @ts-ignore FIXME
               return change
             }
           }}
+          // @ts-ignore FIXME
           onChange={(change?: Change) => {
             if (change) {
               onChange({ editorState: change.value })
@@ -39,6 +41,7 @@ export const createSlateEditor = (
           placeholder={options.placeholder}
           plugins={options.plugins}
           readOnly={readOnly}
+          // @ts-ignore FIXME
           value={state.editorState}
           onBlur={(_e, change) => change}
           // @ts-ignore Additional props for ui plugin

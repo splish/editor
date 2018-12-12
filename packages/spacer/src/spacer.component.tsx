@@ -20,6 +20,7 @@
  */
 import { css } from 'emotion'
 import * as React from 'react'
+// @ts-ignore
 import { Resizable } from 'react-resizable'
 import { renderIntoSidebar } from '@splish-me/editor-ui/plugin-sidebar.component'
 import Textfield from '@splish-me/editor-ui/sidebar-elements/textfield'
@@ -40,7 +41,7 @@ const fire = ({
 
 const Solid = ({ height }: { height: number }) => <div style={{ height }} />
 
-const handleChange = (onChange: Function) => (e: Event) => {
+const handleChange = (onChange: SpacerProps['onChange']) => (e: React.ChangeEvent<HTMLInputElement>) => {
   const target = e.target
   if (target instanceof HTMLInputElement) {
     onChange({ height: parseInt(target.value) })
@@ -48,14 +49,26 @@ const handleChange = (onChange: Function) => (e: Event) => {
   }
 }
 
-export class Spacer extends React.Component {
+interface SpacerState {
+  height: number
+}
+
+interface SpacerProps {
+  onChange: (state: Partial<SpacerState>) => void,
+  focused?: boolean,
+  readOnly?: boolean,
+  isPreviewMode?: boolean
+  state: SpacerState
+}
+
+export class Spacer extends React.Component<SpacerProps> {
   state = {}
 
   onResize = (
-    event: Event,
+    _event: Event,
     { size }: { size: { height: number; width: number } }
   ) => {
-    const { onChange, focused } = this.props
+    const { onChange } = this.props
     const state = compute(size)
     fire({ onChange, state })
   }
@@ -97,7 +110,7 @@ export class Spacer extends React.Component {
                       label="Element height (px)"
                       placeholder="24"
                       onChange={handleChange(onChange)}
-                      value={height}
+                      value={height.toString()}
                     />
                   )
                 : null}
