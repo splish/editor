@@ -7,14 +7,12 @@
   "files": [
     "./lib",
     "./src",
-    "babel.config.js",
-    "tsconfig.json"
+    "babel.config.js"
   ],
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "npm-run-all build:*",
     "build:javascript": "NODE_ENV=production babel ./src --source-maps --out-dir ./lib --extensions .ts,.tsx,.js",
-    "build:types": "tsc --emitDeclarationOnly",
     "ci": "npm-run-all ci:*",
     "ci:types": "tsc --noEmit"
   },
