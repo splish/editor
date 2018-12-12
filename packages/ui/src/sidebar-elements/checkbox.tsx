@@ -8,7 +8,7 @@ export interface CheckboxProps {
 }
 export default class SidebarCheckbox extends React.Component<CheckboxProps> {
   public render() {
-    const { value, onChange, label, ...props } = this.props
+    const { value, onChange, label } = this.props
     return (
       <label
         className={css({
@@ -25,7 +25,7 @@ export default class SidebarCheckbox extends React.Component<CheckboxProps> {
         {label}
         <div
           onClick={() => {
-            // FIXME: this should be simpler ;)
+            // @ts-ignore FIXME: this should be simpler ;)
             onChange({ target: { checked: !value } })
           }}
           className={css({
@@ -38,9 +38,9 @@ export default class SidebarCheckbox extends React.Component<CheckboxProps> {
             display: 'inline-block',
 
             '&:after': {
-              opacity: `${value ? 1 : 0}`,
+              opacity: value ? 1 : 0,
               backgroundColor: '#CCCCCC',
-              content: `''`,
+              content: '',
               position: 'absolute',
               width: '10px',
               height: '10px'
@@ -49,8 +49,8 @@ export default class SidebarCheckbox extends React.Component<CheckboxProps> {
         >
           <div
             className={css({
-              opacity: `${value ? 1 : 0}`,
-              content: `''`,
+              opacity: value ? 1 : 0,
+              content: '',
               position: 'absolute',
               width: '8px',
               height: '5px',
@@ -58,8 +58,8 @@ export default class SidebarCheckbox extends React.Component<CheckboxProps> {
               borderTop: 'none',
               borderRight: 'none',
 
-              transform: `rotate(-45deg)`,
-              zIndex: '1000'
+              transform: 'rotate(-45deg)',
+              zIndex: 1000
             })}
           />
         </div>

@@ -1,13 +1,11 @@
 import {
   faPen,
   faArrowsAlt,
-  faPlus,
-  faExpandArrowsAlt,
   faLaptop
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { EditorConsumer } from '@splish-me/editor-core/contexts'
-import { css, injectGlobal } from 'emotion'
+import { css } from 'emotion'
 import * as R from 'ramda'
 import * as React from 'react'
 import { connect } from 'react-redux'
@@ -49,12 +47,14 @@ const ModeButton = styled('button')(
       outline: 'none'
     }
   },
-  ({ active }) => {
+  ({ active }: { active?: boolean }) => {
     if (active) {
       return {
         backgroundColor: '#18E3B3'
       }
     }
+
+    return {}
   }
 )
 
@@ -73,7 +73,7 @@ class RawModeToolbar extends React.Component {
                 flexDirection: 'column',
                 marginBottom: '46px',
                 marginRight: '50px',
-                zIndex: '10000'
+                zIndex: 10000
               })}
             >
               {R.map(mode => {
@@ -105,6 +105,7 @@ class RawModeToolbar extends React.Component {
 }
 
 export const ModeToolbar = connect(state => {
+  // @ts-ignore
   const mode = state.display.mode
   return {
     mode: mode === 'resizing' ? 'resize' : mode

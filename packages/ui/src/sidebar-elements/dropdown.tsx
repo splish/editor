@@ -1,5 +1,4 @@
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { css } from 'emotion'
 import * as React from 'react'
 
@@ -26,16 +25,18 @@ export default class SidebarDropDown extends React.Component<DropDownProps> {
       >
         <span>{label}</span>
         <select
+          // @ts-ignore FIXME: backgroundImage is the problem
           className={css({
             marginTop: '5px',
             WebkitAppearance: 'none',
             MozAppearance: 'none',
-            appearance: 'none',
             backgroundImage: faAngleDown,
             backgroundPosition: 'right',
             backgroundRepeat: 'no-repeat',
             border: 'none',
             outline: 'none',
+            appearance: 'none',
+
             borderRadius: '5px',
             padding: '2px 10px',
             color: '#333333',

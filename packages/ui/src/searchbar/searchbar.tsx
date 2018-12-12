@@ -1,31 +1,50 @@
 import { EditorConsumer } from '@splish-me/editor-core/contexts'
+// @ts-ignore
 import { insertCellRightOf } from '@splish-me/ory-editor-core/actions/cell/insert'
+// @ts-ignore
 import { searchNodeEverywhere } from '@splish-me/ory-editor-core/selector/editable'
+// @ts-ignore
 import { focus } from '@splish-me/ory-editor-core/selector/focus'
 import { css, cx } from 'emotion'
 import * as React from 'react'
 import * as R from 'ramda'
+// @ts-ignore
 import Autosuggest from 'react-autosuggest'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { Action, bindActionCreators, Dispatch } from 'redux'
+import { ChangeEvent } from 'react'
+
+type Node = unknown
+
+interface Suggestion {
+  name: string,
+  createNode: () => Node
+}
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
-const getSuggestionValue = suggestion => suggestion.name
+const getSuggestionValue = (suggestion: Suggestion) => suggestion.name
 
 // Use your imagination to render suggestions.
-const renderSuggestion = suggestion => <div>{suggestion.name}</div>
+const renderSuggestion = (suggestion: Suggestion) => <div>{suggestion.name}</div>
 
-interface InnerSearchbarProps {
-  editor: any
-  focusedCell: any
-  insertCellRightOf: () => void
+interface SearchbarProps {
+  focusedCell: string
+  insertCellRightOf: (node: Node, cellId: string) => void
   active: boolean
 }
-class InnerSearchbar extends React.Component<InnerSearchbarProps> {
-  constructor(p) {
-    super(p)
+
+type InnerSearchbarProps = SearchbarProps & { editor: any }
+
+interface InnerSearchbarState {
+  value: string,
+  suggestions: Suggestion[]
+}
+
+class InnerSearchbar extends React.Component<InnerSearchbarProps, InnerSearchbarState> {
+  constructor(props: InnerSearchbarProps) {
+    super(props)
 
     // Autosuggest is a controlled component.
     // This means that you need to provide an input value
@@ -34,12 +53,11 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps> {
     // and they are initially empty because the Autosuggest is closed.
     this.state = {
       value: '',
-
       suggestions: this.getSuggestions('')
     }
   }
 
-  onChange = (event, { newValue }) => {
+  onChange = (_event: ChangeEvent, { newValue }: { newValue: string }) => {
     this.setState({
       value: newValue
     })
@@ -47,7 +65,7 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps> {
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested = ({ value }: { value: string }) => {
     this.setState({
       suggestions: this.getSuggestions(value)
     })
@@ -60,9 +78,9 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps> {
     })
   }
 
-  generateSuggestions = (): Array<{ name: string; createNode: () => any }> => {
+  generateSuggestions = (): Array<Suggestion> => {
     const plugins = this.props.editor.plugins.plugins.content.filter(
-      plugin => plugin.name !== 'ory/editor/core/default'
+      (plugin: any) => plugin.name !== 'ory/editor/core/default'
     )
 
     const newSuggestions = R.map(plugin => {
@@ -80,7 +98,7 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps> {
     }, plugins)
     return newSuggestions
   }
-  getSuggestions = value => {
+  getSuggestions = (value: string) => {
     const inputValue = value.trim().toLowerCase()
     const inputLength = inputValue.length
     return this.generateSuggestions().filter(item => {
@@ -88,7 +106,7 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps> {
     })
   }
 
-  onSuggestionSelected = (event, { suggestion }) => {
+  onSuggestionSelected = (_event: React.ChangeEvent, { suggestion }: { suggestion: Suggestion }) => {
     this.props.insertCellRightOf(
       suggestion.createNode(),
       this.props.focusedCell
@@ -96,7 +114,7 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps> {
   }
 
   render() {
-    const { editor, active } = this.props
+    const { active } = this.props
     const { value, suggestions } = this.state
 
     // Autosuggest will pass through all these props to the input.
@@ -142,7 +160,7 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch<Action>) =>
   bindActionCreators(
     {
       insertCellRightOf
@@ -154,13 +172,11 @@ export const Searchbar = connect(
   mapStateToProps,
   mapDispatchToProps
 )(
-  class Searchbar extends React.Component {
+  class Searchbar extends React.Component<InnerSearchbarProps> {
     render() {
       return (
         <EditorConsumer>
           {({ editor }) => {
-            const plugins = editor.plugins.plugins.content
-
             return <InnerSearchbar {...this.props} editor={editor} />
           }}
         </EditorConsumer>

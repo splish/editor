@@ -2,12 +2,13 @@ import { EditorConsumer } from '@splish-me/editor-core/contexts'
 import { css } from 'emotion'
 import * as R from 'ramda'
 import * as React from 'react'
+// @ts-ignore
 import { DragSource as dragSource } from 'react-dnd'
 import classNames from 'classnames'
 
 import { styled } from './styled'
 
-class Draggable extends React.Component {
+class Draggable extends React.Component<any> {
   componentDidMount() {
     const img = new Image()
     img.onload = () => this.props.connectDragPreview(img)
@@ -28,7 +29,7 @@ class Draggable extends React.Component {
 }
 
 const source = {
-  beginDrag({ createNode, ...props }) {
+  beginDrag({ createNode, ...props }: any) {
     const node = createNode()
     return {
       node,
@@ -37,20 +38,20 @@ const source = {
     }
   },
 
-  endDrag(props, monitor) {
+  endDrag(_props: any, monitor: any) {
     const item = monitor.getItem()
 
     item.clearHover()
   }
 }
 
-const collect = (connect, monitor) => ({
+const collect = (connect: any, monitor: any) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
   connectDragPreview: connect.dragPreview()
 })
 
-const dragInstances = {}
+const dragInstances: any = {}
 
 const mapDragTypeToInstance = (dragType = 'CELL') => {
   if (!dragInstances[dragType]) {

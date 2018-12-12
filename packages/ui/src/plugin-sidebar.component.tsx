@@ -1,13 +1,16 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// @ts-ignore
 import { removeCell } from '@splish-me/ory-editor-core/actions/cell'
+// @ts-ignore
 import { searchNodeEverywhere } from '@splish-me/ory-editor-core/selector/editable'
+// @ts-ignore
 import { focus } from '@splish-me/ory-editor-core/selector/focus'
 import * as R from 'ramda'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { Action, Dispatch, bindActionCreators } from 'redux'
 
 let sidebarNode: Element | null = null
 
@@ -59,7 +62,7 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch: Dispatch<Action>)=>
   bindActionCreators(
     {
       removeCell
