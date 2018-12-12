@@ -17,7 +17,7 @@ import { ChangeEvent } from 'react'
 type Node = unknown
 
 interface Suggestion {
-  name: string,
+  name: string
   createNode: () => Node
 }
 
@@ -27,7 +27,9 @@ interface Suggestion {
 const getSuggestionValue = (suggestion: Suggestion) => suggestion.name
 
 // Use your imagination to render suggestions.
-const renderSuggestion = (suggestion: Suggestion) => <div>{suggestion.name}</div>
+const renderSuggestion = (suggestion: Suggestion) => (
+  <div>{suggestion.name}</div>
+)
 
 interface SearchbarProps {
   focusedCell: string
@@ -38,11 +40,14 @@ interface SearchbarProps {
 type InnerSearchbarProps = SearchbarProps & { editor: any }
 
 interface InnerSearchbarState {
-  value: string,
+  value: string
   suggestions: Suggestion[]
 }
 
-class InnerSearchbar extends React.Component<InnerSearchbarProps, InnerSearchbarState> {
+class InnerSearchbar extends React.Component<
+  InnerSearchbarProps,
+  InnerSearchbarState
+> {
   constructor(props: InnerSearchbarProps) {
     super(props)
 
@@ -106,7 +111,10 @@ class InnerSearchbar extends React.Component<InnerSearchbarProps, InnerSearchbar
     })
   }
 
-  onSuggestionSelected = (_event: React.ChangeEvent, { suggestion }: { suggestion: Suggestion }) => {
+  onSuggestionSelected = (
+    _event: React.ChangeEvent,
+    { suggestion }: { suggestion: Suggestion }
+  ) => {
     this.props.insertCellRightOf(
       suggestion.createNode(),
       this.props.focusedCell

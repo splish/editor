@@ -44,9 +44,7 @@ export class Renderer extends React.Component<RendererProps> {
       return null
     }
 
-    return (document.nodes || [])
-      .map(this.serializeNode)
-      .filter(Boolean)
+    return (document.nodes || []).map(this.serializeNode).filter(Boolean)
   }
 
   private serializeNode = (node: NodeJSON, key: number): React.ReactNode => {

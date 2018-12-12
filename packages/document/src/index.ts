@@ -27,12 +27,11 @@ const Cell = t.interface({
 })
 type Cell = t.TypeOf<typeof Cell>
 
-
 /* Represents a single row in a 12 column grid */
 const Row = t.interface({
-    id: Uuid,
-    cells: t.array(Cell)
-  })
+  id: Uuid,
+  cells: t.array(Cell)
+})
 type Row = t.TypeOf<typeof Row>
 
 /* Represents a (serialized) editor document */

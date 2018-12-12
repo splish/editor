@@ -1,8 +1,4 @@
-import {
-  faPen,
-  faArrowsAlt,
-  faLaptop
-} from '@fortawesome/free-solid-svg-icons'
+import { faPen, faArrowsAlt, faLaptop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { EditorConsumer } from '@splish-me/editor-core/contexts'
 import { css } from 'emotion'

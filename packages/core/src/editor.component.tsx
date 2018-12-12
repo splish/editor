@@ -162,25 +162,25 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     return (
       <Provider store={this.editor.store}>
         <this.DragDropContext>
-            <EditorProvider
+          <EditorProvider
+            value={{
+              editor: this.editor,
+              changeMode: this.changeMode,
+              currentMode: this.state.mode
+            }}
+          >
+            <EditorHelpersProvider
               value={{
-                editor: this.editor,
-                changeMode: this.changeMode,
-                currentMode: this.state.mode
+                undo: this.undo,
+                redo: this.redo,
+                serializeState: this.serializeState
               }}
             >
-              <EditorHelpersProvider
-                value={{
-                  undo: this.undo,
-                  redo: this.redo,
-                  serializeState: this.serializeState
-                }}
-              >
-                <EditableProvider value={this.Editable}>
-                  {this.props.children}
-                </EditableProvider>
-              </EditorHelpersProvider>
-            </EditorProvider>
+              <EditableProvider value={this.Editable}>
+                {this.props.children}
+              </EditableProvider>
+            </EditorHelpersProvider>
+          </EditorProvider>
         </this.DragDropContext>
       </Provider>
     )

@@ -31,9 +31,9 @@ export const isOrderedList = (change: Change) => {
   return plugin.utils.isSelectionInList(change.value, orderedListNode)
 }
 
-const createToggleList = (type: typeof unorderedListNode | typeof orderedListNode) => (
-  change: Change
-) => {
+const createToggleList = (
+  type: typeof unorderedListNode | typeof orderedListNode
+) => (change: Change) => {
   const isSomeList = plugin.utils.isSelectionInList(change.value)
   const isThatList = plugin.utils.isSelectionInList(change.value, type)
 

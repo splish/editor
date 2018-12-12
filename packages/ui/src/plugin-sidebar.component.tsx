@@ -62,7 +62,7 @@ const mapStateToProps = (state: any) => {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>)=>
+const mapDispatchToProps = (dispatch: Dispatch<Action>) =>
   bindActionCreators(
     {
       removeCell

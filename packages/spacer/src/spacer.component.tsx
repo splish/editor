@@ -41,7 +41,9 @@ const fire = ({
 
 const Solid = ({ height }: { height: number }) => <div style={{ height }} />
 
-const handleChange = (onChange: SpacerProps['onChange']) => (e: React.ChangeEvent<HTMLInputElement>) => {
+const handleChange = (onChange: SpacerProps['onChange']) => (
+  e: React.ChangeEvent<HTMLInputElement>
+) => {
   const target = e.target
   if (target instanceof HTMLInputElement) {
     onChange({ height: parseInt(target.value) })
@@ -54,9 +56,9 @@ interface SpacerState {
 }
 
 interface SpacerProps {
-  onChange: (state: Partial<SpacerState>) => void,
-  focused?: boolean,
-  readOnly?: boolean,
+  onChange: (state: Partial<SpacerState>) => void
+  focused?: boolean
+  readOnly?: boolean
   isPreviewMode?: boolean
   state: SpacerState
 }
