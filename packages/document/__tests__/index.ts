@@ -1,4 +1,4 @@
-import { Document } from '../src'
+import { Document } from '../src/v0'
 
 describe('V0', () => {
   test('one content plugin', () => {

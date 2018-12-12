@@ -1,4 +1,4 @@
-// Version 0: ory-editor >= 0.0.1 <= 0.5.0
+// Version 1: @splish-me/editor
 import * as t from 'io-ts'
 
 /* Represents a UUID Version 4 */
@@ -19,66 +19,21 @@ const Plugin = t.interface({
 })
 type Plugin = t.TypeOf<typeof Plugin>
 
-/* Represents a single row in a 12 column grid */
-interface Row {
-  id: Uuid
-  cells: Cell[]
-  hasInlineChildren: boolean
-}
-
 /* Represents a single cell of a row */
-type Cell =
-  | C
-  | C & {
-      hasInlineNeighbour: Uuid
-      inline: 'left' | 'right'
-    }
-type C = ContentCell | LayoutCell
-
-interface LayoutCell {
-  id: Uuid
-  size: number
-  layout: Plugin
-  rows: Row[]
-}
-
-const Row: t.RecursiveType<t.Type<Row>, Row> = t.recursion<Row>('Row', () => {
-  return t.interface({
-    id: Uuid,
-    cells: t.array(Cell),
-    hasInlineChildren: t.boolean
-  })
-})
-
-const ContentCell = t.interface({
+const Cell = t.interface({
   id: Uuid,
   size: t.number,
   content: Plugin
 })
-type ContentCell = t.TypeOf<typeof ContentCell>
+type Cell = t.TypeOf<typeof Cell>
 
-const LayoutCell: t.RecursiveType<t.Type<LayoutCell>, LayoutCell> = t.recursion<
-  LayoutCell
->('LayoutCell', () => {
-  return t.interface({
+
+/* Represents a single row in a 12 column grid */
+const Row = t.interface({
     id: Uuid,
-    size: t.number,
-    layout: Plugin,
-    rows: t.array(Row)
+    cells: t.array(Cell)
   })
-})
-
-const C = t.union([ContentCell, LayoutCell])
-const Cell = t.union([
-  C,
-  t.intersection([
-    C,
-    t.interface({
-      hasInlineNeighbour: Uuid,
-      inline: t.union([t.literal('left'), t.literal('right')])
-    })
-  ])
-])
+type Row = t.TypeOf<typeof Row>
 
 /* Represents a (serialized) editor document */
 export const Document = Row
