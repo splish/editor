@@ -1,18 +1,13 @@
-import { HtmlRenderer } from '@splish-me/editor-core/html-renderer.component'
-import { createSlatePlugin } from '@splish-me/editor-plugin-slate/src'
-import { defaultPlugins } from '@splish-me/editor-plugin-slate/src/default-plugins'
-import { defaultNode } from '@splish-me/editor-plugin-slate/src/default-node'
-import { createSlateRenderPlugin } from '@splish-me/editor-plugin-slate/src/index.render'
-import { createUiPlugin } from '@splish-me/editor-plugin-slate/src/plugins/ui'
-import {
-  createKatexPlugin,
-  isKatex,
-  insertKatex
-} from '@splish-me/editor-plugin-slate/src/plugins/katex'
-import { setParagraph } from '@splish-me/editor-plugin-slate/src/plugins/paragraph'
+import { HtmlRenderer } from '@splish-me/editor-core/lib/html-renderer.component'
+import { createSlatePlugin } from '@splish-me/editor-plugin-slate'
+import { defaultPlugins } from '@splish-me/editor-plugin-slate/lib/default-plugins'
+import { defaultNode } from '@splish-me/editor-plugin-slate/lib/default-node'
+import { createSlateRenderPlugin } from '@splish-me/editor-plugin-slate/lib/index.render'
+import { createUiPlugin } from '@splish-me/editor-plugin-slate/lib/plugins/ui'
+import { setParagraph } from '@splish-me/editor-plugin-slate/lib/plugins/paragraph'
 import ButtonGroup, {
   Button
-} from '@splish-me/editor-ui/sidebar-elements/button'
+} from '@splish-me/editor-ui/lib/sidebar-elements/button'
 import { storiesOf } from '@storybook/react'
 import * as R from 'ramda'
 import * as React from 'react'
@@ -42,7 +37,6 @@ import {
   wrapLink
 } from '@splish-me/editor-plugin-slate/src/plugins/link'
 
-import 'katex/dist/katex.css'
 import {
   isCode,
   toggleCode
@@ -158,18 +152,6 @@ storiesOf('Demo', module)
               >
                 Link
               </Button>
-              <Button
-                active={isKatex(value.change())}
-                onClick={() => {
-                  const active = isKatex(value.change())
-
-                  if (!active) {
-                    applyChange(insertKatex)
-                  }
-                }}
-              >
-                Katex
-              </Button>
             </ButtonGroup>
             <ButtonGroup>
               <Button
@@ -196,7 +178,6 @@ storiesOf('Demo', module)
 
     const plugins = [
       ...defaultPlugins,
-      createKatexPlugin(),
       createUiPlugin({
         defaultNode,
         Component

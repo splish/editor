@@ -1,10 +1,10 @@
 import { EditorConsumer } from '@splish-me/editor-core/lib/contexts'
 // @ts-ignore
-import { insertCellRightOf } from '@splish-me/ory-editor-core/actions/cell/insert'
+import { insertCellRightOf } from '@splish-me/ory-editor-core/lib/actions/cell/insert'
 // @ts-ignore
-import { searchNodeEverywhere } from '@splish-me/ory-editor-core/selector/editable'
+import { searchNodeEverywhere } from '@splish-me/ory-editor-core/lib/selector/editable'
 // @ts-ignore
-import { focus } from '@splish-me/ory-editor-core/selector/focus'
+import { focus } from '@splish-me/ory-editor-core/lib/selector/focus'
 import { css, cx } from 'emotion'
 import * as React from 'react'
 import * as R from 'ramda'
