@@ -1,11 +1,3 @@
-const isProduction = process.env.NODE_ENV === 'production'
-
-const createAlias = name => {
-  return {
-    [`${name}`]: `${name}/${isProduction ? 'lib' : 'src'}`
-  }
-}
-
 module.exports = () => {
   const presets = [
     [
@@ -29,17 +21,7 @@ module.exports = () => {
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-meta',
     ['@babel/plugin-proposal-class-properties', { loose: false }],
-    '@babel/plugin-proposal-json-strings',
-    [
-      'babel-plugin-module-resolver',
-      {
-        alias: {
-          ...createAlias('@splish-me/ory-editor-core'),
-          ...createAlias('@splish-me/editor-core'),
-          ...createAlias('@splish-me/editor-ui')
-        }
-      }
-    ]
+    '@babel/plugin-proposal-json-strings'
   ]
 
   return { plugins, presets }

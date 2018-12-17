@@ -34,6 +34,7 @@
     "slate-react": "^0.18.0"
   },
   "devDependencies": {
+    "@splish-me/editor-ui": "^0.2.0",
     "@types/lodash": "^4.0.0",
     "@types/parse5": "^5.0.0",
     "@types/slate": "^0.40.0",

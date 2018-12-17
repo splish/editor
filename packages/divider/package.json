@@ -19,6 +19,7 @@
     "ci:types": "tsc --noEmit"
   },
   "devDependencies": {
+    "@splish-me/editor-ui": "^0.2.0",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {

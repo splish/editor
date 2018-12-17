@@ -1,5 +1,5 @@
 // @ts-ignore
-import { Editor } from '@splish-me/ory-editor-core/index'
+import { Editor } from '@splish-me/ory-editor-core'
 import * as React from 'react'
 
 import { EditableIdentifier, EditableProps } from './editable.component'

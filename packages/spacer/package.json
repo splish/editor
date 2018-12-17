@@ -22,6 +22,7 @@
     "react-resizable": "^1.7.5"
   },
   "devDependencies": {
+    "@splish-me/editor-ui": "^0.2.0",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {

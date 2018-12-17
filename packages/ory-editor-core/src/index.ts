@@ -19,29 +19,18 @@
  * @author Splish UG (haftungsbeschränkt)
  */
 import { v4 } from 'uuid'
-// @ts-ignore
 import createDragDropContext from './components/DragDropContext'
-// @ts-ignore
 import Inner from './components/Editable/Inner'
-// @ts-ignore
 import Editable from './components/Editable'
-// @ts-ignore
 import createStore from './store'
-// @ts-ignore
 import { actions } from './actions'
-// @ts-ignore
 import { editable as editableReducer } from './reducer/editable'
-// @ts-ignore
 import { selectors } from './selector'
-// @ts-ignore
 import PluginService from './service/plugin'
-// @ts-ignore
 import pluginDefault from './service/plugin/default'
 
 import { forEach } from 'ramda'
-// @ts-ignore
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
-// @ts-ignore
 import { DragDropContext as dragDropContext } from 'react-dnd'
 
 let instance: any

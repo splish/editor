@@ -2,7 +2,7 @@
 import {
   editableReducer,
   PluginService
-} from '@splish-me/ory-editor-core/index'
+} from '@splish-me/ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
 

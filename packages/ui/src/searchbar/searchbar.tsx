@@ -1,4 +1,4 @@
-import { EditorConsumer } from '@splish-me/editor-core/contexts'
+import { EditorConsumer } from '@splish-me/editor-core/lib/contexts'
 // @ts-ignore
 import { insertCellRightOf } from '@splish-me/ory-editor-core/actions/cell/insert'
 // @ts-ignore

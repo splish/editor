@@ -1,11 +1,11 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // @ts-ignore
-import { removeCell } from '@splish-me/ory-editor-core/actions/cell'
+import { removeCell } from '@splish-me/ory-editor-core/lib/actions/cell'
 // @ts-ignore
-import { searchNodeEverywhere } from '@splish-me/ory-editor-core/selector/editable'
+import { searchNodeEverywhere } from '@splish-me/ory-editor-core/lib/selector/editable'
 // @ts-ignore
-import { focus } from '@splish-me/ory-editor-core/selector/focus'
+import { focus } from '@splish-me/ory-editor-core/lib/selector/focus'
 import * as R from 'ramda'
 import * as React from 'react'
 import { createPortal } from 'react-dom'

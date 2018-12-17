@@ -1,5 +1,5 @@
-import { renderIntoSidebar } from '@splish-me/editor-ui/plugin-sidebar.component'
-import Textfield from '@splish-me/editor-ui/sidebar-elements/textfield'
+import { renderIntoSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
+import Textfield from '@splish-me/editor-ui/lib/sidebar-elements/textfield'
 import { debounce } from 'lodash'
 import * as React from 'react'
 import { Change, Inline, Data, InlineJSON } from 'slate'
