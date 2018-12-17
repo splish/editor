@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-ui",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
@@ -27,7 +27,7 @@
     "react-emotion": "^9.2.8"
   },
   "devDependencies": {
-    "@splish-me/editor-core": "^0.2.0",
+    "@splish-me/editor-core": "^0.2.4",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {

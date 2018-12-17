@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-plugin-spacer",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "license": "LGPL-3.0-or-later",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "./lib/index.js",
@@ -22,7 +22,7 @@
     "react-resizable": "^1.7.5"
   },
   "devDependencies": {
-    "@splish-me/editor-ui": "^0.2.0",
+    "@splish-me/editor-ui": "^0.2.4",
     "rimraf": "^2.6.2"
   },
   "peerDependencies": {
