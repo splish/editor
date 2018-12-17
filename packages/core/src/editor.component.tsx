@@ -152,7 +152,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
       this.editor.trigger.mode[mode as string]()
     }
   }
-  public changeMode = (buttonMode: String) => {
+  public changeMode = (buttonMode: string) => {
     this.setState({ mode: buttonMode })
     this.editor.trigger.mode[buttonMode as string]()
   }
@@ -165,7 +165,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
             value={{
               editor: this.editor,
               changeMode: this.changeMode,
-              currentMode: this.state.mode
+              currentMode: this.state.mode as string
             }}
           >
             <EditorHelpersProvider

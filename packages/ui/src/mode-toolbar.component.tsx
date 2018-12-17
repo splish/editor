@@ -58,7 +58,13 @@ class RawModeToolbar extends React.Component {
   public render() {
     return (
       <EditorConsumer>
-        {({ currentMode, changeMode }) => {
+        {(props) => {
+          if (!props) {
+            return null
+          }
+
+          const { currentMode, changeMode } = props
+
           return (
             <div
               className={css({

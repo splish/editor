@@ -82,7 +82,13 @@ export class AddSidebar extends React.Component {
   public render() {
     return (
       <EditorConsumer>
-        {({ editor }) => {
+        {(props) => {
+          if (!props) {
+            return null
+          }
+
+          const { editor } = props
+
           const plugins = editor.plugins.plugins.content
           return (
             <React.Fragment>

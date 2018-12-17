@@ -7,7 +7,11 @@ import { EditableIdentifier, EditableProps } from './editable.component'
 export const {
   Provider: EditorProvider,
   Consumer: EditorConsumer
-} = React.createContext<Editor>(undefined)
+} = React.createContext<{
+  editor: Editor,
+  changeMode: (mode: string) => void,
+  currentMode: string
+} | undefined>(undefined)
 
 export const {
   Provider: EditorHelpersProvider,

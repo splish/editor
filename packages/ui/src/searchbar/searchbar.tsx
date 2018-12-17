@@ -184,7 +184,13 @@ export const Searchbar = connect(
     render() {
       return (
         <EditorConsumer>
-          {({ editor }) => {
+          {(props) => {
+            if (!props) {
+              return null
+            }
+
+            const { editor } = props
+
             return <InnerSearchbar {...this.props} editor={editor} />
           }}
         </EditorConsumer>

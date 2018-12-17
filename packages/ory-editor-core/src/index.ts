@@ -19,21 +19,32 @@
  * @author Splish UG (haftungsbeschränkt)
  */
 import { v4 } from 'uuid'
+// @ts-ignore
 import createDragDropContext from './components/DragDropContext'
+// @ts-ignore
 import Inner from './components/Editable/Inner'
+// @ts-ignore
 import Editable from './components/Editable'
+// @ts-ignore
 import createStore from './store'
+// @ts-ignore
 import { actions } from './actions'
+// @ts-ignore
 import { editable as editableReducer } from './reducer/editable'
+// @ts-ignore
 import { selectors } from './selector'
+// @ts-ignore
 import PluginService from './service/plugin'
+// @ts-ignore
 import pluginDefault from './service/plugin/default'
 
 import { forEach } from 'ramda'
+// @ts-ignore
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
+// @ts-ignore
 import { DragDropContext as dragDropContext } from 'react-dnd'
 
-let instance
+let instance: any
 
 const initialState = () => ({
   editables: {
@@ -43,12 +54,12 @@ const initialState = () => ({
   }
 })
 
-const nativeTypes = editor =>
+const nativeTypes = (editor: Editor) =>
   editor.plugins.hasNativePlugin()
     ? [NativeTypes.URL, NativeTypes.FILE, NativeTypes.TEXT]
     : []
 
-const update = editor => editable => {
+const update = (editor: Editor) => (editable: any) => {
   const state = editor.plugins.unserialize(editable)
   actions(editor.store.dispatch).editable.update({
     ...state,
@@ -68,12 +79,12 @@ const dndBackend = HTML5Backend
  * Editor is the core interface for dealing with the editor.
  */
 class Editor {
-  store
-  plugins
-  middleware
+  store: any
+  plugins: any
+  middleware: any
 
-  dragDropContext
-  defaultPlugin
+  dragDropContext: any
+  defaultPlugin: any
 
   constructor({
     plugins,
@@ -81,7 +92,7 @@ class Editor {
     editables = [],
     defaultPlugin = pluginDefault,
     dragDropBackend
-  } = {}) {
+  }: any = {}) {
     if (instance) {
       console.warn(
         'You defined multiple instances of the Editor class, this can cause problems.'
@@ -114,12 +125,12 @@ class Editor {
     this.refreshEditables()
   }
 
-  addLayoutPlugin = config => {
+  addLayoutPlugin = (config: any) => {
     this.plugins.addLayoutPlugin(config)
     this.refreshEditables()
   }
 
-  removeLayoutPlugin = name => {
+  removeLayoutPlugin = (name: any) => {
     this.plugins.removeLayoutPlugin(name)
     this.refreshEditables()
   }
@@ -129,18 +140,18 @@ class Editor {
     this.refreshEditables()
   }
 
-  addContentPlugin = config => {
+  addContentPlugin = (config: any) => {
     this.plugins.addContentPlugin(config)
     this.refreshEditables()
   }
 
-  removeContentPlugin = name => {
+  removeContentPlugin = (name: any) => {
     this.plugins.removeContentPlugin(name)
     this.refreshEditables()
   }
 
-  trigger = {}
-  query = {}
+  trigger: any  = {}
+  query: any = {}
 }
 
 export {
