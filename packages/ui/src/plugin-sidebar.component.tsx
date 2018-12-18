@@ -12,15 +12,15 @@ import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
 import { Action, Dispatch, bindActionCreators } from 'redux'
 
-let sidebarNode: Element | null = null
+let sidebarNode = React.createRef<HTMLDivElement>()
 
 export const renderIntoSidebar = (children: React.ReactNode) => {
-  if (!sidebarNode) {
+  if (!sidebarNode.current) {
     return null
   }
 
   // FIXME: pass props etc. here, so that we can display the plugin's name and remove the cell
-  return createPortal(children, sidebarNode)
+  return createPortal(children, sidebarNode.current)
 }
 
 export interface PluginSidebarProps {
@@ -43,11 +43,7 @@ class UnconnectedPluginSidebar extends React.Component<PluginSidebarProps> {
             </button>
           </React.Fragment>
         ) : null}
-        <div
-          ref={ref => {
-            sidebarNode = ref
-          }}
-        />
+        <div ref={sidebarNode} />
       </React.Fragment>
     )
   }
