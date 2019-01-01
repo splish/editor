@@ -1,0 +1,22 @@
+{
+  "name": "@splish-me/editor-workspace",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "scripts": {
+    "build": "lerna run --stream build",
+    "format": "prettier --write \"*.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
+    "postformat": "lerna run --parallel format",
+    "predeploy": "yarn build",
+    "deploy": "lerna publish --message \"chore: release %v\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^3.0.0",
+    "prettier": "^1.0.0"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
