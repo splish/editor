@@ -8,12 +8,17 @@
     "format": "prettier --write \"*.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
     "postformat": "lerna run --parallel format",
     "predeploy": "yarn build",
-    "deploy": "lerna publish --message \"chore: release %v\""
+    "deploy": "lerna publish --message \"chore: release %v\"",
+    "test": "lerna run --parallel test"
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "jest": "^23.0.0",
     "lerna": "^3.0.0",
-    "prettier": "^1.0.0"
+    "prettier": "^1.0.0",
+    "ts-jest": "^23.0.0",
+    "typescript": "^3.0.0"
   },
   "private": true,
   "workspaces": [

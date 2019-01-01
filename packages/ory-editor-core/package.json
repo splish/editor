@@ -1,0 +1,53 @@
+{
+  "name": "@splish-me/ory-editor-core",
+  "version": "0.0.0",
+  "license": "LGPL-3.0-or-later",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "ci": "tsc --noEmit",
+    "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
+    "test": "jest"
+  },
+  "dependencies": {
+    "classnames": "^2.0.0",
+    "deep-equal": "^1.0.0",
+    "dnd-core": "^2.0.0",
+    "element-resize-event": "^2.0.0",
+    "lodash.throttle": "^4.0.0",
+    "mousetrap": "^1.0.0",
+    "ramda": "^0.24.0",
+    "react-dimensions": "^1.0.0",
+    "react-dnd": "^2.0.0",
+    "react-dnd-html5-backend": "^2.0.0",
+    "react-draggable": "^3.0.0",
+    "react-hotkeys": "^0.10.0",
+    "react-redux": "^5.0.0",
+    "react-resizable": "^1.0.0",
+    "redux": "^3.0.0",
+    "redux-undo": "1.0.0-beta9-7",
+    "reselect": "^3.0.0",
+    "semver": "^5.0.0",
+    "uuid": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^16.0.0",
+    "@types/uuid": "^3.0.0",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "unexpected": "^10.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
