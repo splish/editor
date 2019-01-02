@@ -1,0 +1,23 @@
+{
+  "name": "@splish-me/editor-demo",
+  "version": "0.3.0-alpha.0",
+  "license": "MIT",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "scripts": {
+    "ci": "tsc --noEmit",
+    "format": "prettier --write \"{{.storybook,__stories__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
+    "start": "start-storybook -p 9001 -c .storybook"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@storybook/react": "^4.0.0",
+    "@types/storybook__react": "^4.0.0",
+    "babel-loader": "^8.0.0",
+    "babel-preset-react-app": "^7.0.0"
+  },
+  "private": true
+}
