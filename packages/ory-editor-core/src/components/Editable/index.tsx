@@ -25,12 +25,15 @@ import * as React from 'react'
 import { Provider } from 'react-redux'
 
 import dragDropContext from '../DragDropContext'
-import HotKeyDecorator from '../HotKey/Decorator'
+import RawHotKeyDecorator from '../HotKey/Decorator'
 import { editable } from '../../selector/editable'
 import Inner from './Inner'
 
 import { EditorState } from '../../types/editor'
 import { Editor } from '../../'
+
+// FIXME
+const HotKeyDecorator = RawHotKeyDecorator as React.ComponentType<any>
 
 export type PropTypes = {
   id: string
@@ -85,6 +88,7 @@ class Editable extends React.PureComponent<PropTypes> {
     } = this.props
     const DragDropContext = this.DragDropContext
 
+    // @ts-ignore
     return (
       <Provider store={store}>
         <DragDropContext>

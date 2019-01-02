@@ -17,7 +17,8 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 
 import * as React from 'react'
@@ -141,4 +142,5 @@ const mapDispatchToProps = (
 export default connect(
   mapStateToProps,
   mapDispatchToProps
+  // @ts-ignore FIXME:
 )(Cell)

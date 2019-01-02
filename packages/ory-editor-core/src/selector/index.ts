@@ -17,7 +17,8 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 import { editable, editables } from './editable'
 import { Store } from 'redux'
@@ -25,7 +26,7 @@ import { RootState } from '../types/state'
 
 export const selectors = (store: Store<RootState>) => ({
   editable: (id: string) => editable(store.getState(), { id }),
-  editables: (id: string) => editables(store.getState())
+  editables: () => editables(store.getState())
 })
 
 export { editable, editables, RootState }

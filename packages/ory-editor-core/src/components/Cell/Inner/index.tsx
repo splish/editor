@@ -17,17 +17,22 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 
 import * as React from 'react'
 
-import Droppable from '../Droppable'
-import Draggable from '../Draggable'
+import RawDroppable from '../Droppable'
+import RawDraggable from '../Draggable'
 import Rows from '../Rows'
 import Layout from '../Layout'
 import Content from '../Content'
 import Empty from '../Empty'
+
+// FIXME:
+const Droppable = RawDroppable as React.ComponentType<any>
+const Draggable = RawDraggable as React.ComponentType<any>
 
 import { ComponetizedCell } from '../../../types/editable'
 

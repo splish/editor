@@ -1,12 +1,12 @@
 {
-  "name": "@splish-me/editor-core-contexts",
+  "name": "@splish-me/editor-core",
   "version": "0.3.0-alpha.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
-  "source": "src/index.ts",
+  "source": "src/index.tsx",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "splish-microbundle",
@@ -15,13 +15,23 @@
     "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-core-types": "0.3.0-alpha.0"
+    "@splish-me/editor-core-contexts": "0.3.0-alpha.0",
+    "@splish-me/editor-core-document": "0.3.0-alpha.0",
+    "@splish-me/editor-core-types": "0.3.0-alpha.0",
+    "@splish-me/ory-editor-core": "0.3.0-alpha.0",
+    "lodash": "^4.0.0",
+    "ramda": "^0.26.0"
   },
   "devDependencies": {
-    "@types/react": "^16.0.0"
+    "@types/lodash": "^4.0.0",
+    "@types/ramda": "^0.26.0",
+    "@types/react": "^16.0.0",
+    "@types/react-redux": "^6.0.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.0"
   },
   "publishConfig": {
     "access": "public"

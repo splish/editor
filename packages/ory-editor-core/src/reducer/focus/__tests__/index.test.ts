@@ -17,7 +17,8 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 
 import * as unexpected from 'unexpected'
@@ -26,7 +27,6 @@ import identity from 'ramda/src/identity'
 
 import { blurCell, focusCell } from '../../../actions/cell/index'
 import { focus } from '../index'
-import { RootState } from '../../../types/state'
 
 const expect = unexpected.clone()
 
@@ -55,10 +55,10 @@ describe('editor/reducer/focus', () => {
   ].forEach((c, k) => {
     describe(`test case ${k}`, () => {
       it('should dispatch the action and return the expected result', () => {
-        const reducer = combineReducers<RootState>({
+        const reducer = combineReducers({
           ory: combineReducers({ focus })
         })
-        const store = createStore<RootState>(
+        const store = createStore(
           reducer,
           // tslint:disable-next-line:no-any
           { ory: { focus: c.s } as any },

@@ -17,10 +17,11 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 
-import { createStore, applyMiddleware, compose, Store } from 'redux'
+import { createStore, applyMiddleware, compose, Store, Middleware } from 'redux'
 
 import rootReducer from './reducer'
 import { RootState } from './types/state'
@@ -36,7 +37,10 @@ declare global {
  * Returns a new redux store.
  */
 // tslint:disable-next-line:no-any
-export default (initialState: any, middleware: [] = []): Store<RootState> => {
+export default (
+  initialState: any,
+  middleware: Middleware<{}, RootState>[] = []
+): Store<RootState> => {
   // tslint:disable-next-line:no-any
   const v: any =
     !isProduction &&

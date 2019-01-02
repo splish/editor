@@ -22,6 +22,7 @@
  */
 
 import { v4 } from 'uuid'
+import createDragDropContext from './components/DragDropContext'
 import EditableInner from './components/Editable/Inner'
 import Editable from './components/Editable'
 import createStore from './store'
@@ -80,7 +81,7 @@ const dndBackend = HTML5Backend
 export interface EditorProps<T extends RootState = RootState> {
   // tslint:disable-next-line:no-any
   plugins?: Plugins
-  middleware?: []
+  middleware?: Middleware<{}, RootState>[]
   editables?: EditableType[]
   defaultPlugin?: ContentPluginConfig
   // tslint:disable-next-line:no-any
@@ -176,8 +177,15 @@ class Editor<T extends RootState = RootState> {
   }
 }
 
-export { PluginService, Editable, EditableInner, Editor, oryReducer, selectors }
+export {
+  PluginService,
+  Editable,
+  EditableInner,
+  Editor,
+  oryReducer,
+  selectors,
+  createDragDropContext
+}
 
 export const createEmptyState: () => EditableType = () =>
   ({ id: v4(), cells: [] } as EditableType)
-

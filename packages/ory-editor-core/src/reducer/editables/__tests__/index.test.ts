@@ -17,7 +17,8 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 
 import * as unexpected from 'unexpected'
@@ -32,7 +33,6 @@ import {
 
 import { updateEditable } from '../../../actions/editables'
 import { editables } from '../index'
-import { RootState } from '../../../types/state'
 
 const expect = unexpected.clone()
 
@@ -72,10 +72,10 @@ describe('editor/reducer/editables', () => {
   ].forEach((c, k) => {
     describe(`test case ${k}`, () => {
       it('should update an existing editable', () => {
-        const reducer = combineReducers<RootState>({
+        const reducer = combineReducers({
           ory: combineReducers({ editables })
         })
-        const store = createStore<RootState>(
+        const store = createStore(
           reducer,
           // tslint:disable-next-line:no-any
           { ory: { editables: c.i as any } as any },
