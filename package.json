@@ -9,7 +9,8 @@
     "postformat": "lerna run --parallel format",
     "predeploy": "yarn build",
     "deploy": "lerna publish --message \"chore: release %v\"",
-    "test": "lerna run --parallel test"
+    "ci": "lerna run --stream ci",
+    "test": "lerna run --stream test"
   },
   "dependencies": {},
   "devDependencies": {

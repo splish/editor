@@ -24,6 +24,6 @@ export const EditorUtilsContext = React.createContext<{
   serializeState: () => {}
 })
 
-const DocumentContext = React.createContext<React.ComponentType<DocumentProps>>(
+export const DocumentContext = React.createContext<React.ComponentType<DocumentProps>>(
   () => null
 )

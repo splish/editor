@@ -17,10 +17,12 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 
 import { v4 } from 'uuid'
+import EditableInner from './components/Editable/Inner'
 import Editable from './components/Editable'
 import createStore from './store'
 import { actions, ActionsTypes } from './actions'
@@ -174,9 +176,8 @@ class Editor<T extends RootState = RootState> {
   }
 }
 
-export { PluginService, Editable, Editor, oryReducer }
+export { PluginService, Editable, EditableInner, Editor, oryReducer, selectors }
 
 export const createEmptyState: () => EditableType = () =>
   ({ id: v4(), cells: [] } as EditableType)
 
-export default Editor

@@ -17,12 +17,13 @@
  * @license LGPL-3.0
  * @copyright 2016-2018 Aeneas Rekkas
  * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
+ * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
+ * @author Splish UG (haftungsbeschränkt)
  */
 
 import * as unexpected from 'unexpected'
 
-import Editor from '../index'
+import { Editor } from '../index'
 
 const expect = unexpected.clone()
 const editor = new Editor()
