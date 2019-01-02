@@ -81,3 +81,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Microbundle cache
+.rts2_cache*/

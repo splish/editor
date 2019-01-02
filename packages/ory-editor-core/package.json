@@ -4,9 +4,13 @@
   "license": "LGPL-3.0-or-later",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "splish-microbundle",
+    "build:watch": "splish-microbundle watch",
     "ci": "tsc --noEmit",
     "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
     "test": "jest"

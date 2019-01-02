@@ -13,6 +13,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@splish-me/microbundle": "^0.9.0",
     "@types/jest": "^23.0.0",
     "jest": "^23.0.0",
     "lerna": "^3.0.0",
