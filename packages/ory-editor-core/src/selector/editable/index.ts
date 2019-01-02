@@ -41,7 +41,7 @@ const nodeInner = <T extends { id: string; rows?: Row[]; cells?: Cell[] }>(
   }
 
   let found: Cell | Row = undefined
-  // tslint:disable-next-line:no-any
+    // tslint:disable-next-line:no-any
   ;[...rows, ...cells].find(n => {
     const f = nodeInner(n, props)
     if (f) {
