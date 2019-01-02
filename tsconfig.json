@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
-    "jsx": "react"
+    "declaration": true,
+    "declarationMap": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "esnext"
   }
 }
