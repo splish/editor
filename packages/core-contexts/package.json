@@ -1,5 +1,5 @@
 {
-  "name": "@splish-me/editor-core-types",
+  "name": "@splish-me/editor-core-contexts",
   "version": "0.3.0-alpha.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
@@ -13,6 +13,12 @@
     "build:watch": "splish-microbundle watch",
     "ci": "tsc --noEmit",
     "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
+  },
+  "dependencies": {
+    "@splish-me/editor-core-types": "0.3.0-alpha.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
   },
   "private": true,
   "publishConfig": {
