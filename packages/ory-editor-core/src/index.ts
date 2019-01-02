@@ -34,6 +34,7 @@ import { EditableType } from './types/editable'
 import forEach from 'ramda/src/forEach'
 import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend'
 import { DragDropContext as dragDropContext } from 'react-dnd'
+import { editable as editableReducer } from './reducer/editable'
 import { oryReducer } from './reducer'
 import { Store, Middleware } from 'redux'
 import { RootState } from './types/state'
@@ -184,7 +185,8 @@ export {
   Editor,
   oryReducer,
   selectors,
-  createDragDropContext
+  createDragDropContext,
+  editableReducer
 }
 
 export const createEmptyState: () => EditableType = () =>
