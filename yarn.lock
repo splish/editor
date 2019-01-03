@@ -2201,6 +2201,29 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+"@types/slate-html-serializer@^0.6.0":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@types/slate-html-serializer/-/slate-html-serializer-0.6.3.tgz#f18da3c68ccc5b25b12eb4f709b2120b2d2d954e"
+  integrity sha512-edpVOozSya2XkGtJ0qKeP986hOutGS1jff+G1ysv6tPYl+ix0JNDtwjiBJ8iofl07SBghNB0kUr82CI8i+Za2g==
+  dependencies:
+    "@types/react" "*"
+    "@types/slate" "*"
+
+"@types/slate@*":
+  version "0.43.8"
+  resolved "https://registry.yarnpkg.com/@types/slate/-/slate-0.43.8.tgz#add8f65c0bcb3a1682ccbc72a30efa0326a10991"
+  integrity sha512-9NqrE8HYe7yqmNW6oNXMXz+yQHR/zcBPEeO7soaQM9T1jiXxxkn8ft0WW9JY3KR7rbBp82euFzOMpi2fIuCYmw==
+  dependencies:
+    "@types/react" "*"
+    immutable "^3.8.2"
+
+"@types/slate@^0.40.0":
+  version "0.40.1"
+  resolved "https://registry.yarnpkg.com/@types/slate/-/slate-0.40.1.tgz#bf0f132d85ed840bd1a3da20408bd6eba502f654"
+  integrity sha512-B95S9PUdGwLrrorV2mQ5YwUWA6LkcmSws/rwuWeX2prxfX09dBOowrgs3XTiE8ChfyZINoOjh0OGi2NU2S7KdA==
+  dependencies:
+    immutable "^3.8.2"
+
 "@types/storybook__react@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/storybook__react/-/storybook__react-4.0.0.tgz#52cc452fbab599568d595075a90142ef4a1233f6"
@@ -6770,7 +6793,7 @@ immer@1.7.2:
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.7.2.tgz#a51e9723c50b27e132f6566facbec1c85fc69547"
   integrity sha512-4Urocwu9+XLDJw4Tc6ZCg7APVjjLInCFvO4TwGsAYV5zT6YYSor14dsZR0+0tHlDIN92cFUOq+i7fC00G5vTxA==
 
-immutable@^3.8.1:
+immutable@^3.8.1, immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
   integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
@@ -11942,6 +11965,13 @@ slash@^1.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
   integrity sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
 
+slate-html-serializer@^0.7.0:
+  version "0.7.33"
+  resolved "https://registry.yarnpkg.com/slate-html-serializer/-/slate-html-serializer-0.7.33.tgz#49a19bb346ef2f7ba017090815d7e35061a77a09"
+  integrity sha512-d+/eaRUp+/4F/AUyIVYI/73ayu2JURhraUzSCjuRQknw/xEOc1KsPgb2qSC6CLnHQPqstwvGNwyrKcv/+igqbQ==
+  dependencies:
+    type-of "^2.0.1"
+
 slide@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
@@ -12846,6 +12876,11 @@ type-is@~1.6.16:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.18"
+
+type-of@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/type-of/-/type-of-2.0.1.tgz#e72a1741896568e9f628378d816d6912f7f23972"
+  integrity sha1-5yoXQYllaOn2KDeNgW1pEvfyOXI=
 
 typedarray@^0.0.6:
   version "0.0.6"
