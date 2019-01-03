@@ -9,6 +9,7 @@ import { Action, Dispatch } from 'redux'
 export * from './button'
 export * from './checkbox'
 export * from './dropdown'
+export * from './text'
 
 let sidebarNode = React.createRef<HTMLDivElement>()
 
