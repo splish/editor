@@ -8,6 +8,7 @@ import { Action, Dispatch } from 'redux'
 
 export * from './button'
 export * from './checkbox'
+export * from './dropdown'
 
 let sidebarNode = React.createRef<HTMLDivElement>()
 
