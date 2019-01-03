@@ -30,28 +30,19 @@ import {
 
 import { RootState } from '../../types/state'
 
-export const isPreviewMode = ({
+export const mode = ({
   ory: {
     display: { mode }
   }
-}: RootState): boolean => mode === DISPLAY_MODE_PREVIEW
-export const isLayoutMode = ({
-  ory: {
-    display: { mode }
-  }
-}: RootState): boolean => mode === DISPLAY_MODE_LAYOUT
-export const isEditMode = ({
-  ory: {
-    display: { mode }
-  }
-}: RootState): boolean => mode === DISPLAY_MODE_EDIT
-export const isInsertMode = ({
-  ory: {
-    display: { mode }
-  }
-}: RootState): boolean => mode === DISPLAY_MODE_INSERT
-export const isResizeMode = ({
-  ory: {
-    display: { mode }
-  }
-}: RootState): boolean => mode === DISPLAY_MODE_RESIZING
+}: RootState) => mode
+
+export const isPreviewMode = (state: RootState): boolean =>
+  mode(state) === DISPLAY_MODE_PREVIEW
+export const isLayoutMode = (state: RootState): boolean =>
+  mode(state) === DISPLAY_MODE_LAYOUT
+export const isEditMode = (state: RootState): boolean =>
+  mode(state) === DISPLAY_MODE_EDIT
+export const isInsertMode = (state: RootState): boolean =>
+  mode(state) === DISPLAY_MODE_INSERT
+export const isResizeMode = (state: RootState): boolean =>
+  mode(state) === DISPLAY_MODE_RESIZING

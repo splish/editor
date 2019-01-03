@@ -20,6 +20,7 @@
  * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
  * @author Splish UG (haftungsbeschränkt)
  */
+import { mode } from './display'
 import { editable, editables, searchNodeEverywhere } from './editable'
 import { focus } from './focus'
 import { RootState } from '../types/state'
@@ -28,8 +29,9 @@ export const selectors = (store: { getState(): RootState }) => ({
   editable: (id: string) => editable(store.getState(), { id }),
   editables: () => editables(store.getState()),
   focus: () => focus(store.getState()),
+  mode: () => mode(store.getState()),
   searchNodeEverywhere: (id: string) =>
     searchNodeEverywhere(store.getState(), id)
 })
 
-export { editable, editables, focus, RootState }
+export { editable, editables, RootState }
