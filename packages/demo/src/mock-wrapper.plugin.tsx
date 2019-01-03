@@ -3,7 +3,7 @@ import {
   createDocumentIdentifier
 } from '@splish-me/editor-core-document'
 import { DocumentIdentifier } from '@splish-me/editor-core-types'
-// import { renderIntoSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
+import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
 
 import { mockContentPlugin } from './mock-content.plugin'
@@ -27,7 +27,7 @@ export class MockWrapper extends React.Component<MockWrapperProps> {
         <hr />
         <Document defaultPlugin={mockContentPlugin} state={state2} />
         <hr />
-        {/*{focused ? renderIntoSidebar('MockWrapper') : null}*/}
+        {focused ? renderIntoSidebar(<Text>MockWrapper</Text>) : null}
       </React.Fragment>
     )
   }
