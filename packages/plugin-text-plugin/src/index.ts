@@ -1,6 +1,8 @@
 import { MarkJSON, NodeJSON } from 'slate'
 import { Rule } from 'slate-html-serializer'
-import { Plugin, RenderNodeProps } from 'slate-react'
+import { Plugin, RenderMarkProps, RenderNodeProps } from 'slate-react'
+
+export type MarkEditorProps = RenderMarkProps
 
 export interface MarkRendererProps {
   mark: MarkJSON
