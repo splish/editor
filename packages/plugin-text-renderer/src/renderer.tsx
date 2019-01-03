@@ -1,6 +1,6 @@
+import { TextPlugin } from '@splish-me/editor-plugin-text-plugin'
 import * as React from 'react'
 import { LeafJSON, NodeJSON } from 'slate'
-import { Rule } from 'slate-html-serializer'
 
 import { TextPluginSerializedState } from './types'
 
@@ -86,5 +86,5 @@ export class Renderer extends React.Component<RendererProps> {
 
 export interface RendererProps {
   value: TextPluginSerializedState['editorState']
-  rules: Array<Rule['serialize']>
+  rules: Array<TextPlugin['serialize']>
 }

@@ -25,5 +25,8 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "resolutions": {
+    "@types/slate": "^0.40.0"
+  }
 }

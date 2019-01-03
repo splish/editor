@@ -1,12 +1,12 @@
 {
-  "name": "@splish-me/editor-plugin-text-renderer",
+  "name": "@splish-me/editor-plugin-text-plugin",
   "version": "0.3.0-alpha.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
-  "source": "src/index.tsx",
+  "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "splish-microbundle",
@@ -14,17 +14,17 @@
     "ci": "tsc --noEmit",
     "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
-  "dependencies": {
-    "@splish-me/editor-plugin-text-plugin": "^0.3.0-alpha.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@types/react": "^16.0.0",
-    "@types/slate": "^0.40.0"
+    "@types/slate": "^0.40.0",
+    "@types/slate-html-serializer": "^0.6.0",
+    "@types/slate-react": "^0.20.0"
   },
-  "peerDependencies": {
-    "react": "^16.0.0"
-  },
+  "peerDependencies": {},
   "publishConfig": {
     "access": "public"
+  },
+  "resolutions": {
+    "@types/slate": "^0.40.0"
   }
 }

@@ -5,7 +5,9 @@ import * as t from './types'
 
 export * from './types'
 
-export const createTextRendererPlugin = (options: t.TextRendererPluginOptions) => {
+export const createTextRendererPlugin = (
+  options: t.TextPluginRendererOptions
+) => {
   return {
     Component: ({ state }: { state: t.TextPluginSerializedState }) => {
       return (
