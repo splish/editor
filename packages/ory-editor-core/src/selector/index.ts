@@ -20,13 +20,15 @@
  * @copyright 2018-2019 Splish UG (haftungsbeschränkt)
  * @author Splish UG (haftungsbeschränkt)
  */
-import { editable, editables } from './editable'
-import { Store } from 'redux'
+import { editable, editables, searchNodeEverywhere } from './editable'
+import { focus } from './focus'
 import { RootState } from '../types/state'
 
-export const selectors = (store: Store<RootState>) => ({
+export const selectors = (store: { getState(): RootState }) => ({
   editable: (id: string) => editable(store.getState(), { id }),
-  editables: () => editables(store.getState())
+  editables: () => editables(store.getState()),
+  focus: () => focus(store.getState()),
+  searchNodeEverywhere: (id: string) => searchNodeEverywhere(store.getState(), id)
 })
 
-export { editable, editables, RootState }
+export { editable, editables, focus, RootState }

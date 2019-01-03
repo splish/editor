@@ -184,6 +184,7 @@ export {
   EditableInner,
   Editor,
   oryReducer,
+  actions,
   selectors,
   createDragDropContext,
   editableReducer
