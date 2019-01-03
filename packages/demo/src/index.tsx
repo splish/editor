@@ -8,7 +8,7 @@ import {
   Document
 } from '@splish-me/editor-core-document'
 // import { ModeToolbar } from '@splish-me/editor-ui/lib/mode-toolbar.component'
-// import { AddSidebar } from '@splish-me/editor-ui/lib/add-sidebar.component'
+import { AddSidebar } from '@splish-me/editor-ui-add-sidebar'
 import { Sidebar } from '@splish-me/editor-ui-sidebar'
 import { PluginSidebar } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
@@ -102,7 +102,9 @@ export class DocumentStory extends React.Component<DocumentProps> {
                     active={currentMode !== 'preview'}
                     hideToggle={currentMode === 'layout'}
                   >
-                    {currentMode === 'layout' ? null : ( // <AddSidebar />
+                    {currentMode === 'layout' ? (
+                      <AddSidebar />
+                    ) : (
                       <PluginSidebar />
                     )}
                   </Sidebar>
