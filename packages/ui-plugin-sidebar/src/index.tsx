@@ -6,6 +6,8 @@ import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
 import { Action, Dispatch } from 'redux'
 
+export * from './button'
+
 let sidebarNode = React.createRef<HTMLDivElement>()
 
 export const renderIntoSidebar = (children: React.ReactNode) => {
