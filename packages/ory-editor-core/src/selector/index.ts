@@ -28,7 +28,8 @@ export const selectors = (store: { getState(): RootState }) => ({
   editable: (id: string) => editable(store.getState(), { id }),
   editables: () => editables(store.getState()),
   focus: () => focus(store.getState()),
-  searchNodeEverywhere: (id: string) => searchNodeEverywhere(store.getState(), id)
+  searchNodeEverywhere: (id: string) =>
+    searchNodeEverywhere(store.getState(), id)
 })
 
 export { editable, editables, focus, RootState }

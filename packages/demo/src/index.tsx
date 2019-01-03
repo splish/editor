@@ -9,8 +9,8 @@ import {
 } from '@splish-me/editor-core-document'
 // import { ModeToolbar } from '@splish-me/editor-ui/lib/mode-toolbar.component'
 // import { AddSidebar } from '@splish-me/editor-ui/lib/add-sidebar.component'
-// import { Sidebar } from '@splish-me/editor-ui/lib/sidebar.component'
-// import { PluginSidebar } from '@splish-me/editor-ui/lib/plugin-sidebar.component'
+import { Sidebar } from '@splish-me/editor-ui-sidebar'
+import { PluginSidebar } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
 
 // FIXME:
@@ -98,16 +98,14 @@ export class DocumentStory extends React.Component<DocumentProps> {
                     </EditorUtilsContext.Consumer>
                   )}
                   {/*<ModeToolbar />*/}
-                  {/*<Sidebar*/}
-                  {/*active={currentMode !== 'preview'}*/}
-                  {/*hideToggle={currentMode === 'layout'}*/}
-                  {/*>*/}
-                  {/*{currentMode === 'layout' ? (*/}
-                  {/*<AddSidebar />*/}
-                  {/*) : (*/}
-                  {/*<PluginSidebar />*/}
-                  {/*)}*/}
-                  {/*</Sidebar>*/}
+                  <Sidebar
+                    active={currentMode !== 'preview'}
+                    hideToggle={currentMode === 'layout'}
+                  >
+                    {currentMode === 'layout' ? null : ( // <AddSidebar />
+                      <PluginSidebar />
+                    )}
+                  </Sidebar>
                 </React.Fragment>
               )
             }}
