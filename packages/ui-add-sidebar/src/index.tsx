@@ -57,7 +57,7 @@ const mapDragTypeToInstance = (dragType = 'CELL') => {
 
   return dragInstances[dragType]
 }
-const PluginButton = styled.button({
+const PluginButton = styled.div({
   width: '80%',
   height: '64px',
   margin: '15px 10% 0px 10%',
@@ -72,11 +72,10 @@ const PluginButton = styled.button({
   },
   '&:focus': {
     outline: 'none'
-  }
-})
-
-const FloatingIconContainer = styled.div({
-  float: 'left'
+  },
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
 })
 
 export class AddSidebar extends React.Component {
@@ -115,12 +114,7 @@ export class AddSidebar extends React.Component {
                     insertMode={editor.trigger.mode.edit}
                     clearHover={editor.trigger.cell.clearHover}
                   >
-                    <PluginButton key={plugin.name}>
-                      <FloatingIconContainer>
-                        {plugin.IconComponent}
-                      </FloatingIconContainer>
-                      {plugin.text}
-                    </PluginButton>
+                    <PluginButton key={plugin.name}>{plugin.text}</PluginButton>
                   </DraggableC>
                 )
               })}
