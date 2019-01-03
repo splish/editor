@@ -39,24 +39,20 @@ export class Textarea extends React.Component<TextareaProps> {
   }
 
   public render() {
-    const { value, label, placeholder, onChange } = this.props
+    const { label, ...props } = this.props
     return (
       <TextareaLabel>
         <span>{label}</span>
-        <TextareaInner
-          value={value}
-          placeholder={placeholder}
-          onChange={onChange}
-          ref={this.textarea}
-        />
+        <TextareaInner {...props} ref={this.textarea} />
       </TextareaLabel>
     )
   }
 }
 
-export interface TextareaProps {
-  value?: string
-  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+export interface TextareaProps
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  > {
   label?: string
-  placeholder?: string
 }
