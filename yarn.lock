@@ -6081,6 +6081,11 @@ from2@^2.1.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
+front-slate-edit-list@0.12.2-1:
+  version "0.12.2-1"
+  resolved "https://registry.yarnpkg.com/front-slate-edit-list/-/front-slate-edit-list-0.12.2-1.tgz#1304f9c75aa77dccae1abed386704f219d109881"
+  integrity sha512-+rySgm55HMPWKP4gkdpm4tZOItNN9Bwg1vZuvd5AI3GoLAESO9SLunUw8gLXHAVOH9p3ZP4XAj3G+zn0W697Tg==
+
 fs-constants@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs-constants/-/fs-constants-1.0.0.tgz#6be0de9be998ce16af8afc24497b9ee9b7ccd9ad"

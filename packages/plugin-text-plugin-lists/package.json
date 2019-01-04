@@ -1,0 +1,36 @@
+{
+  "name": "@splish-me/editor-plugin-text-plugin-lists",
+  "version": "0.3.0-alpha.0",
+  "license": "MIT",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.tsx",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "splish-microbundle",
+    "build:watch": "splish-microbundle watch",
+    "ci": "tsc --noEmit",
+    "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
+  },
+  "dependencies": {
+    "@splish-me/editor-plugin-text-plugin": "0.3.0-alpha.0",
+    "@splish-me/editor-ui-plugin-sidebar": "0.3.0-alpha.0",
+    "front-slate-edit-list": "0.12.2-1",
+    "lodash": "^4.0.0",
+    "slate": "^0.40.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.0",
+    "@types/slate": "^0.40.0",
+    "@types/lodash": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
