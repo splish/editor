@@ -19,7 +19,7 @@
     "@splish-me/editor-plugin-text-plugin": "0.3.0-alpha.0",
     "@splish-me/editor-ui-plugin-sidebar": "0.3.0-alpha.0",
     "lodash": "^4.0.0",
-    "slate": "^0.40.0"
+    "slate": "^0.41.0"
   },
   "devDependencies": {
     "@types/react": "^16.0.0",

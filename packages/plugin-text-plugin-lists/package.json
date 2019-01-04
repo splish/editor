@@ -18,7 +18,7 @@
   "dependencies": {
     "@splish-me/editor-plugin-text-plugin": "0.3.0-alpha.0",
     "front-slate-edit-list": "0.12.2-1",
-    "slate": "^0.40.0"
+    "slate": "^0.41.0"
   },
   "devDependencies": {
     "@types/react": "^16.0.0",

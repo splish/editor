@@ -12121,10 +12121,10 @@ slate-react@^0.18.0:
     slate-plain-serializer "^0.6.8"
     slate-prop-types "^0.4.67"
 
-slate@^0.40.0:
-  version "0.40.4"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.40.4.tgz#7e04eabf973c2bdb6df18e8d6cb5516756a8d11c"
-  integrity sha512-8TvIe4POpZk7BBts6iMg2X6ecy2ux/TLakaMR0XvCQQ2bByMACKn8DTZmpBZPuNvZGDaD/JNxpRa7cbZs61h+A==
+slate@^0.41.0:
+  version "0.41.3"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.41.3.tgz#fa468de5db53afc453a0a7d7875b4de05737a900"
+  integrity sha512-I/ymHWRxtoSOWYKh/SFgW3Vkkojt5ywWf7Wh4oBvaKic/3mAsM1wymyZmhnvSKK59IeE0JJzD4uyyQaM1KEFHA==
   dependencies:
     debug "^3.1.0"
     direction "^0.1.5"
