@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-ui-mode-toolbar",
-  "version": "0.3.0-alpha.0",
+  "version": "0.3.0-alpha.1",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -20,8 +20,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.0.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
-    "@splish-me/editor-core-contexts": "^0.3.0-alpha.0",
-    "@splish-me/ory-editor-core": "^0.3.0-alpha.0",
+    "@splish-me/editor-core-contexts": "^0.3.0-alpha.1",
+    "@splish-me/ory-editor-core": "^0.3.0-alpha.1",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
@@ -31,8 +31,8 @@
   },
   "peerDependencies": {
     "react": "^16.0.0",
-    "redux": "^4.0.0",
-    "react-redux": "^6.0.0"
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.0"
   },
   "publishConfig": {
     "access": "public"

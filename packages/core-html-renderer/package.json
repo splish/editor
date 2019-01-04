@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core-html-renderer",
-  "version": "0.3.0-alpha.0",
+  "version": "0.3.0-alpha.1",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-core-renderer": "0.3.0-alpha.0",
+    "@splish-me/editor-core-renderer": "^0.3.0-alpha.1",
     "classnames": "^2.0.0"
   },
   "devDependencies": {
