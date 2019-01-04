@@ -10,6 +10,7 @@
     "predeploy": "yarn build",
     "deploy": "lerna publish --message \"chore: release %v\"",
     "ci": "lerna run --stream ci",
+    "start": "lerna run --stream start",
     "test": "lerna run --stream test"
   },
   "dependencies": {},
@@ -19,6 +20,7 @@
     "jest": "^23.0.0",
     "lerna": "^3.0.0",
     "prettier": "^1.0.0",
+    "rimraf": "^2.0.0",
     "ts-jest": "^23.0.0",
     "typescript": "^3.0.0"
   },

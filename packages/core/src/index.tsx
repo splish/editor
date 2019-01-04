@@ -5,15 +5,13 @@ import {
 } from '@splish-me/editor-core-contexts'
 import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
 import {
-  AbstractEditable,
-  AbstractCell,
-  Row
-} from '@splish-me/ory-editor-core/dist/types/editable'
-import { RootState } from '@splish-me/ory-editor-core/dist//types/state'
-import {
   Editor as E,
   createDragDropContext,
-  selectors
+  selectors,
+  AbstractEditable,
+  AbstractCell,
+  Row,
+  RootState
 } from '@splish-me/ory-editor-core'
 import { throttle } from 'lodash'
 import * as R from 'ramda'

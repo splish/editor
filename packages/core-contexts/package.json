@@ -9,6 +9,7 @@
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "splish-microbundle",
     "build:watch": "splish-microbundle watch",
     "ci": "tsc --noEmit",

@@ -4,6 +4,7 @@
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "scripts": {
+    "prebuild": "rimraf dist",
     "ci": "tsc --noEmit",
     "format": "prettier --write \"{{.storybook,__stories__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
     "start": "start-storybook -p 9001 -c .storybook"
@@ -17,6 +18,7 @@
     "@storybook/react": "^4.0.0",
     "@types/storybook__react": "^4.0.0",
     "babel-loader": "^8.0.0",
+    "babel-plugin-module-resolver": "^3.0.0",
     "babel-preset-react-app": "^7.0.0"
   },
   "private": true

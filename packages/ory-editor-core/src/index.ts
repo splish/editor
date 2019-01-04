@@ -45,6 +45,9 @@ import {
 } from './service/plugin/classes'
 import { isProduction } from './const'
 
+export * from './types/editable'
+export * from './types/state'
+
 let instance: Editor
 
 const initialState = () => ({
