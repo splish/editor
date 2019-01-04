@@ -3,6 +3,7 @@
   "version": "0.3.0-alpha.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
+  "repository": "splish-me/editor",
   "scripts": {
     "prebuild": "rimraf dist",
     "ci": "tsc --noEmit",

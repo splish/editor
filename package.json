@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "author": "Splish UG (haftungsbeschränkt)",
+  "repository": "splish-me/editor",
   "scripts": {
     "build": "lerna run --stream build",
     "format": "prettier --write \"*.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
