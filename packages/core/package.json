@@ -19,6 +19,8 @@
   "dependencies": {
     "@splish-me/editor-core-contexts": "^0.3.0-alpha.1",
     "@splish-me/editor-core-document": "^0.3.0-alpha.1",
+    "@splish-me/editor-core-html-renderer": "^0.3.0-alpha.1",
+    "@splish-me/editor-core-renderer": "^0.3.0-alpha.1",
     "@splish-me/editor-core-types": "^0.3.0-alpha.1",
     "@splish-me/ory-editor-core": "^0.3.0-alpha.1",
     "lodash": "^4.0.0",
