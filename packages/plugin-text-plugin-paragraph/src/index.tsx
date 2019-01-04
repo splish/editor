@@ -2,12 +2,13 @@ import * as React from 'react'
 import { Block, Change } from 'slate'
 
 import {
+  defaultNode,
   NodeEditorProps,
   NodeRendererProps,
   TextPlugin
 } from '@splish-me/editor-plugin-text-plugin'
 
-export const paragraphNode = '@splish-me/p'
+export const paragraphNode = defaultNode
 
 export const setParagraph = (change: Change) => {
   return change.setBlocks(paragraphNode)
@@ -54,7 +55,10 @@ export const createParagraphPlugin = ({
     serialize(obj, children) {
       const block = obj as Block
 
-      if (block.object === 'block' && block.type === paragraphNode) {
+      if (
+        (block.object === 'block' && block.type === paragraphNode) ||
+        block.type === '@splish-me/p'
+      ) {
         return <RenderComponent node={obj}>{children}</RenderComponent>
       }
 
@@ -65,7 +69,10 @@ export const createParagraphPlugin = ({
       // @ts-ignore FIXME
       const block = props.node as Block
 
-      if (block.object === 'block' && block.type === paragraphNode) {
+      if (
+        (block.object === 'block' && block.type === paragraphNode) ||
+        block.type === '@splish-me/p'
+      ) {
         return <EditorComponent {...props} />
       }
 
