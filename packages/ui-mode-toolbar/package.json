@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-ui-mode-toolbar",
-  "version": "0.3.0-alpha.3",
+  "version": "0.3.0-alpha.4",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -20,8 +20,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.0.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
-    "@splish-me/editor-core-contexts": "0.3.0-alpha.3",
-    "@splish-me/ory-editor-core": "0.3.0-alpha.3",
+    "@splish-me/editor-core-contexts": "0.3.0-alpha.4",
+    "@splish-me/ory-editor-core": "0.3.0-alpha.4",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {

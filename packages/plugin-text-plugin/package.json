@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-plugin-text-plugin",
-  "version": "0.3.0-alpha.3",
+  "version": "0.3.0-alpha.4",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
