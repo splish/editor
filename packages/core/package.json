@@ -24,7 +24,8 @@
     "@splish-me/editor-core-types": "0.3.0-alpha.2",
     "@splish-me/ory-editor-core": "0.3.0-alpha.2",
     "lodash": "^4.0.0",
-    "ramda": "^0.26.0"
+    "ramda": "^0.26.0",
+    "react-redux": "^6.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.0.0",
