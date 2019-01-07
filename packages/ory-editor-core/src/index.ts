@@ -22,6 +22,7 @@
  */
 
 import { v4 } from 'uuid'
+import withDimensions from './components/Dimensions'
 import createDragDropContext from './components/DragDropContext'
 import EditableInner from './components/Editable/Inner'
 import Editable from './components/Editable'
@@ -190,7 +191,8 @@ export {
   actions,
   selectors,
   createDragDropContext,
-  editableReducer
+  editableReducer,
+  withDimensions
 }
 
 export const createEmptyState: () => EditableType = () =>
