@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-plugin-text-plugin-lists",
-  "version": "0.3.0-alpha.2",
+  "version": "0.3.0-alpha.3",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-plugin-text-plugin": "0.3.0-alpha.2",
+    "@splish-me/editor-plugin-text-plugin": "0.3.0-alpha.3",
     "front-slate-edit-list": "0.12.2-1",
     "slate": "^0.41.0"
   },

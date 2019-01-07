@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-ui-sidebar",
-  "version": "0.3.0-alpha.2",
+  "version": "0.3.0-alpha.3",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
