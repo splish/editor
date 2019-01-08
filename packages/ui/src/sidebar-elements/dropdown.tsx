@@ -41,6 +41,7 @@ const customStyles = {
   option: (provided, state) => ({
     backgroundColor: '#666666',
     paddingBottom: '5px',
+    width: 'auto',
     fontFamily: 'Open Sans',
     color: state.isSelected ? '#469bff' : '#ffffff',
     '&:hover': {
@@ -75,44 +76,6 @@ export default class SidebarDropDown extends React.Component<DropDownProps> {
       >
         {console.log('in select:', value)}
       </Select>
-      // <select
-      //   className={css({
-      //     marginTop: '5px',
-      //     WebkitAppearance: 'none',
-      //     MozAppearance: 'none',
-      //     appearance: 'none',
-      //     backgroundImage: faAngleDown,
-      //     backgroundPosition: 'right',
-      //     backgroundRepeat: 'no-repeat',
-      //     border: 'none',
-      //     outline: 'none',
-      //     borderRadius: '5px',
-      //     padding: '2px 10px',
-      //     color: '#333333',
-      //     '&:focus': {
-      //       border: '2px solid #469BFF'
-      //     }
-      //   })}
-      //   value={value}
-      //   onChange={onChange}
-      //   {...props}
-      // >
-      //   {options.map((element: string, index: number) => {
-      //     return (
-      //       <option
-      //         value={element}
-      //         key={index}
-      //         className={css({
-      //           backgroundColor: '#CCCCCC',
-
-      //           '&:last-child': { borderRadius: '5px' }
-      //         })}
-      //       >
-      //         {element}
-      //       </option>
-      //     )
-      //   })}
-      // </select>
     )
   }
 }

@@ -1,4 +1,4 @@
-import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
+import { renderIntoToolbar } from '@splish-me/editor-ui/plugin-sidebar.component'
 import * as React from 'react'
 import { Button } from '@splish-me/editor-ui/sidebar-elements/button'
 import SidebarDropDown from '@splish-me/editor-ui/sidebar-elements/dropdown'
@@ -9,7 +9,7 @@ export class MockContent extends React.Component {
     return (
       <React.Fragment>
         {this.props.focused
-          ? renderIntoSidebar(
+          ? renderIntoToolbar(
               <React.Fragment>
                 <SidebarDropDown
                   value={this.props.state.value}

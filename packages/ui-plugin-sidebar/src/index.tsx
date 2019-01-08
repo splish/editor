@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { actions, selectors } from '@splish-me/ory-editor-core'
 import * as React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { createPortal } from 'react-dom'
 import { Action, Dispatch } from 'redux'
 
 export * from './button'
@@ -12,7 +14,14 @@ export * from './input'
 export * from './text'
 export * from './textarea'
 
-let sidebarNode = React.createRef<HTMLDivElement>()
+export const renderIntoToolbar = (children: React.ReactNode) => {
+  if (!sidebarNode) {
+    return null
+  }
+
+  // FIXME: pass props etc. here, so that we can display the plugin's name and remove the cell
+  return createPortal(children, sidebarNode.current)
+}
 
 export const renderIntoSidebar = (children: React.ReactNode) => {
   if (!sidebarNode.current) {
@@ -22,7 +31,6 @@ export const renderIntoSidebar = (children: React.ReactNode) => {
   // FIXME: pass props etc. here, so that we can display the plugin's name and remove the cell
   return createPortal(children, sidebarNode.current)
 }
-
 export interface PluginSidebarProps {
   cell: any | null
   removeCell: (id: string) => void
