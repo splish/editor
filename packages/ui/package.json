@@ -5,7 +5,7 @@
   "author": "Splish UG (haftungsbeschränkt)",
   "repository": "splish/editor",
   "scripts": {
-    "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
+    "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
     "@splish-me/editor-ui-add-sidebar": "0.3.0-alpha.4",
