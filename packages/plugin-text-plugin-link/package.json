@@ -8,7 +8,7 @@
   "module": "dist/index.mjs",
   "source": "src/index.tsx",
   "types": "dist/index.d.ts",
-  "repository": "splish-me/editor",
+  "repository": "splish/editor",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "splish-microbundle",

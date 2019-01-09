@@ -3,7 +3,7 @@
   "version": "0.3.0-alpha.4",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
-  "repository": "splish-me/editor",
+  "repository": "splish/editor",
   "scripts": {
     "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
