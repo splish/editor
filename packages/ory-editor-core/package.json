@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/ory-editor-core",
-  "version": "0.3.0-alpha.4",
+  "version": "0.3.1-alpha.1",
   "license": "LGPL-3.0-or-later",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
   "module": "dist/index.mjs",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
-  "repository": "splish-me/editor",
+  "repository": "splish/editor",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "splish-microbundle",

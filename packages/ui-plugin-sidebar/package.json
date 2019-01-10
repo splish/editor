@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-ui-plugin-sidebar",
-  "version": "0.3.0-alpha.4",
+  "version": "0.3.1-alpha.1",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -8,20 +8,20 @@
   "module": "dist/index.mjs",
   "source": "src/index.tsx",
   "types": "dist/index.d.ts",
-  "repository": "splish-me/editor",
+  "repository": "splish/editor",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "splish-microbundle",
-    "build:watch": "splish-microbundle watch",
+    "build": "microbundle",
+    "build:watch": "microbundle watch",
     "ci": "tsc --noEmit",
-    "format": "prettier --write \"{src/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
+    "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.0.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
-    "@splish-me/ory-editor-core": "0.3.0-alpha.4",
     "react-select": "^2.2.0",
+    "@splish-me/ory-editor-core": "0.3.1-alpha.1",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
