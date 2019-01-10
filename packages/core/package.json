@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core",
-  "version": "0.3.0",
+  "version": "0.3.1-alpha.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -19,10 +19,10 @@
   "dependencies": {
     "@splish-me/editor-core-contexts": "0.3.0",
     "@splish-me/editor-core-document": "0.3.0",
-    "@splish-me/editor-core-html-renderer": "0.3.0",
-    "@splish-me/editor-core-renderer": "0.3.0",
+    "@splish-me/editor-core-html-renderer": "0.3.1-alpha.0",
+    "@splish-me/editor-core-renderer": "0.3.1-alpha.0",
     "@splish-me/editor-core-types": "0.3.0",
-    "@splish-me/ory-editor-core": "0.3.0",
+    "@splish-me/ory-editor-core": "0.3.1-alpha.0",
     "lodash": "^4.0.0",
     "ramda": "^0.26.0",
     "react-redux": "^6.0.0"
