@@ -8,10 +8,10 @@
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-ui-add-sidebar": "0.3.0",
-    "@splish-me/editor-ui-mode-toolbar": "0.3.1-alpha.0",
-    "@splish-me/editor-ui-plugin-sidebar": "0.3.1-alpha.0",
-    "@splish-me/editor-ui-sidebar": "0.3.0"
+    "@splish-me/editor-ui-add-sidebar": "^0.3.1-alpha.0",
+    "@splish-me/editor-ui-mode-toolbar": "^0.3.1-alpha.0",
+    "@splish-me/editor-ui-plugin-sidebar": "^0.3.1-alpha.0",
+    "@splish-me/editor-ui-sidebar": "^0.3.1-alpha.0"
   },
   "publishConfig": {
     "access": "public"
