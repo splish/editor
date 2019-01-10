@@ -10,14 +10,14 @@
     "postformat": "lerna run --parallel format",
     "predeploy": "yarn build",
     "deploy": "lerna publish --message \"chore: release %v\" --exact",
-    "deploy:prelease": "yarn deploy --npm-tag next",
+    "deploy:prerelease": "yarn deploy --npm-tag next",
     "ci": "lerna run --stream ci",
     "start": "lerna run --stream start",
     "test": "lerna run --stream test"
   },
   "dependencies": {},
   "devDependencies": {
-    "@splish-me/microbundle": "^0.9.0",
+    "@splish-me/microbundle": "^0.9.5-alpha",
     "@types/jest": "^23.0.0",
     "jest": "^23.0.0",
     "lerna": "^3.0.0",
