@@ -1,9 +1,16 @@
-import { renderIntoToolbar } from '@splish-me/editor-ui/plugin-sidebar.component'
 import * as React from 'react'
-import { Button } from '@splish-me/editor-ui/sidebar-elements/button'
-import SidebarDropDown from '@splish-me/editor-ui/sidebar-elements/dropdown'
+import {
+  Button,
+  renderIntoToolbar,
+  SidebarDropDown
+} from '@splish-me/editor-ui-plugin-sidebar'
 
-export class MockContent extends React.Component {
+export interface MockContentProps {
+  focused: boolean
+  state: { value: string }
+  onChange: (event: any) => void
+}
+export class MockContent extends React.Component<MockContentProps> {
   state = { value: 'h1' }
   public render() {
     return (

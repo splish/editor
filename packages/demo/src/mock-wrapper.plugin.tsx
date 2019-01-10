@@ -13,6 +13,7 @@ interface MockWrapperProps {
     state1: DocumentIdentifier
     state2: DocumentIdentifier
   }
+  focused: boolean
 }
 
 export class MockWrapper extends React.Component<MockWrapperProps> {

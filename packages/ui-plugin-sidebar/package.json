@@ -21,6 +21,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.0.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
     "@splish-me/ory-editor-core": "0.3.0-alpha.4",
+    "react-select": "^2.2.0",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {

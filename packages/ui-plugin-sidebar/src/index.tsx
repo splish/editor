@@ -14,6 +14,8 @@ export * from './input'
 export * from './text'
 export * from './textarea'
 
+let sidebarNode = React.createRef<HTMLDivElement>()
+
 export const renderIntoToolbar = (children: React.ReactNode) => {
   if (!sidebarNode) {
     return null
