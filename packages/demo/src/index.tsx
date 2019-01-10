@@ -14,7 +14,7 @@ import { PluginSidebar } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
 
 // FIXME:
-// import 'ory-editor-core/lib/index.css'
+import 'ory-editor-core/lib/index.css'
 // import { injectGlobal, css } from 'emotion'
 
 // injectGlobal`
