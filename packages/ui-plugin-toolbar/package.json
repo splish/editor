@@ -1,5 +1,5 @@
 {
-  "name": "@splish-me/editor-ui-plugin-sidebar",
+  "name": "@splish-me/editor-ui-plugin-toolbar",
   "version": "0.3.1-alpha.1",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
@@ -20,20 +20,15 @@
     "@fortawesome/fontawesome-svg-core": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.0.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
-    "@splish-me/ory-editor-core": "0.3.1-alpha.1",
+    "react-select": "^2.2.0",
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.0.0",
-    "@types/react-dom": "^16.0.0",
-    "@types/react-redux": "^6.0.0",
     "@types/styled-components": "^4.0.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-redux": "^6.0.0",
-    "redux": "^4.0.0"
+    "react": "^16.0.0"
   },
   "publishConfig": {
     "access": "public"

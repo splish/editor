@@ -11,17 +11,27 @@ export const ButtonGroup = styled.div({
 
 export const Button = styled.button<{ active?: boolean }>(({ active }) => {
   return {
-    backgroundColor: '#333333',
+    backgroundColor: active ? '#999999' : '#CCCCCC',
     cursor: 'pointer',
-    color: active ? '#469bff' : '#ffffff',
-    textAlign: 'center',
+    color: active ? '#EEEEEE' : '#333333',
     outline: 'none',
-    height: '40px',
+    height: '30px',
     border: 'none',
-    minWidth: '60px',
+    maxWidth: '80px',
     flex: 1,
+    borderRight: '1px solid #999999',
+    '&:first-child': {
+      borderBottomLeftRadius: '5px',
+      borderTopLeftRadius: '5px'
+    },
+    '&:last-child': {
+      borderBottomRightRadius: '5px',
+      borderTopRightRadius: '5px',
+      border: 'none'
+    },
     '&:hover': {
-      color: '#90c3ff'
+      backgroundColor: '#999999',
+      color: '#CCCCCC'
     }
   }
 })

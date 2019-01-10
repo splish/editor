@@ -2,8 +2,8 @@ import * as React from 'react'
 import {
   Button,
   renderIntoToolbar,
-  SidebarDropDown
-} from '@splish-me/editor-ui-plugin-sidebar'
+  Dropdown
+} from '@splish-me/editor-ui-plugin-toolbar'
 
 export interface MockContentProps {
   focused: boolean
@@ -18,7 +18,7 @@ export class MockContent extends React.Component<MockContentProps> {
         {this.props.focused
           ? renderIntoToolbar(
               <React.Fragment>
-                <SidebarDropDown
+                <Dropdown
                   value={this.props.state.value}
                   options={[
                     { value: 'h1', label: 'H1' },

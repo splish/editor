@@ -16,10 +16,6 @@ export * from './textarea'
 
 let sidebarNode = React.createRef<HTMLDivElement>()
 
-export const renderIntoToolbar = (children: React.ReactNode) => {
-  return <div>{children}</div>
-}
-
 export const renderIntoSidebar = (children: React.ReactNode) => {
   if (!sidebarNode.current) {
     return null
