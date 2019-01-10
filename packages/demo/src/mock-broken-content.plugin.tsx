@@ -1,7 +1,12 @@
 import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
 
-export class MockBrokenContent extends React.Component {
+export interface MockBrokenContentProps {
+  state: { value: string }
+  onChange?: (event: any) => void
+  focused: boolean
+}
+export class MockBrokenContent extends React.Component<MockBrokenContentProps> {
   public render() {
     if (this.props.state.value === 'foo') {
       throw new Error("I don't like foo")

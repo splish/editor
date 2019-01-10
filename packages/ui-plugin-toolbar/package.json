@@ -1,5 +1,5 @@
 {
-  "name": "@splish-me/editor-core",
+  "name": "@splish-me/editor-ui-plugin-toolbar",
   "version": "0.3.1-alpha.1",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
@@ -17,27 +17,19 @@
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-core-contexts": "0.3.1-alpha.1",
-    "@splish-me/editor-core-document": "0.3.1-alpha.1",
-    "@splish-me/editor-core-html-renderer": "0.3.1-alpha.1",
-    "@splish-me/editor-core-renderer": "0.3.1-alpha.1",
-    "@splish-me/editor-core-types": "0.3.1-alpha.1",
-    "@splish-me/ory-editor-core": "0.3.1-alpha.1",
-    "lodash": "^4.0.0",
-    "ramda": "^0.26.0",
-    "react-redux": "^6.0.0",
-    "react-sticky": "^6.0.3"
+    "@fortawesome/fontawesome-svg-core": "^1.0.0",
+    "@fortawesome/free-solid-svg-icons": "^5.0.0",
+    "@fortawesome/react-fontawesome": "^0.1.0",
+    "react-select": "^2.2.0",
+    "react-sticky": "^6.0.3",
+    "styled-components": "^4.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.0.0",
-    "@types/ramda": "^0.26.0",
     "@types/react": "^16.0.0",
-    "@types/react-redux": "^6.0.0"
+    "@types/styled-components": "^4.0.0"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-redux": "^6.0.0",
-    "redux": "^4.0.0"
+    "react": "^16.0.0"
   },
   "publishConfig": {
     "access": "public"

@@ -20,7 +20,7 @@ import { Provider } from 'react-redux'
 import { Store, Action } from 'redux'
 
 import { DocumentEditor, DocumentEditorProps } from './document-editor'
-
+import { StickyContainer } from 'react-sticky'
 export class Editor extends React.Component<EditorProps, EditorState> {
   static defaultProps = {
     mode: 'edit'
@@ -148,29 +148,31 @@ export class Editor extends React.Component<EditorProps, EditorState> {
 
   public render() {
     return (
-      <Provider store={this.editor.store}>
-        <this.DragDropContext>
-          <EditorContext.Provider
-            value={{
-              editor: this.editor,
-              changeMode: this.changeMode,
-              currentMode: this.state.mode as string
-            }}
-          >
-            <EditorUtilsContext.Provider
+      <StickyContainer>
+        <Provider store={this.editor.store}>
+          <this.DragDropContext>
+            <EditorContext.Provider
               value={{
-                undo: this.undo,
-                redo: this.redo,
-                serializeState: this.serializeState
+                editor: this.editor,
+                changeMode: this.changeMode,
+                currentMode: this.state.mode as string
               }}
             >
-              <DocumentContext.Provider value={this.Document}>
-                {this.props.children}
-              </DocumentContext.Provider>
-            </EditorUtilsContext.Provider>
-          </EditorContext.Provider>
-        </this.DragDropContext>
-      </Provider>
+              <EditorUtilsContext.Provider
+                value={{
+                  undo: this.undo,
+                  redo: this.redo,
+                  serializeState: this.serializeState
+                }}
+              >
+                <DocumentContext.Provider value={this.Document}>
+                  {this.props.children}
+                </DocumentContext.Provider>
+              </EditorUtilsContext.Provider>
+            </EditorContext.Provider>
+          </this.DragDropContext>
+        </Provider>
+      </StickyContainer>
     )
   }
 }

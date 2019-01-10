@@ -51,6 +51,8 @@ module.exports = (baseConfig, env, config) => {
                 '@splish-me/editor-ui-mode-toolbar/src',
               '@splish-me/editor-ui-plugin-sidebar':
                 '@splish-me/editor-ui-plugin-sidebar/src',
+              '@splish-me/editor-ui-plugin-toolbar':
+                '@splish-me/editor-ui-plugin-toolbar/src',
               '@splish-me/editor-ui-sidebar':
                 '@splish-me/editor-ui-sidebar/src',
               '@splish-me/ory-editor-core': '@splish-me/ory-editor-core/src'
