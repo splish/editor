@@ -10,7 +10,7 @@
     "postformat": "lerna run --parallel format",
     "predeploy": "yarn build",
     "deploy": "lerna publish --message \"chore: release %v\" --exact",
-    "deploy:prerelease": "yarn deploy --npm-tag next",
+    "deploy:prerelease": "yarn deploy --dist-tag next",
     "ci": "lerna run --stream ci",
     "start": "lerna run --stream start",
     "test": "lerna run --stream test"
