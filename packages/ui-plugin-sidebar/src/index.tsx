@@ -17,12 +17,7 @@ export * from './textarea'
 let sidebarNode = React.createRef<HTMLDivElement>()
 
 export const renderIntoToolbar = (children: React.ReactNode) => {
-  if (!sidebarNode) {
-    return null
-  }
-
-  // FIXME: pass props etc. here, so that we can display the plugin's name and remove the cell
-  return createPortal(children, sidebarNode.current)
+  return <div>{children}</div>
 }
 
 export const renderIntoSidebar = (children: React.ReactNode) => {

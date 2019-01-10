@@ -21,8 +21,7 @@ export const Button = styled.button<{ active?: boolean }>(({ active }) => {
     minWidth: '60px',
     flex: 1,
     '&:hover': {
-      backgroundColor: '#999999',
-      color: active ? '#90c3ff' : '#666666'
+      color: '#90c3ff'
     }
   }
 })
