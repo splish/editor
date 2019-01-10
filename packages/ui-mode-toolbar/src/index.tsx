@@ -1,7 +1,7 @@
 import { faPen, faArrowsAlt, faLaptop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { EditorContext } from '@splish-me/editor-core-contexts'
-import { selectors } from '@splish-me/ory-editor-core'
+import { RootState } from 'ory-editor-core/lib/types/state'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
@@ -67,12 +67,8 @@ const Icon = styled(FontAwesomeIcon)({
   color: 'white'
 })
 
-export const ModeToolbar = connect((state: any) => {
-  const mode = selectors({
-    getState() {
-      return state
-    }
-  }).mode()
+export const ModeToolbar = connect((state: RootState) => {
+  const mode = state.ory.display.mode
 
   return {
     mode: mode === 'resizing' ? 'resize' : mode

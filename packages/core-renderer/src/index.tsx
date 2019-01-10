@@ -1,6 +1,7 @@
 import { DocumentContext } from '@splish-me/editor-core-contexts'
 import { DocumentProps, SerializedDocument } from '@splish-me/editor-core-types'
-import { editableReducer, PluginService } from '@splish-me/ory-editor-core'
+import { editable as editableReducer } from 'ory-editor-core/lib/reducer/editable'
+import { PluginService } from 'ory-editor-core'
 import * as React from 'react'
 
 export interface RendererProps {

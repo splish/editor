@@ -1,10 +1,12 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { actions, selectors } from '@splish-me/ory-editor-core'
+import { searchNodeEverywhere } from 'ory-editor-core/lib/selector/editable'
+import { RootState } from 'ory-editor-core/lib/types/state'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
-import { Action, Dispatch } from 'redux'
+import { bindActionCreators } from 'redux'
+import {removeCell} from 'ory-editor-core/lib/actions/cell'
 
 export * from './button'
 export * from './checkbox'
@@ -50,25 +52,18 @@ class UnconnectedPluginSidebar extends React.Component<PluginSidebarProps> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  const { focus, searchNodeEverywhere } = selectors({
-    getState() {
-      return state
-    }
-  })
-  const id = focus()
-  const node = searchNodeEverywhere(id)
+const mapStateToProps = (state: RootState) => {
+  const id = state.ory.focus
+  const node = searchNodeEverywhere(state, id)
 
   return {
     cell: node ? node.node : undefined
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
-  return {
-    removeCell: actions(dispatch).cell.remove
-  }
-}
+const mapDispatchToProps = dispatch => bindActionCreators({
+  removeCell
+}, dispatch)
 
 export const PluginSidebar = connect(
   mapStateToProps,

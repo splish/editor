@@ -5,21 +5,20 @@ import {
 } from '@splish-me/editor-core-contexts'
 import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
 import {
-  Editor as E,
-  createDragDropContext,
-  selectors,
-  AbstractEditable,
   AbstractCell,
-  Row,
-  RootState
-} from '@splish-me/ory-editor-core'
+  AbstractEditable,
+  Row
+} from 'ory-editor-core/lib/types/editable'
+import createDragDropContext from 'ory-editor-core/lib/components/DragDropContext'
+import { Editor as E } from 'ory-editor-core'
 import { throttle } from 'lodash'
 import * as R from 'ramda'
 import * as React from 'react'
 import { Provider } from 'react-redux'
-import { Store, Action } from 'redux'
+import { Action } from 'redux'
 
 import { DocumentEditor, DocumentEditorProps } from './document-editor'
+import { editable, editables } from 'ory-editor-core/lib/selector'
 
 export class Editor extends React.Component<EditorProps, EditorState> {
   static defaultProps = {
@@ -38,8 +37,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
   }, 300)
 
   private undo = () => {
-    const { editables } = selectors(this.editor.store)
-    const currentState = editables()
+    const currentState = editables(this.editor.store.getState())
     const newState = this.undoStack.pop()
 
     if (currentState.length > 0 && newState) {
@@ -52,8 +50,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
   }
 
   private redo = () => {
-    const { editables } = selectors(this.editor.store)
-    const currentState = editables()
+    const currentState = editables(this.editor.store.getState())
     const newState = this.redoStack.pop()
 
     if (currentState.length > 0 && newState) {
@@ -66,9 +63,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
   }
 
   public serializeState = ({ id }: DocumentIdentifier): any => {
-    const { editable } = selectors(this.editor.store)
-
-    const rootEditable = editable(id)
+    const rootEditable = editable(this.editor.store.getState(), { id })
     const serializedRootEditable = this.editor.plugins.serialize(rootEditable)
 
     const hydrateSubeditables = (value: any): any => {
@@ -105,10 +100,9 @@ export class Editor extends React.Component<EditorProps, EditorState> {
         content: props.plugins as any[]
       },
       editables: [],
+      // @ts-ignore
       middleware: [
-        store => {
-          const { editables } = selectors(store as Store<RootState>)
-
+        () => {
           return next => (action: Action) => {
             // FIXME:
             const ignoredActions = [
@@ -120,7 +114,8 @@ export class Editor extends React.Component<EditorProps, EditorState> {
             ]
 
             if (ignoredActions.indexOf(action.type) === -1) {
-              this.persistState(editables())
+              const currentState = editables(this.editor.store.getState())
+              this.persistState(currentState)
             }
 
             return next(action)

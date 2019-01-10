@@ -1,11 +1,8 @@
 import { createDocumentIdentifier } from '@splish-me/editor-core-document'
 import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
-import {
-  Editor,
-  createEmptyState,
-  selectors,
-  EditableInner
-} from '@splish-me/ory-editor-core'
+import EditableInner from 'ory-editor-core/lib/components/Editable/Inner'
+import { editable } from 'ory-editor-core/lib/selector/editable'
+import { createEmptyState, Editor } from 'ory-editor-core'
 import * as React from 'react'
 import * as R from 'ramda'
 
@@ -17,9 +14,7 @@ export class DocumentEditor extends React.Component<DocumentEditorProps> {
   constructor(props: DocumentEditorProps) {
     super(props)
     const { editor, initialState } = props
-
-    const { editable } = selectors(editor.store)
-    const state = editable(props.state.id)
+    const state = editable(editor.store.getState(), { id: props.state.id })
 
     if (!state) {
       editor.trigger.editable.add({
