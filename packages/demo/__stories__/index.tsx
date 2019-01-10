@@ -50,7 +50,7 @@ import {
 import { createUiPlugin } from '@splish-me/editor-plugin-text-plugin-ui'
 import { createTextPlugin } from '@splish-me/editor-plugin-text'
 import { createTextRendererPlugin } from '@splish-me/editor-plugin-text-renderer'
-
+import styled from 'styled-components'
 const defaultPlugins = [
   createParagraphPlugin(),
   createRichTextPlugin(),
@@ -332,3 +332,170 @@ storiesOf('Demo', module)
       }}
     />
   ))
+  .add('Background', () => {
+    const state = JSON.parse(
+      '{"id":"51d2c74a-419e-447b-9210-248838ef7db8","cells":[{"id":"5bcc85bc-77fa-4c1c-98e3-f920699e6d14","inline":null,"size":12,"rows":[{"id":"4fda5f46-6770-4000-979f-f0406c19d56b","cells":[{"id":"383c8974-8806-478c-8700-e25e4d011612","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}}]},{"id":"89e156a7-7b20-4a9f-89e8-21da01c0e92a","cells":[{"id":"b10a76ba-d50f-462b-9333-f427cf7c241b","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}},{"id":"92fa829c-02e1-49e7-a595-ae1b36fb3cf5","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}}]},{"id":"3dd3e07b-d60b-4943-aa2c-92b2ef1c5392","cells":[{"id":"d097e7f0-7cd1-447d-a70e-936f5731f203","inline":null,"size":12,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","marks":[]}]}]}]}}}}}]},{"id":"0db7b180-cb6e-4946-9d21-6b1c1bf111a4","cells":[{"id":"9df37ed5-f505-43f5-9ad6-cd24e6c3b25d","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Col1","marks":[]}]}]}]}}}}},{"id":"191f8481-5cb2-4459-ae83-9ba2c816ad06","inline":null,"size":6,"content":{"plugin":{"name":"@splish-me/slate","version":"0.0.11"},"state":{"editorState":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"@splish-me/p","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text":"Col2","marks":[]}]}]}]}}}}}]}]}]}'
+    )
+    class Component extends React.Component<RenderAttributes> {
+      public render() {
+        // FIXME: move to parent
+        const onChange = this.props.onChange as (change: Change) => void
+        const value = this.props.value as Value
+
+        const applyChange = (f: (change: Change) => Change): void => {
+          const change = value.change()
+          onChange(f(change))
+        }
+
+        return (
+          <React.Fragment>
+            <ButtonGroup>
+              <Button
+                active={isStrong(value.change())}
+                onClick={() => {
+                  applyChange(toggleStrong)
+                }}
+              >
+                B
+              </Button>
+              <Button
+                active={isEmphasized(value.change())}
+                onClick={() => {
+                  applyChange(toggleEmphasize)
+                }}
+              >
+                I
+              </Button>
+              <Button
+                active={isUnderlined(value.change())}
+                onClick={() => {
+                  applyChange(toggleUnderline)
+                }}
+              >
+                U
+              </Button>
+              <Button
+                active={isCode(value.change())}
+                onClick={() => {
+                  applyChange(toggleCode)
+                }}
+              >
+                Code
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              {R.times(index => {
+                const level = (index + 1) as HeadingLevel
+                const active = createIsHeading(level)(value.change())
+
+                return (
+                  <Button
+                    key={index}
+                    active={active}
+                    onClick={() => {
+                      applyChange(
+                        active ? setParagraph : createSetHeading(level)
+                      )
+                    }}
+                  >
+                    H{level}
+                  </Button>
+                )
+              }, 6)}
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button
+                active={isLink(value.change())}
+                onClick={() => {
+                  const active = isLink(value.change())
+
+                  applyChange(active ? unwrapLink : wrapLink())
+                }}
+              >
+                Link
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button
+                active={isUnorderedList(value.change())}
+                onClick={() => {
+                  applyChange(toggleUnorderedList)
+                }}
+              >
+                ul
+              </Button>
+              <Button
+                active={isOrderedList(value.change())}
+                onClick={() => {
+                  applyChange(toggleOrderedList)
+                }}
+              >
+                ol
+              </Button>
+            </ButtonGroup>
+          </React.Fragment>
+        )
+      }
+    }
+
+    const plugins = [
+      ...defaultPlugins,
+      createUiPlugin({
+        Component
+      })
+    ]
+
+    const plugin = {
+      name: '@splish-me/slate',
+      version: '0.0.11'
+    }
+    const slatePlugin = {
+      ...plugin,
+      ...createTextPlugin({ plugins })
+    }
+    const slateRenderPlugin = {
+      ...plugin,
+      ...createTextRendererPlugin({ plugins })
+    }
+    const Overlay = styled.div({
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgb(0,0,0,0.3)',
+      left: 0,
+      top: 0,
+      position: 'fixed',
+      pointerEvents: 'none'
+    })
+    class TestComponent extends React.Component<{ focused?: boolean }> {
+      render() {
+        const Teststyle = styled.div({
+          backgroundColor: 'white',
+          position: 'relative',
+          '&:hover': { backgroundColor: 'red' }
+        })
+        return this.props.focused ? (
+          <React.Fragment>
+            <Overlay />
+            <Teststyle>{this.props.children}</Teststyle>
+          </React.Fragment>
+        ) : (
+          <Teststyle
+            onClick={() => {
+              console.log('hallooouu')
+            }}
+          >
+            {this.props.children}
+          </Teststyle>
+        )
+      }
+    }
+    return (
+      <React.Fragment>
+        <div>Hello</div>
+        <TestComponent> hfewaoifhsdiofhweiof </TestComponent>
+        <div style={{ backgroundColor: 'white' }}> dsfüpwejfe</div>
+        <TestComponent focused> hfewaoifhsdiofhweiof </TestComponent>
+        <div> dfawesdfjowepijtgfepioj</div>
+      </React.Fragment>
+    )
+  })
