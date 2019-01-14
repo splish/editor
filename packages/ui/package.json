@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-ui",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "repository": "splish/editor",
@@ -8,10 +8,10 @@
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-ui-add-sidebar": "0.4.0",
-    "@splish-me/editor-ui-mode-toolbar": "0.4.0",
-    "@splish-me/editor-ui-plugin-sidebar": "0.4.0",
-    "@splish-me/editor-ui-sidebar": "0.4.0"
+    "@splish-me/editor-ui-add-sidebar": "0.4.1",
+    "@splish-me/editor-ui-mode-toolbar": "0.4.1",
+    "@splish-me/editor-ui-plugin-sidebar": "0.4.1",
+    "@splish-me/editor-ui-sidebar": "0.4.1"
   },
   "publishConfig": {
     "access": "public"

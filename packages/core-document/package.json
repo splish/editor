@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core-document",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -17,8 +17,8 @@
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-core-contexts": "0.4.0",
-    "@splish-me/editor-core-types": "0.4.0",
+    "@splish-me/editor-core-contexts": "0.4.1",
+    "@splish-me/editor-core-types": "0.4.1",
     "uuid": "^3.0.0"
   },
   "devDependencies": {
