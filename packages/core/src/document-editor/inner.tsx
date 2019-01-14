@@ -37,36 +37,18 @@ export const DocumentInner = withDimensions()(
         }
       } & DocumentInnerProps
     > {
-      componentDidMount() {
+      public componentDidMount() {
         enableGlobalBlurring(this.props.blurAllCells)
         this.createFallbackCell()
       }
 
-      componentDidUpdate() {
+      public componentDidUpdate() {
         this.createFallbackCell()
       }
 
-      componentWillUnmount() {
-        disableGlobalBlurring(this.props.blurAllCells)
-      }
-
-      createFallbackCell = () => {
-        const { node, defaultPlugin, id } = this.props
-        if (!node) {
-          return
-        }
-
-        const { cells = [] } = node
-        if (cells.length === 0) {
-          this.props.createFallbackCell(
-            new ContentPlugin(defaultPlugin as any),
-            id
-          )
-        }
-      }
-
-      render() {
+      public render() {
         const { id, containerWidth, containerHeight, node } = this.props
+
         if (!node) {
           return null
         }
@@ -86,6 +68,26 @@ export const DocumentInner = withDimensions()(
             ))}
           </div>
         )
+      }
+
+      public componentWillUnmount() {
+        disableGlobalBlurring(this.props.blurAllCells)
+      }
+
+      private createFallbackCell() {
+        const { node, defaultPlugin, id } = this.props
+
+        if (!node) {
+          return
+        }
+
+        const { cells = [] } = node
+        if (cells.length === 0) {
+          this.props.createFallbackCell(
+            new ContentPlugin(defaultPlugin as any),
+            id
+          )
+        }
       }
     }
   )
