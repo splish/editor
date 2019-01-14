@@ -22,7 +22,6 @@ export const renderIntoSidebar = (children: React.ReactNode) => {
     return null
   }
 
-  // FIXME: pass props etc. here, so that we can display the plugin's name and remove the cell
   return createPortal(children, sidebarNode.current)
 }
 

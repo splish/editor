@@ -93,7 +93,7 @@ export const createRenderer = ({
             const doc = state as SerializedDocument
 
             if (doc.state) {
-              return <Renderer state={doc.state} plugins={this.props.plugins} />
+              return <Renderer state={doc.state} plugins={plugins} />
             }
 
             throw new Error(
