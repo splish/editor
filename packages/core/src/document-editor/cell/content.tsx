@@ -12,6 +12,7 @@ import {
 import { ContentPluginProps } from 'ory-editor-core/lib/service/plugin/classes'
 import { ComponetizedCell } from 'ory-editor-core/lib/types/editable'
 import * as React from 'react'
+import { findDOMNode } from 'react-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import { createStructuredSelector } from 'reselect'
@@ -120,10 +121,15 @@ export const Content = connect(
       let focusProps
       if (!this.props.isPreviewMode) {
         focusProps = {
-          onMouseDown: () => {
-            if (!focused) {
+          onMouseDown: (e: React.MouseEvent<HTMLDivElement>) => {
+            if (
+              !focused &&
+              (e.target as HTMLDivElement).closest('.ory-cell-inner') ===
+                findDOMNode(this.ref)
+            ) {
               focusCell({ source: 'onMouseDown' })
             }
+
             return true
           }
         }

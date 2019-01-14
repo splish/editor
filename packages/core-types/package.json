@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core-types",
-  "version": "0.4.0-alpha.0",
+  "version": "0.4.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",

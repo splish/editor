@@ -1,7 +1,7 @@
 {
   "name": "@splish-me/editor-workspace",
   "version": "0.0.0",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "repository": "splish/editor",
   "scripts": {
