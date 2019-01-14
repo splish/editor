@@ -1,10 +1,11 @@
 import Draggable from 'ory-editor-core/lib/components/Cell/Draggable'
 import Droppable from 'ory-editor-core/lib/components/Cell/Droppable'
-import Content from 'ory-editor-core/lib/components/Cell/Content'
 import Empty from 'ory-editor-core/lib/components/Cell/Empty'
 import Rows from 'ory-editor-core/lib/components/Cell/Rows'
 import { ComponetizedCell } from 'ory-editor-core/lib/types/editable'
 import * as React from 'react'
+
+import { Content } from './content'
 
 export class CellInner extends React.PureComponent<ComponetizedCell> {
   render() {
