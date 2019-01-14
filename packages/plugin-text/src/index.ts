@@ -1,11 +1,16 @@
 import { defaultNode } from '@splish-me/editor-plugin-text-plugin'
 import { TextPluginSerializedState } from '@splish-me/editor-plugin-text-renderer'
-import { parseFragment } from 'parse5'
 import { Value } from 'slate'
 import Html from 'slate-html-serializer'
 
 import { createTextEditor } from './editor'
 import { TextPluginState, TextPluginOptions } from './types'
+
+const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+)
 
 export const createTextPlugin = (options: TextPluginOptions) => {
   const createInitialState = (): TextPluginState => {
@@ -64,7 +69,11 @@ export const createTextPlugin = (options: TextPluginOptions) => {
     defaultBlock: {
       type: defaultNode
     },
-    parseHtml: (html: string) => parseFragment(html) as HTMLElement
+    ...(canUseDOM
+      ? {}
+      : {
+          parseHtml: require('parse5').parseFragment
+        })
   })
 
   return {
