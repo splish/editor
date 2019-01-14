@@ -9,7 +9,6 @@ import {
   blurAllCells,
   ResizeCellAction
 } from 'ory-editor-core/lib/actions/cell'
-import Inner from 'ory-editor-core/lib/components/Cell/Inner'
 import Resizable from 'ory-editor-core/lib/components/Cell/Resizable'
 import {
   isPreviewMode,
@@ -30,6 +29,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
 import { createStructuredSelector } from 'reselect'
+
+import { CellInner } from './inner'
 
 const gridClass = ({ node: { size }, ...rest }: ComponetizedCell): string => {
   if (rest.isPreviewMode || rest.isEditMode) {
@@ -106,7 +107,7 @@ export const Cell = connect(
           onClick={stopClick(this.props.isEditMode)}
         >
           <Container {...containerProps}>
-            <Inner {...this.props} styles={null} />
+            <CellInner {...this.props} styles={null} />
           </Container>
         </div>
       )
