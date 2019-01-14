@@ -39,6 +39,7 @@
     "@types/slate-react": "^0.20.0"
   },
   "peerDependencies": {
+    "immutable": "^3.0.0",
     "react": "^16.0.0"
   },
   "publishConfig": {
