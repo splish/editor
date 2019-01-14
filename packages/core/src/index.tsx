@@ -10,6 +10,7 @@ import {
   enableGlobalBlurring,
   disableGlobalBlurring
 } from 'ory-editor-core/lib/components/Editable/Inner/blur'
+import { editable, editables } from 'ory-editor-core/lib/selector'
 import {
   AbstractCell,
   AbstractEditable,
@@ -23,7 +24,6 @@ import { Provider } from 'react-redux'
 import { Action } from 'redux'
 
 import { DocumentEditor, DocumentEditorProps } from './document-editor'
-import { editable, editables } from 'ory-editor-core/lib/selector'
 
 export class Editor extends React.Component<EditorProps, EditorState> {
   static defaultProps = {

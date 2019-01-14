@@ -22,7 +22,6 @@
     "@splish-me/editor-core-html-renderer": "0.4.0-alpha.0",
     "@splish-me/editor-core-renderer": "0.4.0-alpha.0",
     "@splish-me/editor-core-types": "0.4.0-alpha.0",
-    "@splish-me/ory-editor-core": "0.3.1-alpha.1",
     "lodash": "^4.0.0",
     "ory-editor-core": "^0.6.0",
     "ramda": "^0.26.0"
@@ -33,8 +32,10 @@
     "@types/react": "^16.0.0"
   },
   "peerDependencies": {
+    "classnames": "^2.0.0",
     "react": "^16.0.0",
     "react-redux": "^5.0.0",
+    "reselect": "^3.0.0",
     "redux": "^3.0.0"
   },
   "publishConfig": {

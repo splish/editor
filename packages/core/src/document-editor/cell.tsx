@@ -1,3 +1,4 @@
+import createClassName from 'classnames'
 import {
   BlurAllCellsAction,
   FocusCellAction
@@ -25,7 +26,6 @@ import {
 } from 'ory-editor-core/lib/selector/editable'
 import { RootState } from 'ory-editor-core/lib/selector'
 import { ComponetizedCell } from 'ory-editor-core/lib/types/editable'
-import classNames from 'classnames'
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators, Dispatch } from 'redux'
@@ -79,16 +79,23 @@ export const Cell = connect(
   class Cell extends React.PureComponent<CellProps> {
     render() {
       const {
-        id,
-        rowWidth,
-        rowHeight,
-        updateDimensions,
-        node: { inline, resizable, hasInlineNeighbour, focused }
+        node: { inline, hasInlineNeighbour, focused }
       } = this.props
+
+      const resizable =
+        (node as { resizable?: boolean }).resizable && this.props.isResizeMode
+      const Container = resizable ? Resizable : React.Fragment
+      const containerProps = resizable
+        ? {
+            ...this.props,
+            steps: 12,
+            onChange: this.props.resizeCell
+          }
+        : {}
 
       return (
         <div
-          className={classNames('ory-cell', gridClass(this.props), {
+          className={createClassName('ory-cell', gridClass(this.props), {
             'ory-cell-has-inline-neighbour': hasInlineNeighbour,
             [`ory-cell-inline-${inline || ''}`]: inline,
             'ory-cell-focused': focused,
@@ -98,22 +105,9 @@ export const Cell = connect(
           })}
           onClick={stopClick(this.props.isEditMode)}
         >
-          {resizable && this.props.isResizeMode ? (
-            <Resizable
-              {...this.props}
-              id={id}
-              rowWidth={rowWidth}
-              rowHeight={rowHeight}
-              updateDimensions={updateDimensions}
-              node={this.props.node}
-              steps={12}
-              onChange={this.props.resizeCell}
-            >
-              <Inner {...this.props} styles={null} />
-            </Resizable>
-          ) : (
+          <Container {...containerProps}>
             <Inner {...this.props} styles={null} />
-          )}
+          </Container>
         </div>
       )
     }
