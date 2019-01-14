@@ -19,10 +19,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.0.0",
     "@fortawesome/free-solid-svg-icons": "^5.0.0",
-    "@fortawesome/react-fontawesome": "^0.1.0",
-    "@splish-me/ory-editor-core": "0.3.1-alpha.1",
-    "ory-editor-core": "^0.6.0",
-    "styled-components": "^4.0.0"
+    "@fortawesome/react-fontawesome": "^0.1.0"
   },
   "devDependencies": {
     "@types/react": "^16.0.0",
@@ -30,10 +27,12 @@
     "@types/styled-components": "^4.0.0"
   },
   "peerDependencies": {
+    "ory-editor-core": "^0.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.0",
-    "redux": "^3.0.0"
+    "redux": "^3.0.0",
+    "styled-components": "^4.0.0"
   },
   "publishConfig": {
     "access": "public"

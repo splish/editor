@@ -17,13 +17,8 @@
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-core-contexts": "0.4.1",
-    "@splish-me/editor-core-document": "0.4.1",
-    "@splish-me/editor-core-html-renderer": "0.4.1",
-    "@splish-me/editor-core-renderer": "0.4.1",
-    "@splish-me/editor-core-types": "0.4.1",
+    "classnames": "^2.0.0",
     "lodash": "^4.0.0",
-    "ory-editor-core": "^0.6.0",
     "ramda": "^0.26.0"
   },
   "devDependencies": {
@@ -32,7 +27,10 @@
     "@types/react": "^16.0.0"
   },
   "peerDependencies": {
-    "classnames": "^2.0.0",
+    "@splish-me/editor-core-contexts": "^0.4.0",
+    "@splish-me/editor-core-document": "^0.4.0",
+    "@splish-me/editor-core-types": "^0.4.0",
+    "ory-editor-core": "^0.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.0",

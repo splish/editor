@@ -17,8 +17,6 @@
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-core-contexts": "0.4.1",
-    "@splish-me/editor-core-types": "0.4.1",
     "uuid": "^3.0.0"
   },
   "devDependencies": {
@@ -26,6 +24,8 @@
     "@types/uuid": "^3.0.0"
   },
   "peerDependencies": {
+    "@splish-me/editor-core-contexts": "^0.4.0",
+    "@splish-me/editor-core-types": "^0.4.0",
     "react": "^16.0.0"
   },
   "publishConfig": {
