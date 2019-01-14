@@ -20,6 +20,8 @@
     "uuid": "^3.0.0"
   },
   "devDependencies": {
+    "@splish-me/editor-core-contexts": "^0.4.0",
+    "@splish-me/editor-core-types": "^0.4.0",
     "@types/react": "^16.0.0",
     "@types/uuid": "^3.0.0"
   },

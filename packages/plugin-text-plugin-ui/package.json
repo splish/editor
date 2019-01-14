@@ -20,6 +20,7 @@
     "@splish-me/editor-plugin-text-plugin": "0.4.1"
   },
   "devDependencies": {
+    "@splish-me/editor-ui-plugin-sidebar": "^0.4.0",
     "@types/react": "^16.0.0",
     "@types/slate-react": "^0.20.0"
   },

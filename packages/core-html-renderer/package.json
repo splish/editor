@@ -20,6 +20,7 @@
     "classnames": "^2.0.0"
   },
   "devDependencies": {
+    "@splish-me/editor-core-renderer": "^0.4.0",
     "@types/classnames": "^2.0.0",
     "@types/react": "^16.0.0"
   },
