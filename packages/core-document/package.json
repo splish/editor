@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core-document",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -20,7 +20,7 @@
     "uuid": "^3.0.0"
   },
   "devDependencies": {
-    "@splish-me/editor-core-contexts": "^0.4.0",
+    "@splish-me/editor-core-contexts": "^0.4.3",
     "@splish-me/editor-core-types": "^0.4.0",
     "@types/react": "^16.0.0",
     "@types/uuid": "^3.0.0"

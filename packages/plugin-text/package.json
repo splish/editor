@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-plugin-text",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
     "@splish-me/editor-plugin-text-plugin-lists": "0.4.1",
     "@splish-me/editor-plugin-text-plugin-paragraph": "0.4.1",
     "@splish-me/editor-plugin-text-plugin-rich-text": "0.4.1",
-    "@splish-me/editor-plugin-text-plugin-ui": "^0.4.2",
+    "@splish-me/editor-plugin-text-plugin-ui": "^0.4.3",
     "@splish-me/editor-plugin-text-renderer": "0.4.1",
     "parse5": "^5.0.0",
     "slate": "^0.41.0",

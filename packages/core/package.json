@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -22,8 +22,8 @@
     "ramda": "^0.26.0"
   },
   "devDependencies": {
-    "@splish-me/editor-core-contexts": "^0.4.0",
-    "@splish-me/editor-core-document": "^0.4.0",
+    "@splish-me/editor-core-contexts": "^0.4.3",
+    "@splish-me/editor-core-document": "^0.4.3",
     "@splish-me/editor-core-types": "^0.4.0",
     "@types/lodash": "^4.0.0",
     "@types/ramda": "^0.26.0",
