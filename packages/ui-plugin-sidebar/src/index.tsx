@@ -1,12 +1,12 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { searchNodeEverywhere } from 'ory-editor-core/lib/selector/editable'
+import { removeCell } from 'ory-editor-core/lib/actions/cell'
 import { RootState } from 'ory-editor-core/lib/types/state'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import {removeCell} from 'ory-editor-core/lib/actions/cell'
 
 export * from './button'
 export * from './checkbox'
@@ -60,9 +60,13 @@ const mapStateToProps = (state: RootState) => {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  removeCell
-}, dispatch)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      removeCell
+    },
+    dispatch
+  )
 
 export const PluginSidebar = connect(
   mapStateToProps,
