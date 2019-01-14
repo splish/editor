@@ -1,12 +1,12 @@
-import * as React from 'react'
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
-
-import Cell from 'ory-editor-core/lib/components/Cell'
 import { createFallbackCell } from 'ory-editor-core/lib/actions/cell'
 import withDimensions from 'ory-editor-core/lib/components/Dimensions'
 import { purifiedEditable } from 'ory-editor-core/lib/selector/editable'
 import { ContentPlugin } from 'ory-editor-core/lib/service/plugin/classes'
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+
+import { Cell } from './cell'
 
 const mapStateToProps = createStructuredSelector({ node: purifiedEditable })
 
