@@ -4,12 +4,17 @@ import {
   DocumentContext
 } from '@splish-me/editor-core-contexts'
 import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
+import { blurAllCells } from 'ory-editor-core/lib/actions/cell'
+import createDragDropContext from 'ory-editor-core/lib/components/DragDropContext'
+import {
+  enableGlobalBlurring,
+  disableGlobalBlurring
+} from 'ory-editor-core/lib/components/Editable/Inner/blur'
 import {
   AbstractCell,
   AbstractEditable,
   Row
 } from 'ory-editor-core/lib/types/editable'
-import createDragDropContext from 'ory-editor-core/lib/components/DragDropContext'
 import { Editor as E } from 'ory-editor-core'
 import { throttle } from 'lodash'
 import * as R from 'ramda'
@@ -27,9 +32,9 @@ export class Editor extends React.Component<EditorProps, EditorState> {
 
   private undoStack: Editable[][] = []
   private redoStack: Editable[][] = []
-  private editor: E
-  private DragDropContext: React.ComponentType
-  private persistState = throttle((state: Editable[]) => {
+  private readonly editor: E
+  private readonly DragDropContext: React.ComponentType
+  private readonly persistState = throttle((state: Editable[]) => {
     if (state.length > 0) {
       this.undoStack.push(state)
       this.redoStack = []
@@ -129,6 +134,10 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     this.DragDropContext = createDragDropContext(this.editor.dragDropContext)
   }
 
+  public componentDidMount() {
+    enableGlobalBlurring(this.blurAllCells)
+  }
+
   public componentDidUpdate(prevProps: EditorProps) {
     const { mode } = this.props
 
@@ -167,6 +176,14 @@ export class Editor extends React.Component<EditorProps, EditorState> {
         </this.DragDropContext>
       </Provider>
     )
+  }
+
+  public componentWillUnmount() {
+    disableGlobalBlurring(this.blurAllCells)
+  }
+
+  private blurAllCells = () => {
+    this.editor.store.dispatch(blurAllCells())
   }
 }
 

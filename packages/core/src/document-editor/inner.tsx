@@ -3,21 +3,14 @@ import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
 import Cell from 'ory-editor-core/lib/components/Cell'
-import {
-  blurAllCells,
-  createFallbackCell
-} from 'ory-editor-core/lib/actions/cell'
-import {
-  enableGlobalBlurring,
-  disableGlobalBlurring
-} from 'ory-editor-core/lib/components/Editable/Inner/blur'
+import { createFallbackCell } from 'ory-editor-core/lib/actions/cell'
 import withDimensions from 'ory-editor-core/lib/components/Dimensions'
 import { purifiedEditable } from 'ory-editor-core/lib/selector/editable'
 import { ContentPlugin } from 'ory-editor-core/lib/service/plugin/classes'
 
 const mapStateToProps = createStructuredSelector({ node: purifiedEditable })
 
-const mapDispatchToProps = { blurAllCells, createFallbackCell }
+const mapDispatchToProps = { createFallbackCell }
 
 export const DocumentInner = withDimensions()(
   connect(
@@ -26,7 +19,6 @@ export const DocumentInner = withDimensions()(
   )(
     class DocumentInner extends React.PureComponent<
       {
-        blurAllCells: (e: Event) => void
         createFallbackCell: (plugin: unknown, id: string) => void
       } & {
         containerWidth: number
@@ -38,7 +30,6 @@ export const DocumentInner = withDimensions()(
       } & DocumentInnerProps
     > {
       public componentDidMount() {
-        enableGlobalBlurring(this.props.blurAllCells)
         this.createFallbackCell()
       }
 
@@ -68,10 +59,6 @@ export const DocumentInner = withDimensions()(
             ))}
           </div>
         )
-      }
-
-      public componentWillUnmount() {
-        disableGlobalBlurring(this.props.blurAllCells)
       }
 
       private createFallbackCell() {
