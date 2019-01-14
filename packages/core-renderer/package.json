@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-core-renderer",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -16,7 +16,6 @@
     "ci": "tsc --noEmit",
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/react": "^16.0.0"
   },
