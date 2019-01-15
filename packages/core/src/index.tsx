@@ -140,7 +140,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     const hydrateSubeditables = (value: any): any => {
       if (value instanceof Object) {
         return R.map((v: any) => {
-          if (v && v.type && v.type === 'splish.document') {
+          if (v && v.$$typeof && v.$$typeof === 'splish.document') {
             return {
               type: '@splish-me/editor-core/editable',
               state: this.serializeState(v)
