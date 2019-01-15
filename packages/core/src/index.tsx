@@ -24,81 +24,13 @@ import { Provider } from 'react-redux'
 import { Action } from 'redux'
 
 import { DocumentEditor, DocumentEditorProps } from './document-editor'
+import { LinearHistory } from './linear-history'
 
 export class Editor extends React.Component<EditorProps, EditorState> {
-  static defaultProps = {
-    mode: 'edit'
-  }
-
-  private undoStack: Editable[][] = []
-  private redoStack: Editable[][] = []
-  private readonly editor: E
-  private readonly DragDropContext: React.ComponentType
-  private readonly persistState = throttle((state: Editable[]) => {
-    if (state.length > 0) {
-      this.undoStack.push(state)
-      this.redoStack = []
-    }
-  }, 300)
-
-  private undo = () => {
-    const currentState = editables(this.editor.store.getState())
-    const newState = this.undoStack.pop()
-
-    if (currentState.length > 0 && newState) {
-      this.redoStack.push(currentState)
-    }
-
-    R.forEach(editable => {
-      this.editor.trigger.editable.update(editable)
-    }, newState || [])
-  }
-
-  private redo = () => {
-    const currentState = editables(this.editor.store.getState())
-    const newState = this.redoStack.pop()
-
-    if (currentState.length > 0 && newState) {
-      this.undoStack.push(currentState)
-    }
-
-    R.forEach(editable => {
-      this.editor.trigger.editable.update(editable)
-    }, newState || [])
-  }
-
-  public serializeState = ({ id }: DocumentIdentifier): any => {
-    const rootEditable = editable(this.editor.store.getState(), { id })
-    const serializedRootEditable = this.editor.plugins.serialize(rootEditable)
-
-    const hydrateSubeditables = (value: any): any => {
-      if (value instanceof Object) {
-        return R.map((v: any) => {
-          if (v && v.type && v.type === 'splish.document') {
-            return {
-              type: '@splish-me/editor-core/editable',
-              state: this.serializeState(v)
-            }
-          }
-
-          return hydrateSubeditables(v)
-        }, value)
-      }
-
-      return value
-    }
-
-    return hydrateSubeditables(serializedRootEditable)
-  }
-
-  private Document: React.ComponentType<DocumentProps> = (
-    props: DocumentEditorProps
-  ) => {
-    return <DocumentEditor {...props} editor={this.editor} />
-  }
-
   constructor(props: EditorProps) {
     super(props)
+
+    this.history = new LinearHistory([])
     this.editor = new E({
       defaultPlugin: props.defaultPlugin as any,
       plugins: {
@@ -115,12 +47,13 @@ export class Editor extends React.Component<EditorProps, EditorState> {
               'CELL_BLUR_ALL',
               'CELL_FOCUS',
               'SET_DISPLAY_MODE',
-              'CELL_DRAG_HOVER'
+              'CELL_DRAG_HOVER',
+              'CELL_CREATE_FALLBACK'
             ]
 
             if (ignoredActions.indexOf(action.type) === -1) {
-              const currentState = editables(this.editor.store.getState())
-              this.persistState(currentState)
+              const state = editables(this.editor.store.getState())
+              this.commitState(state)
             }
 
             return next(action)
@@ -134,23 +67,7 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     this.DragDropContext = createDragDropContext(this.editor.dragDropContext)
   }
 
-  public componentDidMount() {
-    enableGlobalBlurring(this.blurAllCells)
-  }
-
-  public componentDidUpdate(prevProps: EditorProps) {
-    const { mode } = this.props
-
-    if (mode !== prevProps.mode) {
-      this.editor.trigger.mode[mode as string]()
-    }
-  }
-  public changeMode = (buttonMode: string) => {
-    this.setState({ mode: buttonMode })
-    this.editor.trigger.mode[buttonMode as string]()
-  }
-
-  public render() {
+  public render(): React.ReactNode {
     return (
       <Provider store={this.editor.store}>
         <this.DragDropContext>
@@ -178,16 +95,94 @@ export class Editor extends React.Component<EditorProps, EditorState> {
     )
   }
 
+  public componentDidMount() {
+    enableGlobalBlurring(this.blurAllCells)
+  }
+
+  public componentDidUpdate(prevProps: EditorProps): void {
+    const { mode } = this.props
+
+    if (mode !== prevProps.mode) {
+      this.editor.trigger.mode[mode as string]()
+    }
+  }
+
   public componentWillUnmount() {
     disableGlobalBlurring(this.blurAllCells)
   }
 
-  private blurAllCells = () => {
+  private readonly history: LinearHistory<Document[]>
+  private readonly editor: E
+  private readonly Document: React.ComponentType<DocumentProps> = (
+    props: DocumentEditorProps
+  ) => {
+    return <DocumentEditor {...props} editor={this.editor} />
+  }
+  private readonly DragDropContext: React.ComponentType
+
+  private readonly changeMode = (buttonMode: string) => {
+    this.setState({ mode: buttonMode })
+    this.editor.trigger.mode[buttonMode as string]()
+  }
+
+  private readonly undo = () => {
+    this.setEditorState(this.history.undo())
+  }
+
+  private readonly redo = () => {
+    this.setEditorState(this.history.redo())
+  }
+
+  private readonly serializeState = ({ id }: DocumentIdentifier): any => {
+    const rootEditable = editable(this.editor.store.getState(), { id })
+    const serializedRootEditable = this.editor.plugins.serialize(rootEditable)
+
+    const hydrateSubeditables = (value: any): any => {
+      if (value instanceof Object) {
+        return R.map((v: any) => {
+          if (v && v.type && v.type === 'splish.document') {
+            return {
+              type: '@splish-me/editor-core/editable',
+              state: this.serializeState(v)
+            }
+          }
+
+          return hydrateSubeditables(v)
+        }, value)
+      }
+
+      return value
+    }
+
+    return hydrateSubeditables(serializedRootEditable)
+  }
+
+  private readonly commitState = throttle((state: Document[]) => {
+    if (state.length > 0) {
+      this.history.commit(state)
+    }
+  }, 300)
+
+  private readonly blurAllCells = () => {
     this.editor.store.dispatch(blurAllCells())
+  }
+
+  private readonly setEditorState = (state: Document[] | null) => {
+    if (state === null) {
+      return
+    }
+
+    R.forEach(document => {
+      this.editor.trigger.editable.update(document)
+    }, state)
+  }
+
+  static defaultProps = {
+    mode: 'edit'
   }
 }
 
-type Editable = AbstractEditable<AbstractCell<Row>>
+type Document = AbstractEditable<AbstractCell<Row>>
 
 export interface EditorProps {
   defaultPlugin?: unknown
