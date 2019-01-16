@@ -4,7 +4,7 @@ describe('Linear History', () => {
   test('1 undo', () => {
     const history = new LinearHistory(0)
 
-    expect(history.undo()).toEqual(null)
+    expect(history.undo()).toBeNull()
   })
 
   test('1 commit', () => {
@@ -45,7 +45,7 @@ describe('Linear History', () => {
   test('1 redo', () => {
     const history = new LinearHistory(0)
 
-    expect(history.redo()).toEqual(null)
+    expect(history.redo()).toBeNull()
   })
 
   test('1 commit, 1 undo, 1 redo', () => {
@@ -80,7 +80,7 @@ describe('Linear History', () => {
     history.commit(2)
     history.undo()
     history.commit(3)
-    expect(history.redo()).toEqual(null)
+    expect(history.redo()).toBeNull()
   })
 
   test('1 commit, 2 undos, 1 redo', () => {
