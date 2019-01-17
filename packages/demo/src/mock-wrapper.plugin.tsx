@@ -2,20 +2,17 @@ import {
   Document,
   createDocumentIdentifier
 } from '@splish-me/editor-core-document'
-import { DocumentIdentifier } from '@splish-me/editor-core-types'
+import {
+  DocumentIdentifier,
+  Plugin,
+  PluginEditorProps
+} from '@splish-me/editor-core-types'
 import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
 
-import { mockContentPlugin } from './mock-content.plugin'
-
-interface MockWrapperProps {
-  state: {
-    state1: DocumentIdentifier
-    state2: DocumentIdentifier
-  }
-}
-
-export class MockWrapper extends React.Component<MockWrapperProps> {
+export class MockWrapper extends React.Component<
+  PluginEditorProps<MockWrapperPluginState>
+> {
   public render() {
     const { state, focused } = this.props
     const { state1, state2 } = state
@@ -23,9 +20,9 @@ export class MockWrapper extends React.Component<MockWrapperProps> {
     return (
       <React.Fragment>
         <hr />
-        <Document defaultPlugin={mockContentPlugin} state={state1} />
+        <Document defaultPlugin="mock-content" state={state1} />
         <hr />
-        <Document defaultPlugin={mockContentPlugin} state={state2} />
+        <Document defaultPlugin="mock-content" state={state2} />
         <hr />
         {focused ? renderIntoSidebar(<Text>MockWrapper</Text>) : null}
       </React.Fragment>
@@ -33,13 +30,18 @@ export class MockWrapper extends React.Component<MockWrapperProps> {
   }
 }
 
-export const mockWrapperPlugin = {
-  name: '@splish-me/mock-wrapper',
-  version: '0.0.0',
-  Component: MockWrapper,
+export const mockWrapperPlugin: Plugin<MockWrapperPluginState> = {
   text: 'Mock Wrapper',
-  createInitialState: (): MockWrapperProps['state'] => ({
-    state1: createDocumentIdentifier(),
-    state2: createDocumentIdentifier()
-  })
+  Component: MockWrapper,
+  createInitialState: () => {
+    return {
+      state1: createDocumentIdentifier(),
+      state2: createDocumentIdentifier()
+    }
+  }
+}
+
+interface MockWrapperPluginState {
+  state1: DocumentIdentifier
+  state2: DocumentIdentifier
 }

@@ -1,5 +1,11 @@
 import { createDocumentIdentifier } from '@splish-me/editor-core-document'
-import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
+import {
+  DocumentIdentifier,
+  DocumentProps,
+  Plugin,
+  SerializedDocument,
+  State
+} from '@splish-me/editor-core-types'
 import { editable } from 'ory-editor-core/lib/selector/editable'
 import { createEmptyState, Editor } from 'ory-editor-core'
 import * as React from 'react'
@@ -8,7 +14,7 @@ import * as R from 'ramda'
 import { DocumentInner } from './inner'
 
 export class DocumentEditor extends React.Component<DocumentEditorProps> {
-  static defaultProps: Partial<DocumentEditorProps> = {
+  static defaultProps = {
     initialState: createEmptyState()
   }
 
@@ -63,7 +69,9 @@ export class DocumentEditor extends React.Component<DocumentEditorProps> {
   }
 }
 
-export interface DocumentEditorProps extends DocumentProps {
+export type DocumentEditorProps = {
+  initialState?: State
+  defaultPlugin?: Plugin<any>
   state: DocumentIdentifier
   editor: Editor
 }

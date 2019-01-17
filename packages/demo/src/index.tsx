@@ -2,7 +2,7 @@ import {
   EditorContext,
   EditorUtilsContext
 } from '@splish-me/editor-core-contexts'
-import { Editor } from '@splish-me/editor-core'
+import { Editor, EditorProps } from '@splish-me/editor-core'
 import {
   createDocumentIdentifier,
   Document
@@ -27,19 +27,13 @@ import 'ory-editor-core/lib/index.css'
 //   }
 // `
 
-export interface DocumentProps {
+export type DocumentProps<K extends string = string> = {
   initialState?: any
-  defaultPlugin?: any
-  plugins?: any[]
-  mode?: any
-}
+} & EditorProps<K>
 
-export class DocumentStory extends React.Component<DocumentProps> {
-  state = {
-    checkboxvalue: false,
-    buttonvalue: false
-  }
-
+export class DocumentStory<K extends string = string> extends React.Component<
+  DocumentProps<K>
+> {
   public render() {
     const { initialState, ...editorProps } = this.props
     const rootId = createDocumentIdentifier()
@@ -51,7 +45,7 @@ export class DocumentStory extends React.Component<DocumentProps> {
       //   padding: '10px 20px'
       // })}
       >
-        <Editor {...editorProps}>
+        <Editor<K> {...editorProps}>
           <Document initialState={initialState} state={rootId} />
           <EditorContext.Consumer>
             {props => {

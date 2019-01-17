@@ -1,0 +1,23 @@
+{
+  "name": "@splish-me/shared",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "Splish UG (haftungsbeschränkt)",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "repository": "splish/editor",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "splish-microbundle",
+    "build:watch": "splish-microbundle watch",
+    "ci": "tsc --noEmit",
+    "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {},
+  "private": true
+}

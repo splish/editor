@@ -1,7 +1,10 @@
 import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
+import { PluginEditorProps } from '@splish-me/editor-core-types'
 
-export class MockBrokenContent extends React.Component {
+export class MockBrokenContent extends React.Component<
+  PluginEditorProps<{ value: string }>
+> {
   public render() {
     if (this.props.state.value === 'foo') {
       throw new Error("I don't like foo")
@@ -24,8 +27,6 @@ export class MockBrokenContent extends React.Component {
 }
 
 export const mockBrokenContentPlugin = {
-  name: '@splish-me/mock-broken-content',
-  version: '0.0.0',
   Component: MockBrokenContent,
   text: 'Mock Content',
   createInitialState: () => ({

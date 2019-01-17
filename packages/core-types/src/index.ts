@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-export interface DocumentProps {
-  defaultPlugin?: Plugin
+export interface DocumentProps<K extends string = string> {
+  defaultPlugin?: K
   initialState?: State
   state: DocumentIdentifier | SerializedDocument
 }
@@ -18,6 +18,10 @@ export interface SerializedDocument {
 
 export interface Plugin<PluginState = undefined> {
   Component: React.ComponentType<PluginEditorProps<PluginState>>
+  text: string
+  createInitialState: PluginState extends undefined
+    ? undefined
+    : () => PluginState
 }
 
 export interface RendererPlugin<PluginState = undefined> {

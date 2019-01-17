@@ -1,7 +1,10 @@
 import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
+import { Plugin, PluginEditorProps } from '@splish-me/editor-core-types'
 
-export class MockContent extends React.Component {
+export class MockContent extends React.Component<
+  PluginEditorProps<MockContentPluginState>
+> {
   public render() {
     return (
       <React.Fragment>
@@ -19,12 +22,14 @@ export class MockContent extends React.Component {
   }
 }
 
-export const mockContentPlugin = {
-  name: '@splish-me/mock-content',
-  version: '0.0.0',
-  Component: MockContent,
+export const mockContentPlugin: Plugin<MockContentPluginState> = {
   text: 'Mock Content',
-  createInitialState: () => ({
-    value: ''
-  })
+  Component: MockContent,
+  createInitialState: () => {
+    return { value: '' }
+  }
+}
+
+interface MockContentPluginState {
+  value: string
 }

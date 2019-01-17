@@ -1,14 +1,15 @@
 import {
+  DocumentContext,
   EditorContext,
-  EditorUtilsContext,
-  DocumentContext
+  EditorUtilsContext
 } from '@splish-me/editor-core-contexts'
 import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
+import { warn } from '@splish-me/shared'
 import { blurAllCells } from 'ory-editor-core/lib/actions/cell'
 import createDragDropContext from 'ory-editor-core/lib/components/DragDropContext'
 import {
-  enableGlobalBlurring,
-  disableGlobalBlurring
+  disableGlobalBlurring,
+  enableGlobalBlurring
 } from 'ory-editor-core/lib/components/Editable/Inner/blur'
 import { editable, editables } from 'ory-editor-core/lib/selector'
 import {
@@ -23,18 +24,66 @@ import * as React from 'react'
 import { Provider } from 'react-redux'
 import { Action } from 'redux'
 
-import { DocumentEditor, DocumentEditorProps } from './document-editor'
+import { DocumentEditor } from './document-editor'
 import { LinearHistory } from './linear-history'
+import { PluginRegistry } from './plugin-registry'
 
-export class Editor extends React.Component<EditorProps, EditorState> {
-  constructor(props: EditorProps) {
+export class Editor<K extends string = string> extends React.Component<
+  EditorProps<K>,
+  EditorState
+> {
+  constructor(props: EditorProps<K>) {
     super(props)
+
+    warn(
+      !Array.isArray(props.plugins),
+      'Passing plugins as array is deprecated and will be removed in the next minor version. Pass a dictionary instead.'
+    )
+
+    let defaultPlugin: any
+    let plugins: any[]
+
+    if (Array.isArray(props.plugins)) {
+      const pluginRegistryPlugins = {}
+      plugins = props.plugins
+      defaultPlugin = props.defaultPlugin
+
+      plugins.forEach(plugin => {
+        pluginRegistryPlugins[plugin['name']] = plugin
+      })
+
+      this.registry = new PluginRegistry<K>(pluginRegistryPlugins as Record<
+        K,
+        any
+      >)
+    } else {
+      const deprecatedPlugins = R.mapObjIndexed((plugin, name) => {
+        warn(
+          typeof plugin['name'] === 'undefined',
+          'Specifying a plugin name is deprecated and will be removed in the next minor version. Use the dictionary key instead'
+        )
+        warn(
+          typeof plugin['version'] === 'undefined',
+          'Specifying the version of a plugin is deprecated and will be removed in the next minor version.'
+        )
+
+        return {
+          ...plugin,
+          name,
+          // TODO: workaround until next minor version where we remove version handling completely
+          version: plugin['version'] || '999.0.0'
+        }
+      }, props.plugins)
+      plugins = R.values(deprecatedPlugins)
+      this.registry = new PluginRegistry<K>(deprecatedPlugins as Record<K, any>)
+      defaultPlugin = deprecatedPlugins[props.defaultPlugin as K]
+    }
 
     this.history = new LinearHistory([])
     this.editor = new E({
-      defaultPlugin: props.defaultPlugin as any,
+      defaultPlugin: defaultPlugin,
       plugins: {
-        content: props.plugins as any[]
+        content: plugins
       },
       editables: [],
       // @ts-ignore
@@ -113,10 +162,18 @@ export class Editor extends React.Component<EditorProps, EditorState> {
 
   private readonly history: LinearHistory<Document[]>
   private readonly editor: E
-  private readonly Document: React.ComponentType<DocumentProps> = (
-    props: DocumentEditorProps
-  ) => {
-    return <DocumentEditor {...props} editor={this.editor} />
+  private readonly registry: PluginRegistry<K>
+  private readonly Document: React.ComponentType<DocumentProps<K>> = props => {
+    const { defaultPlugin, state, ...rest } = props
+
+    return (
+      <DocumentEditor
+        {...rest}
+        state={state as DocumentIdentifier}
+        defaultPlugin={this.registry.getPlugin(defaultPlugin)}
+        editor={this.editor}
+      />
+    )
   }
   private readonly DragDropContext: React.ComponentType
 
@@ -184,10 +241,21 @@ export class Editor extends React.Component<EditorProps, EditorState> {
 
 type Document = AbstractEditable<AbstractCell<Row>>
 
-export interface EditorProps {
-  defaultPlugin?: unknown
-  plugins?: unknown[]
+export type EditorProps<K extends string = string> = {
   mode?: unknown
+} & (DeprecatedPluginRegistryProps | PluginRegistryProps<K>)
+
+/**
+ * @deprecated since version 0.4.6
+ */
+interface DeprecatedPluginRegistryProps {
+  plugins: unknown[]
+  defaultPlugin: unknown
+}
+
+interface PluginRegistryProps<K extends string = string> {
+  plugins: Record<K, unknown>
+  defaultPlugin: K
 }
 
 interface EditorState {
