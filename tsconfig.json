@@ -7,7 +7,6 @@
     "target": "esnext",
     "baseUrl": "packages",
     "paths": {
-      "@splish-me/shared": ["shared/src"],
       "@splish-me/editor-*": ["*/src"]
     }
   }

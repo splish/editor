@@ -4,7 +4,7 @@ import { editable as editableReducer } from 'ory-editor-core/lib/reducer/editabl
 import { PluginService } from 'ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
-import { warn } from '@splish-me/shared'
+import { warn } from '@splish-me/editor-shared'
 
 export const createRenderer = <K extends string = string>({
   renderContainer,

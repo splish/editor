@@ -1,11 +1,10 @@
 {
-  "name": "@splish-me/shared",
+  "name": "@splish-me/editor-shared",
   "version": "0.0.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
-  "module": "dist/index.mjs",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
   "repository": "splish/editor",
@@ -19,5 +18,7 @@
   "dependencies": {},
   "devDependencies": {},
   "peerDependencies": {},
-  "private": true
+  "publishConfig": {
+    "access": "public"
+  }
 }

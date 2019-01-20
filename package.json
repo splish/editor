@@ -9,11 +9,12 @@
     "format": "prettier --write \"*.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\"",
     "postformat": "lerna run --parallel format",
     "predeploy": "yarn build --since",
-    "deploy": "lerna publish --message \"chore: release %v\"",
+    "deploy": "yarn run _publish",
     "deploy:prerelease": "yarn deploy --dist-tag next",
     "ci": "lerna run --stream ci",
     "start": "lerna run --stream start",
-    "test": "lerna run --stream test"
+    "test": "lerna run --stream test",
+    "_publish": "lerna publish --message \"chore: release %v\""
   },
   "dependencies": {},
   "devDependencies": {
