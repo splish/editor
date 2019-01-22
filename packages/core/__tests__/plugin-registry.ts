@@ -3,7 +3,8 @@ import { Plugin } from '@splish-me/editor-core-types'
 import { PluginRegistry } from '../src/plugin-registry'
 
 const fooPlugin: Plugin = {
-  Component: () => null
+  Component: () => null,
+  text: 'Foo'
 }
 
 describe('Plugin Registry', () => {
