@@ -18,12 +18,12 @@ export interface SerializedDocument {
 
 export type Plugin<S = undefined> = StatelessPlugin | StatefulPlugin<S>
 
-interface StatelessPlugin<PluginState = undefined> {
+export interface StatelessPlugin<PluginState = undefined> {
   Component: React.ComponentType<PluginEditorProps<PluginState>>
   text: string
 }
 
-interface StatefulPlugin<PluginState = undefined>
+export interface StatefulPlugin<PluginState = undefined>
   extends StatelessPlugin<PluginState> {
   createInitialState: () => PluginState
 }
