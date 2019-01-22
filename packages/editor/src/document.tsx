@@ -1,10 +1,11 @@
 /**
- * Nestable editable
+ * Nestable document
  */
-import { DocumentContext } from '@splish-me/editor-core-contexts'
-import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
 import * as React from 'react'
 import * as uuid from 'uuid'
+
+import { DocumentContext } from './contexts'
+import { DocumentIdentifier, DocumentProps } from './types'
 
 export const createDocumentIdentifier = (
   id = uuid.v4()

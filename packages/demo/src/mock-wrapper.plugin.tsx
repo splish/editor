@@ -1,12 +1,10 @@
 import {
   Document,
-  createDocumentIdentifier
-} from '@splish-me/editor-core-document'
-import {
   DocumentIdentifier,
+  createDocumentIdentifier,
   Plugin,
   PluginEditorProps
-} from '@splish-me/editor-core-types'
+} from '@splish-me/editor'
 import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
 

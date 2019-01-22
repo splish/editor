@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ### Breaking Changes
 
+- @splish-me/editor replaces @splish-me/editor-core, @splish-me/editor-core-contexts, @splish-me/editor-core-document and @splish-me/editor-core-types
+- @splish-me/editor-html-renderer replaces @splish-me/editor-core-html-renderer
+- @splish-me/editor-renderer replaces @splish-me/editor-core-renderer
 - Don't provide `module` entry anymore
 
 ### Added
@@ -14,7 +17,7 @@ All notable changes to this project will be documented in this file.
 
 ### Deprecated
 
-- Deprecate passing plugins as array
+- Passing plugins as array is deprecated and will be removed in the next minor version. Pass plugins as dictionary instead.
 
 ### Fixed
 

@@ -1,10 +1,13 @@
-import { DocumentContext } from '@splish-me/editor-core-contexts'
-import { DocumentProps, SerializedDocument } from '@splish-me/editor-core-types'
+import {
+  DocumentContext,
+  DocumentProps,
+  SerializedDocument
+} from '@splish-me/editor'
+import { warn } from '@splish-me/editor-shared'
 import { editable as editableReducer } from 'ory-editor-core/lib/reducer/editable'
 import { PluginService } from 'ory-editor-core'
 import * as R from 'ramda'
 import * as React from 'react'
-import { warn } from '@splish-me/editor-shared'
 
 export const createRenderer = <K extends string = string>({
   renderContainer,

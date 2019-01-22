@@ -1,4 +1,4 @@
-import { LinearHistory } from '../src/linear-history'
+import { LinearHistory } from '../../src/editor/linear-history'
 
 describe('Linear History', () => {
   test('1 undo', () => {

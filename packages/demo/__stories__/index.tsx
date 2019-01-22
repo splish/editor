@@ -1,4 +1,4 @@
-import { HtmlRenderer } from '@splish-me/editor-core-html-renderer'
+import { HtmlRenderer } from '@splish-me/editor-html-renderer'
 import { Button, ButtonGroup } from '@splish-me/editor-ui-plugin-sidebar'
 import { storiesOf } from '@storybook/react'
 import * as R from 'ramda'

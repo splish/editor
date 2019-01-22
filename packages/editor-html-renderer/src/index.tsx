@@ -1,4 +1,4 @@
-import { createRenderer } from '@splish-me/editor-core-renderer'
+import { createRenderer } from '@splish-me/editor-renderer'
 import createClassName from 'classnames'
 import * as React from 'react'
 

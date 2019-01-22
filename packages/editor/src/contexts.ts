@@ -1,9 +1,6 @@
-import {
-  DocumentIdentifier,
-  DocumentProps,
-  SerializedState
-} from '@splish-me/editor-core-types'
 import * as React from 'react'
+
+import { DocumentIdentifier, DocumentProps, SerializedState } from './types'
 
 export const EditorContext = React.createContext<
   | {

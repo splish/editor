@@ -1,10 +1,3 @@
-import {
-  DocumentContext,
-  EditorContext,
-  EditorUtilsContext
-} from '@splish-me/editor-core-contexts'
-import { DocumentIdentifier, DocumentProps } from '@splish-me/editor-core-types'
-import { warn } from '@splish-me/editor-shared'
 import { blurAllCells } from 'ory-editor-core/lib/actions/cell'
 import createDragDropContext from 'ory-editor-core/lib/components/DragDropContext'
 import {
@@ -24,6 +17,9 @@ import * as React from 'react'
 import { Provider } from 'react-redux'
 import { Action } from 'redux'
 
+import { DocumentContext, EditorContext, EditorUtilsContext } from '../contexts'
+import { DocumentIdentifier, DocumentProps } from '../types'
+import { warn } from '@splish-me/editor-shared'
 import { DocumentEditor } from './document-editor'
 import { LinearHistory } from './linear-history'
 import { PluginRegistry } from './plugin-registry'

@@ -14,17 +14,10 @@ module.exports = (baseConfig, env, config) => {
           require.resolve('babel-plugin-module-resolver'),
           {
             alias: {
-              '@splish-me/editor-core': '@splish-me/editor-core/src',
-              '@splish-me/editor-core-contexts':
-                '@splish-me/editor-core-contexts/src',
-              '@splish-me/editor-core-document':
-                '@splish-me/editor-core-document/src',
-              '@splish-me/editor-core-html-renderer':
-                '@splish-me/editor-core-html-renderer/src',
-              '@splish-me/editor-core-renderer':
-                '@splish-me/editor-core-renderer/src',
-              '@splish-me/editor-plugin-types':
-                '@splish-me/editor-core-types/src',
+              '@splish-me/editor': '@splish-me/editor/src',
+              '@splish-me/editor-html-renderer':
+                '@splish-me/editor-html-renderer/src',
+              '@splish-me/editor-renderer': '@splish-me/editor-renderer/src',
               '@splish-me/editor-plugin-text':
                 '@splish-me/editor-plugin-text/src',
               '@splish-me/editor-plugin-text-plugin':
@@ -45,6 +38,7 @@ module.exports = (baseConfig, env, config) => {
                 '@splish-me/editor-plugin-text-plugin-ui/src',
               '@splish-me/editor-plugin-text-renderer':
                 '@splish-me/editor-plugin-text-renderer/src',
+              '@splish-me/editor-shared': '@splish-me/editor-shared/src',
               '@splish-me/editor-ui-add-sidebar':
                 '@splish-me/editor-ui-add-sidebar/src',
               '@splish-me/editor-ui-mode-toolbar':

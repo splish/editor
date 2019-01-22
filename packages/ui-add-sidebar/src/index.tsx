@@ -1,4 +1,4 @@
-import { EditorContext } from '@splish-me/editor-core-contexts'
+import { EditorContext } from '@splish-me/editor'
 import classNames from 'classnames'
 import * as React from 'react'
 // @ts-ignore

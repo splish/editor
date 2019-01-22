@@ -1,4 +1,4 @@
-import { Plugin } from '@splish-me/editor-core-types'
+import { Plugin } from '../types'
 
 export class PluginRegistry<K extends string = string> {
   constructor(private plugins: Record<K, Plugin<any>>) {}

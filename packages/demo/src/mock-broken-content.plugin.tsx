@@ -1,6 +1,6 @@
+import { PluginEditorProps } from '@splish-me/editor'
 import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
 import * as React from 'react'
-import { PluginEditorProps } from '@splish-me/editor-core-types'
 
 export class MockBrokenContent extends React.Component<
   PluginEditorProps<{ value: string }>

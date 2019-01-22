@@ -1,6 +1,5 @@
-import { Plugin } from '@splish-me/editor-core-types'
-
-import { PluginRegistry } from '../src/plugin-registry'
+import { PluginRegistry } from '../../src/editor/plugin-registry'
+import { Plugin } from '../../src'
 
 const fooPlugin: Plugin = {
   Component: () => null,

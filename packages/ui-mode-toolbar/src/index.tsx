@@ -1,6 +1,6 @@
 import { faPen, faArrowsAlt, faLaptop } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { EditorContext } from '@splish-me/editor-core-contexts'
+import { EditorContext } from '@splish-me/editor'
 import { RootState } from 'ory-editor-core/lib/types/state'
 import * as React from 'react'
 import { connect } from 'react-redux'
