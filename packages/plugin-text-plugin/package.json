@@ -17,8 +17,7 @@
   },
   "devDependencies": {
     "@types/slate": "^0.40.0",
-    "@types/slate-html-serializer": "^0.6.0",
-    "@types/slate-react": "^0.20.0"
+    "@types/slate-html-serializer": "^0.6.0"
   },
   "publishConfig": {
     "access": "public"

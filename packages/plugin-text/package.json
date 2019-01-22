@@ -34,8 +34,7 @@
     "@types/parse5": "^4.0.0",
     "@types/react": "^16.0.0",
     "@types/slate": "^0.40.0",
-    "@types/slate-html-serializer": "^0.6.0",
-    "@types/slate-react": "^0.20.0"
+    "@types/slate-html-serializer": "^0.6.0"
   },
   "peerDependencies": {
     "immutable": "^3.0.0",
