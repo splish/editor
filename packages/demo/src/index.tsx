@@ -6,10 +6,12 @@ import {
   EditorContext,
   EditorUtilsContext
 } from '@splish-me/editor'
-import { ModeToolbar } from '@splish-me/editor-ui-mode-toolbar'
-import { AddSidebar } from '@splish-me/editor-ui-add-sidebar'
-import { Sidebar } from '@splish-me/editor-ui-sidebar'
-import { PluginSidebar } from '@splish-me/editor-ui-plugin-sidebar'
+import {
+  AddSidebar,
+  ModeToolbar,
+  PluginSidebar,
+  Sidebar
+} from '@splish-me/editor-ui'
 import * as React from 'react'
 
 // FIXME:

@@ -1,5 +1,5 @@
 import { TextPlugin } from '@splish-me/editor-plugin-text-plugin'
-import { renderIntoSidebar } from '@splish-me/editor-ui-plugin-sidebar'
+import { renderIntoSidebar } from '@splish-me/editor-ui'
 import * as React from 'react'
 import { RenderAttributes } from 'slate-react'
 

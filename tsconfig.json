@@ -10,6 +10,7 @@
       "@splish-me/editor": ["editor/src"],
       "@splish-me/editor-html-renderer": ["editor-html-renderer/src"],
       "@splish-me/editor-renderer": ["editor-renderer/src"],
+      "@splish-me/editor-ui": ["editor-ui/src"],
       "@splish-me/editor-*": ["*/src"]
     }
   }

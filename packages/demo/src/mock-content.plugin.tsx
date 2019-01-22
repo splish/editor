@@ -1,5 +1,5 @@
 import { Plugin, PluginEditorProps } from '@splish-me/editor'
-import { renderIntoSidebar, Text } from '@splish-me/editor-ui-plugin-sidebar'
+import { renderIntoSidebar, Text } from '@splish-me/editor-ui'
 import * as React from 'react'
 
 export class MockContent extends React.Component<
