@@ -142,7 +142,7 @@ export class Editor<K extends string = string> extends React.Component<
                     REDO: this.redo
                   }}
                 >
-                  {this.props.children}
+                  <React.Fragment>{this.props.children}</React.Fragment>
                 </HotKeys>
               </DocumentContext.Provider>
             </EditorUtilsContext.Provider>

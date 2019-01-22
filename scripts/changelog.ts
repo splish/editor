@@ -33,6 +33,11 @@ async function exec(): Promise<void> {
         'Serialize nested documents correctly',
         'Handle edge cases of undo/redo correctly'
       ]
+    },
+    {
+      tagName: '0.5.1',
+      date: '2019-01-22',
+      fixed: ['Fix hotkeys when passing multiple children']
     }
   ])
 

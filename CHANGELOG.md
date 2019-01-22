@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.1](https://github.com/splish-me/editor/compare/0.5.0..0.5.1) - January 22, 2019
+
+### Fixed
+
+- Fix hotkeys when passing multiple children
+
 ## [0.5.0](https://github.com/splish-me/editor/compare/0.4.5..0.5.0) - January 22, 2019
 
 ### Breaking Changes
