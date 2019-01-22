@@ -16,6 +16,8 @@ async function exec(): Promise<void> {
       date: '2019-01-14'
     },
     {
+      tagName: '0.5.0',
+      date: '2019-01-22',
       breakingChanges: [
         '`@splish-me/editor` replaces `@splish-me/editor-core`, `@splish-me/editor-core-contexts`, `@splish-me/editor-core-document` and `@splish-me/editor-core-types`',
         '`@splish-me/editor-html-renderer` replaces `@splish-me/editor-core-html-renderer`',

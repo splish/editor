@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/splish-me/editor/compare/0.4.5..HEAD)
+## [0.5.0](https://github.com/splish-me/editor/compare/0.4.5..0.5.0) - January 22, 2019
 
 ### Breaking Changes
 

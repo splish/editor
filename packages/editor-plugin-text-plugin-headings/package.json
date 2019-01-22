@@ -1,6 +1,6 @@
 {
   "name": "@splish-me/editor-plugin-text-plugin-headings",
-  "version": "0.5.0-2",
+  "version": "0.5.0",
   "license": "MIT",
   "author": "Splish UG (haftungsbeschränkt)",
   "main": "dist/index.js",
@@ -16,7 +16,7 @@
     "format": "prettier --write \"{{__stories__,__tests__,src}/**/*,*}.{js,jsx,ts,tsx,css,scss,sass,less,json,md,markdown,yaml,yml}\""
   },
   "dependencies": {
-    "@splish-me/editor-plugin-text-plugin": "^0.5.0-2"
+    "@splish-me/editor-plugin-text-plugin": "^0.5.0"
   },
   "devDependencies": {
     "@types/react": "^16.0.0",
