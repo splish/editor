@@ -11,13 +11,15 @@ export const createRenderer = <K extends string = string>({
   renderRow,
   renderCell
 }: {
-  renderContainer: (
-    args: { cells: any; children: React.ReactNode }
-  ) => React.ReactNode
+  renderContainer: (args: {
+    cells: any
+    children: React.ReactNode
+  }) => React.ReactNode
   renderRow: (args: { row: any; children: React.ReactNode }) => React.ReactNode
-  renderCell: (
-    args: { cell: any; children: React.ReactNode }
-  ) => React.ReactNode
+  renderCell: (args: {
+    cell: any
+    children: React.ReactNode
+  }) => React.ReactNode
 }): React.ComponentType<RendererProps<K>> => {
   interface CellProps {
     rows: any[]

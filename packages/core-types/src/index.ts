@@ -23,7 +23,8 @@ interface StatelessPlugin<PluginState = undefined> {
   text: string
 }
 
-interface StatefulPlugin<PluginState = undefined> extends StatelessPlugin<PluginState> {
+interface StatefulPlugin<PluginState = undefined>
+  extends StatelessPlugin<PluginState> {
   createInitialState: () => PluginState
 }
 
