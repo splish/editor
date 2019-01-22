@@ -9,9 +9,35 @@
     "paths": {
       "@splish-me/editor": ["editor/src"],
       "@splish-me/editor-html-renderer": ["editor-html-renderer/src"],
+      "@splish-me/editor-plugin-text": ["editor-plugin-text/src"],
+      "@splish-me/editor-plugin-text-plugin": ["editor-plugin-text-plugin/src"],
+      "@splish-me/editor-plugin-text-plugin-code": [
+        "editor-plugin-text-plugin-code/src"
+      ],
+      "@splish-me/editor-plugin-text-plugin-headings": [
+        "editor-plugin-text-plugin-headings/src"
+      ],
+      "@splish-me/editor-plugin-text-plugin-link": [
+        "editor-plugin-text-plugin-link/src"
+      ],
+      "@splish-me/editor-plugin-text-plugin-lists": [
+        "editor-plugin-text-plugin-lists/src"
+      ],
+      "@splish-me/editor-plugin-text-plugin-paragraph": [
+        "editor-plugin-text-plugin-paragraph/src"
+      ],
+      "@splish-me/editor-plugin-text-plugin-rich-text": [
+        "editor-plugin-text-plugin-rich-text/src"
+      ],
+      "@splish-me/editor-plugin-text-plugin-ui": [
+        "editor-plugin-text-plugin-ui/src"
+      ],
+      "@splish-me/editor-plugin-text-plugin-renderer": [
+        "editor-plugin-text-plugin-renderer/src"
+      ],
       "@splish-me/editor-renderer": ["editor-renderer/src"],
-      "@splish-me/editor-ui": ["editor-ui/src"],
-      "@splish-me/editor-*": ["*/src"]
+      "@splish-me/editor-shared": ["editor-shared/src"],
+      "@splish-me/editor-ui": ["editor-ui/src"]
     }
   }
 }

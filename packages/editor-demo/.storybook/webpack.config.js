@@ -17,7 +17,6 @@ module.exports = (baseConfig, env, config) => {
               '@splish-me/editor': '@splish-me/editor/src',
               '@splish-me/editor-html-renderer':
                 '@splish-me/editor-html-renderer/src',
-              '@splish-me/editor-renderer': '@splish-me/editor-renderer/src',
               '@splish-me/editor-plugin-text':
                 '@splish-me/editor-plugin-text/src',
               '@splish-me/editor-plugin-text-plugin':
@@ -38,14 +37,9 @@ module.exports = (baseConfig, env, config) => {
                 '@splish-me/editor-plugin-text-plugin-ui/src',
               '@splish-me/editor-plugin-text-renderer':
                 '@splish-me/editor-plugin-text-renderer/src',
+              '@splish-me/editor-renderer': '@splish-me/editor-renderer/src',
               '@splish-me/editor-shared': '@splish-me/editor-shared/src',
-              '@splish-me/editor-ui-add-sidebar':
-                '@splish-me/editor-ui-add-sidebar/src',
-              '@splish-me/editor-ui-mode-toolbar':
-                '@splish-me/editor-ui-mode-toolbar/src',
-              '@splish-me/editor-ui-plugin-sidebar':
-                '@splish-me/editor-ui-plugin-sidebar/src',
-              '@splish-me/editor-ui-sidebar': '@splish-me/editor-ui-sidebar/src'
+              '@splish-me/editor-ui': '@splish-me/editor-ui/src'
             }
           }
         ]
