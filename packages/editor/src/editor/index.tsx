@@ -14,6 +14,7 @@ import { Editor as E } from 'ory-editor-core'
 import { throttle } from 'lodash'
 import * as R from 'ramda'
 import * as React from 'react'
+import { HotKeys } from 'react-hotkeys'
 import { Provider } from 'react-redux'
 import { Action } from 'redux'
 
@@ -131,7 +132,18 @@ export class Editor<K extends string = string> extends React.Component<
               }}
             >
               <DocumentContext.Provider value={this.Document}>
-                {this.props.children}
+                <HotKeys
+                  keyMap={{
+                    UNDO: 'mod+z',
+                    REDO: ['mod+y', 'mod+shift+z']
+                  }}
+                  handlers={{
+                    UNDO: this.undo,
+                    REDO: this.redo
+                  }}
+                >
+                  {this.props.children}
+                </HotKeys>
               </DocumentContext.Provider>
             </EditorUtilsContext.Provider>
           </EditorContext.Provider>
