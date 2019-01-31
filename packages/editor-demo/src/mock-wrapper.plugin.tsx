@@ -5,7 +5,16 @@ import {
   Plugin,
   PluginEditorProps
 } from '@splish-me/editor'
-import { renderIntoSidebar, Text } from '@splish-me/editor-ui'
+import {
+  renderIntoSidebar,
+  Text,
+  Textarea,
+  Dropdown,
+  Button,
+  ButtonGroup,
+  Input,
+  SettingOverlay
+} from '@splish-me/editor-ui'
 import * as React from 'react'
 
 export class MockWrapper extends React.Component<
@@ -17,6 +26,15 @@ export class MockWrapper extends React.Component<
 
     return (
       <React.Fragment>
+        <SettingOverlay readOnly={this.props.preview}>
+          <Input label="Test:" />{' '}
+          <Dropdown label="select" value="a" options={['a', 'b', 'c']} />
+          <Textarea label="test" />
+          <ButtonGroup>
+            <Button> Test</Button>
+            <Button> Test2</Button>
+          </ButtonGroup>
+        </SettingOverlay>
         <hr />
         <Document defaultPlugin="mock-content" state={state1} />
         <hr />

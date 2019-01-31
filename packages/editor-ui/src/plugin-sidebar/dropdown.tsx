@@ -58,7 +58,7 @@ export class Dropdown extends React.Component<DropdownProps> {
 }
 
 export interface DropdownProps {
-  options?: any
+  options?: string[]
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void
   label?: string
   value: string
